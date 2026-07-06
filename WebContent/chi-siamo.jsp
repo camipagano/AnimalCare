@@ -30,7 +30,7 @@ Potrete sempre tenere traccia dei vostri ordini (nel caso in cui li abbiate ordi
 Nel caso in cui l'ordine sia stato effettuato in negozio, verrete aggiornati dal nostro staff via email.
 </p>
 <p>Non è possibile effettuare resi</p>
-<p>Nel caso abbiate bisogno di comunicare con un responsabile, troverete tutti i contatti</p>
+<p>Nel caso abbiate bisogno di comunicare con un responsabile, troverete tutti i <a href="contatti.jsp">contatti</a></p>
 
 </body>
 </html>
