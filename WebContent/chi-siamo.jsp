@@ -17,8 +17,8 @@ Forniamo servizi che variano per tutte le specie di animali domestici con prodot
 <p>Ci trovate online sul sito ufficiale: <!-- inserire link della homepage --> <br>
 E nelle seguenti sedi:
 <ul>
-<li> Via Michelangelo Nappi, 7, Scafati(SA) </li>  <!--  mettiamo il link che apre googlemaps su entrambi gli indirizzi -->
-<li>Salerno(SA)</li>
+<li>Via Domenico Velleca, 56, Scafati(SA) </li>  <!--  mettiamo il link che apre googlemaps su entrambi gli indirizzi -->
+<li>Via Giovanni Paolo II, 132, Fisciano(SA)</li>
 </ul>
 </p>
 </body>
