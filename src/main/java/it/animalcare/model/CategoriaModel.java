@@ -6,17 +6,17 @@ public class CategoriaModel implements Serializable {
 	
 	private static final long serialVersionID = 1L;
 	
-	private int ID;
+	private int id;
 	private String nome;
 	
 	public CategoriaModel() {
 		
 	}
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getNome() {
 		return nome;
