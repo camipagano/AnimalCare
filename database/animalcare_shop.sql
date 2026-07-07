@@ -101,6 +101,7 @@ CREATE TABLE `prodotto` (
   `Quantita` int DEFAULT NULL,
   `ID_Categoria` int NOT NULL,
   `immagine` varchar(255),
+  `mime_type` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `ID_Categoria` (`ID_Categoria`),
   CONSTRAINT `prodotto_ibfk_1` FOREIGN KEY (`ID_Categoria`) REFERENCES `categoria` (`ID`) ON DELETE RESTRICT ON UPDATE CASCADE
