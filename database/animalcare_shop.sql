@@ -98,7 +98,6 @@ CREATE TABLE `prodotto` (
   `Descrizione` varchar(255) DEFAULT NULL,
   `Disponibilita` int NOT NULL,
   `Prezzo` decimal(10,2) NOT NULL,
-  `Quantita` int DEFAULT NULL,
   `ID_Categoria` int NOT NULL,
   `immagine` varchar(255),
   `mime_type` varchar(50) DEFAULT NULL,
