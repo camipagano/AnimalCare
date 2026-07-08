@@ -29,6 +29,7 @@ public class ConnectionFactory {
         try {
             return getDataSource().getConnection();
         } catch (NamingException e) {
+            e.printStackTrace(); // utile per il debug in Console durante la dimostrazione al prof
             throw new SQLException("Errore nel lookup JNDI del DataSource", e);
         }
     }
