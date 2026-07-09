@@ -11,5 +11,5 @@ public interface DettaglioOrdineDao {
 	public boolean doDelete (int codiceOrdine, int idProdotto) throws SQLException;
 	public DettaglioOrdineModel doRetrieveByKey (int codiceOrdine, int idProdotto) throws SQLException;
 	public Collection<DettaglioOrdineModel> doRetrieveAll (String order) throws SQLException;
-	public Collection<DettaglioOrdineDao> doRetrieveByOrdine (int codiceOrdine) throws SQLException;
+	public Collection<DettaglioOrdineModel> doRetrieveByOrdine (int codiceOrdine) throws SQLException;
 }
