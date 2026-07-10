@@ -54,15 +54,21 @@
 	if(categorie != null && !categorie.isEmpty()){
 		for(CategoriaModel cat : categorie){ %>
 		
-		<li><a href="prodotti.jsp?categoria=<%= cat.getId() %>"><%= cat.getNome() %></li></a>
+		<li><a href="prodotti.jsp?categoria=<%= cat.getId() %>"><%= cat.getNome() %></a></li>
 			
 	<% 	}
 	}%>
-	<li><a href="chi-siamo.jsp">Chi Siamo</a></li>
     <li><a href="contatti.jsp">Contatti</a></li>
 </ul>
 </nav>
 
+<main>  <!-- qui vanno i prodotti --> </main>
+<footer>
+    <ul>
+        <li><a href="chi-siamo.jsp">Chi Siamo</a></li>
+        <li><a href="contatti.jsp">Contatti</a></li>
+    </ul>
+</footer>
 
 </body>
 </html>
