@@ -46,9 +46,8 @@
 
 <nav class= "navBar">
 
-<% try{
-	CategoriaDao categoriaDao= new CategoriaDaoImpl();
-	Collection<CategoriaModel> categorie= categoriaDao.doRetrieveAll(null);
+<% 
+	Collection<CategoriaModel> categorie= (Collection<CategoriaModel>) request.getAttribute("categorie");
 	
 	if(categorie != null && !categorie.isEmpty()){
 		for(CategoriaModel cat : categorie){ %>
@@ -58,12 +57,7 @@
 	<% 	}
 	}else{ %>
 		<span> Nessuna categoria </span>
-	<% }
-}catch (Exception e){ %>
-	<span>Errore caricamento categorie</span>
-<% }
-
-%>
+	<% } %>
 
 </nav>
 
