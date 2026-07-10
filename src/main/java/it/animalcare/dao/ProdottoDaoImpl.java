@@ -15,7 +15,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     private static final String TABLE_NAME = "prodotto";
 
     @Override
-    public void doSave(ProdottoModel prodotto) throws SQLException {
+    public synchronized void doSave(ProdottoModel prodotto) throws SQLException {
         String query = "INSERT INTO " + TABLE_NAME
                 + " (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, immagine, mime_type, attivo) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -36,7 +36,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     }
 
     @Override
-    public void doUpdate(ProdottoModel prodotto) throws SQLException {
+    public synchronized void doUpdate(ProdottoModel prodotto) throws SQLException {
         String query = "UPDATE " + TABLE_NAME
                 + " SET Nome = ?, Descrizione = ?, Disponibilita = ?, Prezzo = ?, ID_Categoria = ?, "
                 + "immagine = ?, mime_type = ?, attivo = ? WHERE ID = ?";
@@ -58,7 +58,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     }
 
     @Override
-    public boolean doDelete(int id, int idCategoria) throws SQLException {
+    public synchronized boolean doDelete(int id, int idCategoria) throws SQLException {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE ID = ? AND ID_Categoria = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -72,7 +72,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     }
 
     @Override
-    public ProdottoModel doRetrieveByKey(int id, int idCategoria) throws SQLException {
+    public synchronized ProdottoModel doRetrieveByKey(int id, int idCategoria) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE ID = ? AND ID_Categoria = ?";
         ProdottoModel prodotto = null;
 
@@ -93,7 +93,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     }
 
     @Override
-    public Collection<ProdottoModel> doRetrieveAll(String order) throws SQLException {
+    public synchronized Collection<ProdottoModel> doRetrieveAll(String order) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME;
 
         if ("Nome".equalsIgnoreCase(order) || "Prezzo".equalsIgnoreCase(order)
@@ -116,7 +116,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     }
 
     @Override
-    public Collection<ProdottoModel> doRetrieveByCategoria(int idCategoria) throws SQLException {
+    public synchronized Collection<ProdottoModel> doRetrieveByCategoria(int idCategoria) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE ID_Categoria = ?";
 
         Collection<ProdottoModel> prodotti = new ArrayList<>();

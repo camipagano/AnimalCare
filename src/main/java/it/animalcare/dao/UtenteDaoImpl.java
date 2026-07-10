@@ -15,7 +15,7 @@ public class UtenteDaoImpl implements UtenteDao {
     private static final String TABLE_NAME = "utente";
 
     @Override
-    public void doSave(UtenteModel utente) throws SQLException {
+    public synchronized void doSave(UtenteModel utente) throws SQLException {
         String query = "INSERT INTO " + TABLE_NAME + " (Nome, Cognome, Mail, Password, Ruolo, Indirizzo) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -32,7 +32,7 @@ public class UtenteDaoImpl implements UtenteDao {
     }
 
     @Override
-    public void doUpdate(UtenteModel utente) throws SQLException {
+    public synchronized void doUpdate(UtenteModel utente) throws SQLException {
         String query = "UPDATE " + TABLE_NAME + " SET Nome = ?, Cognome = ?, Mail = ?, Password = ?, Ruolo = ?, Indirizzo = ? WHERE ID = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -50,7 +50,7 @@ public class UtenteDaoImpl implements UtenteDao {
     }
 
     @Override
-    public boolean doDelete(int id) throws SQLException {
+    public synchronized boolean doDelete(int id) throws SQLException {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE ID = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -63,7 +63,7 @@ public class UtenteDaoImpl implements UtenteDao {
     }
 
     @Override
-    public UtenteModel doRetrieveByKey(int id) throws SQLException {
+    public synchronized UtenteModel doRetrieveByKey(int id) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE ID = ?";
         UtenteModel utente = null;
 
@@ -90,7 +90,7 @@ public class UtenteDaoImpl implements UtenteDao {
     }
 
     @Override
-    public Collection<UtenteModel> doRetrieveAll(String order) throws SQLException {
+    public synchronized Collection<UtenteModel> doRetrieveAll(String order) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME;
 
         // Validiamo l'ordinamento: accettiamo solo colonne note, mai input non controllato

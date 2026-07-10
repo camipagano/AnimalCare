@@ -15,7 +15,7 @@ public class MetodoPagamentoDaoImpl implements MetodoPagamentoDao {
     private static final String TABLE_NAME = "metodo_di_pagamento";
 
     @Override
-    public void doSave(MetodoPagamentoModel metodo) throws SQLException {
+    public synchronized void doSave(MetodoPagamentoModel metodo) throws SQLException {
         String query = "INSERT INTO " + TABLE_NAME + " (Codice_Ordine, Nome, Stato) VALUES (?, ?, ?)";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -29,7 +29,7 @@ public class MetodoPagamentoDaoImpl implements MetodoPagamentoDao {
     }
 
     @Override
-    public void doUpdate(MetodoPagamentoModel metodo) throws SQLException {
+    public synchronized void doUpdate(MetodoPagamentoModel metodo) throws SQLException {
         // Aggiorniamo solo lo Stato, dato che Codice_Ordine + Nome sono la chiave e non dovrebbero cambiare
         String query = "UPDATE " + TABLE_NAME + " SET Stato = ? WHERE Codice_Ordine = ? AND Nome = ?";
 
@@ -44,7 +44,7 @@ public class MetodoPagamentoDaoImpl implements MetodoPagamentoDao {
     }
 
     @Override
-    public boolean doDelete(int codiceOrdine, String nome) throws SQLException {
+    public synchronized boolean doDelete(int codiceOrdine, String nome) throws SQLException {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE Codice_Ordine = ? AND Nome = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -58,7 +58,7 @@ public class MetodoPagamentoDaoImpl implements MetodoPagamentoDao {
     }
 
     @Override
-    public MetodoPagamentoModel doRetrieveByKey(int codiceOrdine, String nome) throws SQLException {
+    public synchronized MetodoPagamentoModel doRetrieveByKey(int codiceOrdine, String nome) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE Codice_Ordine = ? AND Nome = ?";
         MetodoPagamentoModel metodo = null;
 
@@ -82,7 +82,7 @@ public class MetodoPagamentoDaoImpl implements MetodoPagamentoDao {
     }
 
     @Override
-    public Collection<MetodoPagamentoModel> doRetrieveAll(String order) throws SQLException {
+    public synchronized Collection<MetodoPagamentoModel> doRetrieveAll(String order) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME;
 
         // Validiamo l'ordinamento: accettiamo solo colonne note, mai input non controllato
@@ -109,7 +109,7 @@ public class MetodoPagamentoDaoImpl implements MetodoPagamentoDao {
     }
 
     @Override
-    public Collection<MetodoPagamentoModel> doRetrieveByOrdine(int codiceOrdine) throws SQLException {
+    public synchronized Collection<MetodoPagamentoModel> doRetrieveByOrdine(int codiceOrdine) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE Codice_Ordine = ?";
 
         Collection<MetodoPagamentoModel> metodi = new ArrayList<>();
