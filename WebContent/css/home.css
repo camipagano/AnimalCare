@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+
+
+header{
+position: relative;
+background-image: url('../img/homeHeader.jpeg');
+background-position: center;
+background-size: cover; /* Forza l'immagine a coprire tutto l'header senza deformarsi */
+height: 300px;
+padding: 20px;
+text-align: center;
+box-sizing: border-box;
+}
+
+
+
+header h1 {
+margin: 0 0 20px 0;
+color: #ffffff;
+font-family: impact;
+font-size: 300%
+}
+
+
+
+header .search {
+position: absolute;   /* Si ancora all'header */
+bottom: 20px;
+width: 90%;
+max-width: 500px;
+margin: 0 auto;
+left: 0;              
+right: 0;
+}
+
+
+
+header .search form {
+display: flex; /* Mette input e lente perfettamente affiancati */
+width: 100%;
+
+}
+
+
+
+header .search input {
+flex-grow: 1; /* L'input prende tutto lo spazio disponibile nel form */
+padding: 10px;
+font-size: 1rem;
+border: 1px solid #cccccc;
+
+}
+
+header .search button {
+    padding: 10px 15px;
+    background-color: #ff9900; /* Colore di sfondo per il tasto della lente */
+    border: none;
+    cursor: pointer;
+}
+
+
+header .header-actions {
+position: absolute;
+top: 20px;
+right: 20px;
+display: flex;
+gap: 1px;
+
+}
+
+
+
+header .header-actions .loginButton,
+header .header-actions .cartButton {
+border: none;
+padding: 10px;
+width: 25px;
+height: 25px;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+
+} 
+
+/*-------------------------------------------------*/
+
+nav.navBar{
+	background-color: #C0C0C0;
+	text-align:center;
+	padding: 0;
+	margin:0;
+}
+
+nav.navBar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav.navBar ul li {
+    display: inline-block;
+    margin: 0 10px;        /* Spazio orizzontale tra un pulsante e l'altro */
+}
+
+nav.navBar ul li a {
+    display: block;        /* Trasforma il link in un'area cliccabile solida */
+    color: #000000;
+    text-decoration: none;
+    padding:15px 20px;
+    font-family: verdana;
+    font-size:100%;
+}
+
+nav.navbar ul li a:hover {
+    background-color: #ff9900;
+}

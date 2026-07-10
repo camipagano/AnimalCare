@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Home Page</title>
+<link rel="stylesheet" type="text/css" href="css/home.css">
 </head>
 <body>
 <header>
@@ -45,6 +46,7 @@
 </header>
 
 <nav class= "navBar">
+<ul>
 
 <% 
 	Collection<CategoriaModel> categorie= (Collection<CategoriaModel>) request.getAttribute("categorie");
@@ -52,13 +54,13 @@
 	if(categorie != null && !categorie.isEmpty()){
 		for(CategoriaModel cat : categorie){ %>
 		
-		<a href="prodotti.jsp?categoria=<%= cat.getId() %>"><%= cat.getNome() %></a>
+		<li><a href="prodotti.jsp?categoria=<%= cat.getId() %>"><%= cat.getNome() %></li></a>
 			
 	<% 	}
-	}else{ %>
-		<span> Nessuna categoria </span>
-	<% } %>
-
+	}%>
+	<li><a href="chi-siamo.jsp">Chi Siamo</a></li>
+    <li><a href="contatti.jsp">Contatti</a></li>
+</ul>
 </nav>
 
 
