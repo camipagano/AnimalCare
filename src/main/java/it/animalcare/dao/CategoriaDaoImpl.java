@@ -15,7 +15,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
     private static final String TABLE_NAME = "categoria";
 
     @Override
-    public void doSave(CategoriaModel categoria) throws SQLException {
+    public synchronized void doSave(CategoriaModel categoria) throws SQLException {
         String query = "INSERT INTO " + TABLE_NAME + " (nome) VALUES (?)";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -27,7 +27,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
     }
 
     @Override
-    public void doUpdate(CategoriaModel categoria) throws SQLException {
+    public synchronized void doUpdate(CategoriaModel categoria) throws SQLException {
         String query = "UPDATE " + TABLE_NAME + " SET nome = ? WHERE id = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -40,7 +40,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
     }
 
     @Override
-    public boolean doDelete(int id) throws SQLException {
+    public synchronized boolean doDelete(int id) throws SQLException {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE id = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -53,7 +53,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
     }
 
     @Override
-    public CategoriaModel doRetrieveByKey(int id) throws SQLException {
+    public synchronized CategoriaModel doRetrieveByKey(int id) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE id = ?";
         CategoriaModel categoria = null;
 
@@ -75,7 +75,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
     }
 
     @Override
-    public Collection<CategoriaModel> doRetrieveAll(String order) throws SQLException {
+    public synchronized Collection<CategoriaModel> doRetrieveAll(String order) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME;
 
         // Validiamo l'ordinamento: accettiamo solo valori noti e sicuri,

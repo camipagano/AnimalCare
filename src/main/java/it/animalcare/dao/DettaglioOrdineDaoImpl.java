@@ -15,7 +15,7 @@ public class DettaglioOrdineDaoImpl implements DettaglioOrdineDao {
     private static final String TABLE_NAME = "dettaglio_ordine";
 
     @Override
-    public void doSave(DettaglioOrdineModel dettaglioOrdine) throws SQLException {
+    public synchronized void doSave(DettaglioOrdineModel dettaglioOrdine) throws SQLException {
         String query = "INSERT INTO " + TABLE_NAME + " (Codice_Ordine, ID_Prodotto, Prezzo_Unitario, Quantita) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -31,7 +31,7 @@ public class DettaglioOrdineDaoImpl implements DettaglioOrdineDao {
     }
 
     @Override
-    public void doUpdate(DettaglioOrdineModel dettaglioOrdine) throws SQLException {
+    public synchronized void doUpdate(DettaglioOrdineModel dettaglioOrdine) throws SQLException {
         String query = "UPDATE " + TABLE_NAME + " SET Prezzo_Unitario = ?, Quantita = ? WHERE Codice_Ordine = ? AND ID_Prodotto = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -47,7 +47,7 @@ public class DettaglioOrdineDaoImpl implements DettaglioOrdineDao {
     }
 
     @Override
-    public boolean doDelete(int codiceOrdine, int idProdotto) throws SQLException {
+    public synchronized boolean doDelete(int codiceOrdine, int idProdotto) throws SQLException {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE Codice_Ordine = ? AND ID_Prodotto = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -62,7 +62,7 @@ public class DettaglioOrdineDaoImpl implements DettaglioOrdineDao {
     }
 
     @Override
-    public DettaglioOrdineModel doRetrieveByKey(int codiceOrdine, int idProdotto) throws SQLException {
+    public synchronized DettaglioOrdineModel doRetrieveByKey(int codiceOrdine, int idProdotto) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE Codice_Ordine = ? AND ID_Prodotto = ?";
         DettaglioOrdineModel dettaglioOrdine = null;
 
@@ -83,7 +83,7 @@ public class DettaglioOrdineDaoImpl implements DettaglioOrdineDao {
     }
 
     @Override
-    public Collection<DettaglioOrdineModel> doRetrieveAll(String order) throws SQLException {
+    public synchronized Collection<DettaglioOrdineModel> doRetrieveAll(String order) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME;
 
         if ("Codice_Ordine".equalsIgnoreCase(order) || "ID_Prodotto".equalsIgnoreCase(order)
@@ -106,7 +106,7 @@ public class DettaglioOrdineDaoImpl implements DettaglioOrdineDao {
     }
 
     @Override
-    public Collection<DettaglioOrdineModel> doRetrieveByOrdine(int codiceOrdine) throws SQLException {
+    public synchronized Collection<DettaglioOrdineModel> doRetrieveByOrdine(int codiceOrdine) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE Codice_Ordine = ?";
 
         Collection<DettaglioOrdineModel> dettagli = new ArrayList<>();

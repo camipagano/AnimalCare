@@ -15,7 +15,7 @@ public class RecensioneDaoImpl implements RecensioneDao {
     private static final String TABLE_NAME = "recensione";
 
     @Override
-    public void doSave(RecensioneModel recensione) throws SQLException {
+    public synchronized void doSave(RecensioneModel recensione) throws SQLException {
         String query = "INSERT INTO " + TABLE_NAME + " (Voto, Commento, Data, ID_Utente, ID_Prodotto) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -32,7 +32,7 @@ public class RecensioneDaoImpl implements RecensioneDao {
     }
 
     @Override
-    public void doUpdate(RecensioneModel recensione) throws SQLException {
+    public synchronized void doUpdate(RecensioneModel recensione) throws SQLException {
         String query = "UPDATE " + TABLE_NAME + " SET Voto = ?, Commento = ?, Data = ?, ID_Utente = ?, ID_Prodotto = ? WHERE ID = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -50,7 +50,7 @@ public class RecensioneDaoImpl implements RecensioneDao {
     }
 
     @Override
-    public boolean doDelete(int id) throws SQLException {
+    public synchronized boolean doDelete(int id) throws SQLException {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE ID = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -64,7 +64,7 @@ public class RecensioneDaoImpl implements RecensioneDao {
     }
 
     @Override
-    public RecensioneModel doRetrieveByKey(int id, int idUtente, int idProdotto) throws SQLException {
+    public synchronized RecensioneModel doRetrieveByKey(int id, int idUtente, int idProdotto) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE ID = ? AND ID_Utente = ? AND ID_Prodotto = ?";
         RecensioneModel recensione = null;
 
@@ -86,7 +86,7 @@ public class RecensioneDaoImpl implements RecensioneDao {
     }
 
     @Override
-    public Collection<RecensioneModel> doRetrieveAll(String order) throws SQLException {
+    public synchronized Collection<RecensioneModel> doRetrieveAll(String order) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME;
 
         if ("Voto".equalsIgnoreCase(order) || "Data".equalsIgnoreCase(order)
@@ -110,7 +110,7 @@ public class RecensioneDaoImpl implements RecensioneDao {
     }
 
     @Override
-    public Collection<RecensioneModel> doRetrieveByProdotto(int idProdotto) throws SQLException {
+    public synchronized Collection<RecensioneModel> doRetrieveByProdotto(int idProdotto) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE ID_Prodotto = ?";
 
         Collection<RecensioneModel> recensioni = new ArrayList<>();

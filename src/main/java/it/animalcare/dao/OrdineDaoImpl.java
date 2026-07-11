@@ -15,7 +15,7 @@ public class OrdineDaoImpl implements OrdineDao {
     private static final String TABLE_NAME = "ordine";
 
     @Override
-    public void doSave(OrdineModel ordine) throws SQLException {
+    public synchronized void doSave(OrdineModel ordine) throws SQLException {
         String query = "INSERT INTO " + TABLE_NAME + " (Indirizzo, Stato, Data, ID_Utente) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -31,7 +31,7 @@ public class OrdineDaoImpl implements OrdineDao {
     }
 
     @Override
-    public void doUpdate(OrdineModel ordine) throws SQLException {
+    public synchronized void doUpdate(OrdineModel ordine) throws SQLException {
         String query = "UPDATE " + TABLE_NAME + " SET Indirizzo = ?, Stato = ?, Data = ?, ID_Utente = ? WHERE Codice = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -48,7 +48,7 @@ public class OrdineDaoImpl implements OrdineDao {
     }
 
     @Override
-    public boolean doDelete(int codice, int idUtente) throws SQLException {
+    public synchronized boolean doDelete(int codice, int idUtente) throws SQLException {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE Codice = ? AND ID_Utente = ?";
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -63,7 +63,7 @@ public class OrdineDaoImpl implements OrdineDao {
     }
 
     @Override
-    public OrdineModel doRetrieveByKey(int codice, int idUtente) throws SQLException {
+    public synchronized OrdineModel doRetrieveByKey(int codice, int idUtente) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE Codice = ? AND ID_Utente = ?";
         OrdineModel ordine = null;
 
@@ -84,7 +84,7 @@ public class OrdineDaoImpl implements OrdineDao {
     }
 
     @Override
-    public Collection<OrdineModel> doRetrieveAll(String order) throws SQLException {
+    public synchronized Collection<OrdineModel> doRetrieveAll(String order) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME;
 
         if ("Codice".equalsIgnoreCase(order) || "Data".equalsIgnoreCase(order)
@@ -107,7 +107,7 @@ public class OrdineDaoImpl implements OrdineDao {
     }
 
     @Override
-    public Collection<OrdineModel> doRetrieveByUtente(int idUtente) throws SQLException {
+    public synchronized Collection<OrdineModel> doRetrieveByUtente(int idUtente) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE ID_Utente = ?";
         Collection<OrdineModel> ordini = new ArrayList<>();
 
