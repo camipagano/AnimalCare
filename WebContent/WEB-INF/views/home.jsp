@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Home Page</title>
-<link rel="stylesheet" type="text/css" href="css/home.css">
+<link rel="stylesheet" type="text/css" href=" <%= request.getContextPath() %>/css/home.css">
 </head>
 <body>
 <header>
@@ -58,15 +58,15 @@
 			
 	<% 	}
 	}%>
-    <li><a href="contatti.jsp">Contatti</a></li>
+    <li><a href="<%= request.getContextPath() %>/ContattiServlet">Contatti</a></li>
 </ul>
 </nav>
 
 <main>  <!-- qui vanno i prodotti --> </main>
 <footer>
     <ul>
-        <li><a href="chi-siamo.jsp">Chi Siamo</a></li>
-        <li><a href="contatti.jsp">Contatti</a></li>
+        <li><a href="<%= request.getContextPath() %>/ChiSiamoServlet">Chi Siamo</a></li>
+        <li><a href="<%= request.getContextPath() %>/ContattiServlet">Contatti</a></li>
     </ul>
 </footer>
 
