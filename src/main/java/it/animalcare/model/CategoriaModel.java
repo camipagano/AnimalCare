@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class CategoriaModel implements Serializable {
 	
-	private static final long serialVersionID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	private int id;
 	private String nome;

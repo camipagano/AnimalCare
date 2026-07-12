@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class OrdineModel implements Serializable {
 	
-	private static final long serialVersionID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	private int codice;
 	private String indirizzo;
