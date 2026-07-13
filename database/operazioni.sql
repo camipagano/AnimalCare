@@ -127,3 +127,30 @@ INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, im
 ('Cono Gioco Conigli', 'Cono con cerchi colorati in plastica da impilare per conigli', 20, 12.25,  4, 'img/conigli/gioco1.jpg', 'image/jpeg', 1),
 ('Tunnel Gioco Conigli', 'Tunnel colorato in tessuto per conigli. Lunghezza di 2 m', 20, 23.25,  4, 'img/conigli/gioco2.jpg', 'image/jpeg', 1),
 ('Palle Masticabili Gioco Conigli', 'Set da 2. Serie di palle in fieno per conigli e altri roditori, masticabili, per facilitare la cura e usura dei denti', 20, 12.25,  4, 'img/conigli/gioco3.jpg', 'image/jpeg', 1);
+
+SET SQL_SAFE_UPDATES = 0;
+UPDATE prodotto 
+SET immagine = CONCAT('img/gatti/', immagine) 
+WHERE ID_Categoria = 2 AND immagine NOT LIKE 'img/%';
+
+INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, immagine, mime_type, attivo) VALUES
+('Dispenser Cibo e Acqua', 'Distributore in plastica di capacità 200 cc circa, utilizzabile anche come beverino oltre che come mangiatoia per pappagalli di piccola e media taglia ed altri uccelli domestici', 20, 2.90, 5, 'img/uccelli/decorazione1.png', 'image/png', 1),
+('Beverino per Gabbia', 'Abbeveratoio a colonna in plastica di capacità 110 cc circa, con gancio integrato per fissarlo facilmente alle sbarre della gabbia', 20, 2.50, 5, 'img/uccelli/decorazione2.png', 'image/png', 1),
+('Gabbia Blu', 'Gabbia per uccelli di dimensioni 39x25x41 cm dotata di mangiatoie girevoli, posatoi, beverino, altalena e un vassoio raccogli sporco estraibile sul fondo per facilitare la pulizia', 20, 32.90, 5, 'img/uccelli/gabbia1.png', 'image/png', 1),
+('Gabbia Tonda Nera', 'Gabbia per uccelli modello Bali di dimensioni 43x43x68,5 cm dotata di mangiatoie girevoli, posatoi, altalena e un cappuccio superiore per un facile aggancio', 20, 46.00, 5, 'img/uccelli/gabbia2.png', 'image/png', 1),
+('Gabbia Tonda Celeste', 'Gabbia per uccelli di dimensioni 32,5x49 cm dotata di mangiatoie girevoli, posatoi, altalena e uno specchio', 20, 42.50, 5, 'img/uccelli/gabbia3.png', 'image/png', 1),
+('Gabbia Cupola Nera', 'Gabbia per uccelli a forma di cupola di dimensioni 44,5x25x45,5 cm dotata di mangiatoie girevoli, altalena e un vassoio estraibile sul fondo nero per facilitare la pulizia', 20, 49.90, 5, 'img/uccelli/gabbia4.png', 'image/png', 1),
+('Scaletta Giocattolo', 'Scaletta Zolux in legno da gabbia e da voliera con gradini decorati', 20, 4.90, 5, 'img/uccelli/gioco1.png', 'image/png', 1),
+('Altalena Giocattolo', 'Altalena per uccelli ad arco in legno naturale con telaio in metallo e gancio per appenderla facilmente all''interno di gabbie o voliere, progettata per il divertimento e l''esercizio fisico di piccoli uccelli', 20, 4.60, 5, 'img/uccelli/gioco2.png', 'image/png', 1),
+('Altalena in Corda', 'Altalena giocattolo di dimensione 19,5x19x5x27 cm realizzata con materiali naturali e privi di colle tossiche per garantire la sicurezza del proprio animaletto', 20, 5.50, 5, 'img/uccelli/gioco3.png', 'image/png', 1),
+('Sunmix Canarini Padovan', 'Confezione da 850 g di mangime completo e naturale per canarini, arricchito con vitamine essenziali per il benessere dell''animale durante tutto l''anno', 20, 4.20, 5, 'img/uccelli/padovan1.png', 'image/png', 1),
+('Sunmix Esotici Padovan', 'Confezione da 850 g di mangime completo e naturale per uccelli esotici, arricchito con vitamine essenziali per il benessere dell''animale durante tutto l''anno', 20, 4.20, 5, 'img/uccelli/padovan2.png', 'image/png', 1),
+('Sunmix Cocorite Padovan', 'Confezione da 850 g di mangime completo e naturale per cocorite, arricchito con vitamine essenziali per il benessere dell''animale durante tutto l''anno', 20, 4.20, 5, 'img/uccelli/padovan3.png', 'image/png', 1),
+('Sunmix Parrocchetti Padovan', 'Confezione da 750 g di mangime completo e naturale per parrocchetti, arricchito con vitamine essenziali per il benessere dell''animale durante tutto l''anno', 20, 4.20, 5, 'img/uccelli/padovan4.png', 'image/png', 1),
+('Sabbia Pappagalli MultiFit', 'Confezione da 5 kg di sabbia per pappagalli composta da quarzo di alta qualità e arricchita con olio di anice stellato, adatta per garantire un ambiente igienico e facile da pulire', 20, 5.50, 5, 'img/uccelli/sabbia1.png', 'image/png', 1),
+('Sabbia Uccelli MultiFit', 'Confezione da 5 kg di sabbia per uccelli composta da quarzo di alta qualità e arricchita con olio di anice stellato, adatta per garantire un ambiente igienico e facile da pulire', 20, 5.50, 5, 'img/uccelli/sabbia2.png', 'image/png', 1),
+('Vitakraft Amazonian', 'Mangime completo da 750g per pappagalli sudamericani con erbe e frutti tropicali come mango, papaya e banana per un pieno di sana energia', 20, 6.90, 5, 'img/uccelli/vitakraft1.png', 'image/png', 1),
+('Vitakraft Canarian', 'Mangime completo da 800g per canarini con ingredienti naturali come mela, datteri e fichi per rafforzare le difese immunitarie e minerali e per supportare la digestione', 20, 6.90, 5, 'img/uccelli/vitakraft2.png', 'image/png', 1),
+('Vitakraft Australian', 'Mangime completo da 750g per parrocchetti australiani con ingredienti naturali come kiwi, eucalipto e bacche di sambuco e formulato senza zuccheri aggiunti, coloranti artificiali o conservanti', 20, 6.90, 5, 'img/uccelli/vitakraft3.png', 'image/png', 1),
+('Vitakraft African Big', 'Mangime completo da 750g per pappagalli africani di taglia media o grande con ingredienti naturali come mais, semi di girasole, banane e cocco', 20, 6.90, 5, 'img/uccelli/vitakraft4.png', 'image/png', 1),
+('Vitakraft African Small', 'Mangime completo da 750g per pappagalli africani di piccole dimensioni e inseparabili con ingredienti naturali come fichi e carrube oltre che minerali e vitamine per sostenere la salute degli uccelli', 20, 6.90, 5, 'img/uccelli/vitakraft5.png', 'image/png', 1);
