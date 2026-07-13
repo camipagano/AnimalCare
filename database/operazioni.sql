@@ -73,3 +73,57 @@ INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, im
 ('Set Palline Cani', 'Set di 4 palline da gioco per cani. Palline di diverse forme con facce disegnate, in gomma, con squicker integrato' , 20, 17.00, 1, 'img/cani/gioco2.jpg', 'image/jpg', 1),
 ('Osso Rumoroso Cani', 'Gioco per cani. Osso di gomma bianco antistress, con scquicker integrato. Adatto ai cuccioli che stanno sviluppando i primi denti', 20, 17.00, 1, 'img/cani/gioco3.jpg', 'image/jpg', 1),
 ('Corda Resistente Cani', 'Gioco per cani. Corda con nodo alle estremità per giochi di forza ', 20, 12.99, 1, 'img/cani/gioco4.jpg', 'image/jpg', 1);
+
+UPDATE prodotto  
+SET mime_type = 'image/jpeg'  
+WHERE mime_type = 'image/jpg' AND ID > 0;
+
+INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, immagine, mime_type, attivo) VALUES
+('Biscotti Cavalli Arcafarm Mela', 'Confezione di biscotti per cavalli Arcafarm gusto mela. Confezione da 2,5 kg', 20, 20.99, 3, 'img/cavalli/biscotti1.jpg', 'image/jpeg', 1),
+('Biscotti Cavalli Arcafarm Carota', 'Confezione di biscotti per cavalli Arcafarm gusto carota. Confezione da 2,5 kg', 20, 20.99, 3, 'img/cavalli/biscotti2.jpg', 'image/jpeg', 1),
+('Mangime Cavalli Morando Fioccato', 'Confezione fioccati Morando Plurifioc-35. Confezione da 30 kg', 20, 20.00, 3, 'img/cavalli/morando1.jpg', 'image/jpeg', 1),
+('Mangime Cavalli Morando Mantenimento', 'Confezione mantenimento Morando Nutrovit-270. Confezione da 25 kg', 20, 20.00, 3, 'img/cavalli/morando2.jpg', 'image/jpeg', 1),
+('Mangime Cavalli Purina Fuel', 'Confezione mangime per cavalli Purina. Focalizzato per cavalli da performance con energia lenta garantendo alta digeribilità .Confezione da 25 kg', 20, 23.75, 3, 'img/cavalli/purina1.jpg', 'image/jpeg', 1),
+('Mangime Cavalli Purina Integri-T', 'Confezione mangime per cavalli Purina. Focalizzato per cavalli sensibili: senza cereali, zuccheri aggiunti e altamente digeribile. Confezione da 25 kg', 20, 28.75, 3, 'img/cavalli/purina2.jpg', 'image/jpeg', 1),
+('Mangime Cavalli Purina XPro', 'Confezione mangime per cavalli Purina. Formulato per ottimizzare il sistema immunitario, l''efficienza digestiva e sostenere le funzioni cognitive e comportamentali. Confezione da 20 kg', 20, 49.75, 3, 'img/cavalli/purina3.jpg', 'image/jpeg', 1),
+('Blocco Sale Rosa Himalayano', 'Blocco di sale rosa dell''Himalaya con corda da leccare per integrare naturalmente minerali', 20, 5.99, 3, 'img/cavalli/sale.jpg', 'image/jpeg', 1),
+('Grasso Zoccoli Veredus', 'Confezione Veredus Golden Hoof di grasso per gli zoccoli da 1 kg', 20, 25.90, 3, 'img/cavalli/veredus.jpg', 'image/jpeg', 1),
+('Brusca Cavalli', 'Brusca per cavalli con presa in legno, lunghezza di 25 cm', 20, 3.99, 3, 'img/cavalli/brusca.jpg', 'image/jpeg', 1),
+('Fasce Zoccoli Cavalli', 'Set da 4 fasce da riposo per zoccoli in lana. Adatte a tutte le stagioni. Colore: blu notte', 20, 28.99, 3, 'img/cavalli/fasce.jpg', 'image/jpeg', 1),
+('Nettapiedi Cavalli', 'Nettapiedi per zoccoli con presa in gomma, punta in metallo e spazzola incorporata per la rifinitura', 20, 15.75, 3, 'img/cavalli/nettapiedi.jpg', 'image/jpeg', 1),
+('Maschera Antimosche Cavalli', 'Maschera antimosche per cavalli in tessuto traspirante, elastico, con retina in prossimità degli occhi', 20, 20.50, 3, 'img/cavalli/paramosche.jpg', 'image/jpeg', 1),
+('Stecca Asciugatura Cavalli', 'Stecca in acciaio per l''asciugatura del cavallo da sudore e acqua. Flessibile e con prese in plastica', 20, 7.99, 3, 'img/cavalli/stecca.jpg', 'image/jpeg', 1),
+('Striglia Cavalli', 'Striglia per la cura del pelo del cavallo, in metallo con denti arrotondati. Lunghezza: 25cm', 20,  5.99, 3, 'img/cavalli/striglia.jpg', 'image/jpeg', 1),
+('Capezza e Lunghina Cavalli', 'Set capezza e lunghina per cavalli colore: blu', 20, 25.70, 3, 'img/cavalli/capezza1.jpg', 'image/jpeg', 1),
+('Capezza e Lunghina Cavalli', 'Set capezza e lunghina per cavalli colore: bordeaux', 20, 25.70, 3, 'img/cavalli/capezza2.jpg', 'image/jpeg', 1),
+('Capezza e Lunghina Cavalli', 'Set capezza e lunghina per cavalli colore: verde', 20, 25.70, 3, 'img/cavalli/capezza3.jpg', 'image/jpeg', 1),
+('Sottosella Cavalli', 'Sottosella per cavalli con motivo a quadrifogli, in tessuto. Colore: verde con rifinitura bianca', 20, 27.99, 3, 'img/cavalli/sottosella1.jpg', 'image/jpeg', 1),
+('Sottosella Cavalli', 'Sottosella per cavalli con motivo a quadrifogli, in tessuto. Colore: bordeaux con rifinitura bianca', 20, 27.99, 3, 'img/cavalli/sottosella2.jpg', 'image/jpeg', 1),
+('Sottosella Cavalli', 'Sottosella per cavalli con motivo a quadrifogli, in tessuto. Colore: blu con rifinitura bianca', 20, 27.99, 3, 'img/cavalli/sottosella3.jpg', 'image/jpeg', 1),
+('Palla Fieno Cavalli', 'Gioco per cavalli. Palla con fori per contenere il fieno e permettere al cavallo di intrattenersi', 20, 50.65, 3, 'img/cavalli/gioco.jpg', 'image/jpeg', 1);
+
+
+INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, immagine, mime_type, attivo) VALUES
+('Ciotola Conigli Food', 'Ciotola in acciaio inox lavabile in lavastoviglie, antiscivolo, con decoro esterno', 20, 10.50, 4, 'img/conigli/ciotola1.jpg', 'image/jpeg', 1),
+('Ciotola Conigli Ceramica', 'Ciotola in ceramica lavabile in lavastoviglie, antiscivolo, con decoro esterno', 20, 18.50, 4, 'img/conigli/ciotola2.jpg', 'image/jpeg', 1),
+('Abbeveratoio Gabbia Conigli', 'Set da 2 abbeveratoi per conigli e altri roditori, in plastica e acciaio inox lavabile in lavastoviglie.  In dotazione escono anche i supporti', 20, 19.99, 4, 'img/conigli/abbeveratoio.jpg', 'image/jpeg', 1),
+('Gabbia Cilindrica Conigli', 'Gabbia cilindrica per conigli con due aperture. Max 3 conigli grandi o 5 conigli nani. La parte superiore è rimovibile per semplificare la pulizia', 20, 88.75, 4, 'img/conigli/gabbia1.jpg', 'image/jpeg', 1),
+('Gabbia Casetta Conigli', 'Casetta per conigli in legno, con ruote per facilitare lo spostamento. Max 5 conigli grandi o 7 conigli nani. All''interno è presente una salita per permettere lo spostamento autonomo tra i due piani', 20, 130.99, 4, 'img/conigli/gabbia2.jpg', 'image/jpeg', 1),
+('Gabbia Classica Conigli', 'Gabbia per conigli. Max 1 coniglio grande o 3 conigli nani. La parte superiore è rimovibile per semplificare la pulizia. Non esce con ciotola e segatura in dotazione', 20, 53.50, 4, 'img/conigli/gabbia3.jpg', 'image/jpeg', 1),
+('Segatura Gabbia Conigli Vitakraft', 'Confezione di segatura per gabbie Vitakraft da 15 l', 20, 4.00,  4, 'img/conigli/segatura.jpg', 'image/jpeg', 1),
+('Mangime Conigli Misto Ortaggi Vitakraft', 'Confezione di mangime per conigli Vitakraft misto ortaggi. Per conigli adulti', 20, 15.50,  4, 'img/conigli/vitakraft1.jpg', 'image/jpeg', 1),
+('Mangime Conigli Pellet Vitakraft', 'Confezione di pellet per conigli Vitakraft per la cura dei denti. Confezione da 1kg', 20, 18.50,  4, 'img/conigli/vitakraft2.jpg', 'image/jpeg', 1),
+('Mangime Conigli Misto Frutta Vitakraft', 'Confezione di mangime per conigli Vitakraft misto mela, pera e bacche', 20, 15.50,  4, 'img/conigli/vitakraft3.jpg', 'image/jpeg', 1),
+('Mangime Conigli e Roditori Vitakraft', 'Confezione di mangime per conigli e altri roditori Vitakraft. Per integrare vitamine', 20, 14.50,  4, 'img/conigli/vitakraft4.jpg', 'image/jpeg', 1),
+('Mangime Conigli Completo Vitakraft', 'Confezione di mangime per conigli Vitakraft menu completo misto ortaggi e frutta', 20, 18.50,  4, 'img/conigli/vitakraft5.jpg', 'image/jpeg', 1),
+('Bastoncini Dneti Conigli', 'Set da 2 bastoncini da rosicchiare per la cura dei denti di conigli e altri roditori', 20, 3.99, 4, 'img/conigli/bastoncini.jpg', 'image/jpeg', 1),
+('Spazzola Conigli', 'Spazzola per conigli con denti in gomma e presa in plastica ruvida', 20, 6.75, 4, 'img/conigli/spazzola1.jpg', 'image/jpeg', 1),
+('Spazzola Conigli Pro', 'Spazzola per conigli con presa in plastica e sezione antiscivolo che segue la forma della mano, e denti in metallo', 20, 15.60, 4, 'img/conigli/spazzola2.jpg', 'image/jpeg', 1),
+('Pettorina Traspirante Conigli', 'Pettorina in materiale traspirante per conigli grandi, con guinzaglio in dotazione. Colore: Arancione', 20, 17.80, 4, 'img/conigli/pettorina1.jpg', 'image/jpeg', 1),
+('Pettorina Traspirante Conigli', 'Pettorina in materiale traspirante per conigli grandi, con guinzaglio in dotazione. Colore: Rosa', 20, 17.80, 4, 'img/conigli/pettorina2.jpg', 'image/jpeg', 1),
+('Pettorina Traspirante Conigli', 'Pettorina in materiale traspirante per conigli grandi, con guinzaglio in dotazione. Colore: Celeste', 20, 17.80, 4, 'img/conigli/pettorina3.jpg', 'image/jpeg', 1),
+('Pettorina Fiocco Conigli', 'Pettorina in tessuto con fiocco elegante per conigli grandi, con guinzaglio in dotazione. Motivo a scacchi rosa', 20, 18.80, 4, 'img/conigli/fiocco1.jpg', 'image/jpeg', 1),
+('Pettorina Gucci Conigli', 'Pettorina in tessuto con fiocco per conigli grandi, con guinzaglio in dotazione. Motivo Gucci', 20, 21.80, 4, 'img/conigli/fiocco2.jpg', 'image/jpeg', 1),
+('Cono Gioco Conigli', 'Cono con cerchi colorati in plastica da impilare per conigli', 20, 12.25,  4, 'img/conigli/gioco1.jpg', 'image/jpeg', 1),
+('Tunnel Gioco Conigli', 'Tunnel colorato in tessuto per conigli. Lunghezza di 2 m', 20, 23.25,  4, 'img/conigli/gioco2.jpg', 'image/jpeg', 1),
+('Palle Masticabili Gioco Conigli', 'Set da 2. Serie di palle in fieno per conigli e altri roditori, masticabili, per facilitare la cura e usura dei denti', 20, 12.25,  4, 'img/conigli/gioco3.jpg', 'image/jpeg', 1);
