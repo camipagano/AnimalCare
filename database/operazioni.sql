@@ -37,7 +37,6 @@ INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, im
 ('Whiskas Adult Tonno', 'Confezione da 1,4 kg di crocchette Whiskas al tonno per gatti adulti con vitamina E, taurina e minerali per supportare il sistema immunitario e favorire il benessere del cuore e del tratto urinario', 20, 6.70, 2, 'whiskas3.png', 'image/png', 1),
 ('Whiskas Adult Manzo', 'Confezione da 1,4 kg di crocchette Whiskas al manzo per gatti adulti con vitamina E, taurina e minerali per supportare il sistema immunitario e favorire il benessere del cuore e del tratto urinario', 20, 6.70, 2, 'whiskas4.png', 'image/png', 1);
 
-
 INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, immagine, mime_type, attivo) VALUES
 ('Ciotola Cane Doppia', 'Set ciotole in acciaio inox rimovibili e lavabili in lavastoviglie, con supporto in legno e decorazioni con motivo a zampetta di cane', 20, 15.90, 1, 'img/cani/ciotola1.jpg', 'image/jpg', 1),
 ('Ciotola Cane Food', 'Ciotola in acciaio inox lavabile in lavastoviglie con base antiscivolo e decoro monocolore con frase simpatica', 20,  10.50, 1, 'img/cani/ciotola2.jpg', 'image/jpg', 1),
@@ -102,7 +101,6 @@ INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, im
 ('Sottosella Cavalli', 'Sottosella per cavalli con motivo a quadrifogli, in tessuto. Colore: blu con rifinitura bianca', 20, 27.99, 3, 'img/cavalli/sottosella3.jpg', 'image/jpeg', 1),
 ('Palla Fieno Cavalli', 'Gioco per cavalli. Palla con fori per contenere il fieno e permettere al cavallo di intrattenersi', 20, 50.65, 3, 'img/cavalli/gioco.jpg', 'image/jpeg', 1);
 
-
 INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, immagine, mime_type, attivo) VALUES
 ('Ciotola Conigli Food', 'Ciotola in acciaio inox lavabile in lavastoviglie, antiscivolo, con decoro esterno', 20, 10.50, 4, 'img/conigli/ciotola1.jpg', 'image/jpeg', 1),
 ('Ciotola Conigli Ceramica', 'Ciotola in ceramica lavabile in lavastoviglie, antiscivolo, con decoro esterno', 20, 18.50, 4, 'img/conigli/ciotola2.jpg', 'image/jpeg', 1),
@@ -129,9 +127,10 @@ INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, im
 ('Palle Masticabili Gioco Conigli', 'Set da 2. Serie di palle in fieno per conigli e altri roditori, masticabili, per facilitare la cura e usura dei denti', 20, 12.25,  4, 'img/conigli/gioco3.jpg', 'image/jpeg', 1);
 
 SET SQL_SAFE_UPDATES = 0;
-UPDATE prodotto 
-SET immagine = CONCAT('img/gatti/', immagine) 
+UPDATE prodotto
+SET immagine = CONCAT('img/gatti/', immagine)
 WHERE ID_Categoria = 2 AND immagine NOT LIKE 'img/%';
+SET SQL_SAFE_UPDATES = 1;
 
 INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, immagine, mime_type, attivo) VALUES
 ('Dispenser Cibo e Acqua', 'Distributore in plastica di capacità 200 cc circa, utilizzabile anche come beverino oltre che come mangiatoia per pappagalli di piccola e media taglia ed altri uccelli domestici', 20, 2.90, 5, 'img/uccelli/decorazione1.png', 'image/png', 1),
@@ -154,3 +153,35 @@ INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, im
 ('Vitakraft Australian', 'Mangime completo da 750g per parrocchetti australiani con ingredienti naturali come kiwi, eucalipto e bacche di sambuco e formulato senza zuccheri aggiunti, coloranti artificiali o conservanti', 20, 6.90, 5, 'img/uccelli/vitakraft3.png', 'image/png', 1),
 ('Vitakraft African Big', 'Mangime completo da 750g per pappagalli africani di taglia media o grande con ingredienti naturali come mais, semi di girasole, banane e cocco', 20, 6.90, 5, 'img/uccelli/vitakraft4.png', 'image/png', 1),
 ('Vitakraft African Small', 'Mangime completo da 750g per pappagalli africani di piccole dimensioni e inseparabili con ingredienti naturali come fichi e carrube oltre che minerali e vitamine per sostenere la salute degli uccelli', 20, 6.90, 5, 'img/uccelli/vitakraft5.png', 'image/png', 1);
+
+INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, immagine, mime_type, attivo) VALUES
+('Boccia in Vetro', 'Piccola boccia tonda in vetro trasparente con diametro di 20 cm, ideale per piccoli pesci o altri animali acquatici', 20, 15.90, 6, 'img/pesci&tartarughe/acquariop1.png', 'image/png', 1),
+('Acquario in Vetro', 'Acquario in vetro per pesci a forma di cubo, di dimensioni 25x25x30 cm e capacità di 20 litri', 20, 49.90, 6, 'img/pesci&tartarughe/acquariop2.png', 'image/png', 1),
+('Acquario con Filtro', 'Acquario in vetro per pesci da 23,2 litri con base in legno naturale e filtro interno con portata di 170 L/h', 20, 59.90, 6, 'img/pesci&tartarughe/acquariop3.png', 'image/png', 1),
+('Trasportino Arancione', 'Contenitore trasportabile in plastica trasparente di dimensioni 31x21x20 cm e capacità 7,5 litri, dotato di un coperchio arancione con maniglia per il trasporto con incluse alcune decorazioni interne', 20, 16.90, 6, 'img/pesci&tartarughe/acquariot1.png', 'image/png', 1),
+('Tartarughiera Gialla', 'Tartarughiera in plastica colorata trasparente di dimensioni 32x21x7 cm con isoletta centrale decorata con palme, ideale per piccole tartarughe acquatiche', 20, 8.90, 6, 'img/pesci&tartarughe/acquariot2.png', 'image/png', 1),
+('Tartarughiera Azzurra', 'Tartarughiera rettangolare in plastica colorata trasparente di dimensioni 54x40x14 cm e capacità 22 litri, dotata di isola con palme e una rampa per consentire alle tartarughe di riposare fuori dall’acqua', 20, 12.90, 6, 'img/pesci&tartarughe/acquariot3.png', 'image/png', 1),
+('Tartarughiera con Roccia', 'Tartarughiera in vetro di dimensioni 49x25x31 cm, dotata di isola filtro interna con pompa di riciclo da 264 L/h e di un coperchio in vetro per impedire la fuga delle tartarughe', 20, 54.90, 6, 'img/pesci&tartarughe/acquariot4.png', 'image/png', 1),
+('Acquafriend Stick Tartarughe', 'Mangime in stick da 75 g per tartarughe d’acqua dolce, arricchito con vitamine essenziali per favorirne la salute e la crescita', 20, 4.50, 6, 'img/pesci&tartarughe/afriend1.png', 'image/png', 1),
+('Acquafriend Gamberetti Tartarughe', 'Mangime da 75 g per tartarughe d’acqua dolce composto da gamberetti essiccati, un alimento naturale e proteico che favorisce la crescita sana e non intorbidisce l’acqua dell’acquario', 20, 4.50, 6, 'img/pesci&tartarughe/afriend2.png', 'image/png', 1),
+('Aqualovers Tarta Stick', 'Mangime completo in pellet da 75 g per tartarughe d’acqua dolce, formulato con una fonte naturale di calcio per supportare la salute del carapace', 20, 5.50, 6, 'img/pesci&tartarughe/alovers1.png', 'image/png', 1),
+('Aqualovers Tarta Shrimps', 'Mangime naturale a base di gamberetti da 150 g per tartarughe d’acqua dolce, formulato con una fonte naturale di calcio per supportare la salute del carapace', 20, 5.90, 6, 'img/pesci&tartarughe/alovers2.png', 'image/png', 1),
+('Aqualovers Tarta Gammarus', 'Mangime naturale a base di gamberetti essiccati da 120 g per tartarughe d’acqua dolce, formulato con una fonte naturale di calcio per supportare la salute del carapace', 20, 5.70, 6, 'img/pesci&tartarughe/alovers3.png', 'image/png', 1),
+('Decorazione Piante', 'Set di piante artificiali alte 13 cm in vari colori, realizzate in plastica atossica e con base zavorrata per mantenerle ferme sul fondale', 20, 6.20, 6, 'img/pesci&tartarughe/decorazione1.png', 'image/png', 1),
+('Decorazione Polpo', 'Ornamento decorativo per acquari realizzato a mano in resina atossica di alta qualità, con dimensioni 9,5x7x9 cm', 20, 8.90, 6, 'img/pesci&tartarughe/decorazione2.png', 'image/png', 1),
+('Decorazione Arco', 'Ornamento decorativo a forma di arco romano per acquari realizzato a mano in resina atossica di alta qualità, con dimensioni 12x4,5x20 cm', 20, 7.90, 6, 'img/pesci&tartarughe/decorazione3.png', 'image/png', 1),
+('Decorazione Roccia', 'Roccia naturale porosa per acquario, ideale come decorazione e rifugio per piccoli pesci', 20, 4.50, 6, 'img/pesci&tartarughe/decorazione4.png', 'image/png', 1),
+('Filtro Esterno', 'Filtro esterno in plastica per acquari di piccole dimensioni, dotato di una pompa silenziosa con portata di 190 litri all’ora', 20, 22.90, 6, 'img/pesci&tartarughe/filtro1.png', 'image/png', 1),
+('Pompa Filtro', 'Pompa filtro sommergibile silenziosa e compatta per acquario, con portata regolabile fino a 400 litri all’ora e motore protetto contro il surriscaldamento per garantire affidabilità nel tempo', 20, 14.90, 6, 'img/pesci&tartarughe/filtro2.png', 'image/png', 1),
+('Lampada Riscaldante', 'Lampada con clip di metallo progettata per fornire calore e luce UVA/UVB ideale per tartarughe, con incluso un cavo di alimentazione con interruttore e presa europea', 20, 23.90, 6, 'img/pesci&tartarughe/lampada1.png', 'image/png', 1),
+('Lampada Gigasun 80W', 'Lampada riscaldante per tartarughe con tecnologia ai vapori di mercurio per aiutare i rettili a sintetizzare la vitamina D3, essenziale per l’assorbimento del calcio', 20, 25.90, 6, 'img/pesci&tartarughe/lampada2.png', 'image/png', 1),
+('Sabbia per Acquario', 'Confezione di 5 kg di sabbia fine di quarzo bianco che non altera i valori chimici dell’acqua, ideale come substrato decorativo', 20, 5.90, 6, 'img/pesci&tartarughe/sabbia1.png', 'image/png', 1),
+('Ghiaia per Acquario', 'Confezione di 5 kg di ghiaia naturale atossica, ideale come substrato decorativo', 20, 5.90, 6, 'img/pesci&tartarughe/sabbia2.png', 'image/png', 1),
+('Sera Vipan Flakes', 'Mangime completo in scaglie da 60g per pesci ornamentali che si nutrono in superficie, con ingredienti naturali senza coloranti né conservanti artificiali', 20, 6.20, 6, 'img/pesci&tartarughe/sera1.png', 'image/png', 1),
+('Sera Vipagran Granules', 'Mangime completo in granuli morbidi da 100g per pesci ornamentali che si nutrono nella zona centrale dell’acquario, con ingredienti naturali senza coloranti né conservanti artificiali', 20, 6.60, 6, 'img/pesci&tartarughe/sera2.png', 'image/png', 1),
+('Sera Vipachips Wafers', 'Mangime completo in chips ad affondamento rapido da 90g per pesci ornamentali che si nutrono sul fondo, con ingredienti naturali e senza coloranti né conservanti artificiali', 20, 6.40, 6, 'img/pesci&tartarughe/sera3.png', 'image/png', 1),
+('Sera Insect Granules', 'Mangime sostenibile in granuli morbidi da 95g per pesci sia di superficie che di fondo, con ingredienti naturali senza coloranti né conservanti artificiali', 20, 6.50, 6, 'img/pesci&tartarughe/sera4.png', 'image/png', 1),
+('Sera Immune Probiotic Granules', 'Mangime probiotico in granuli da 112g per pesci sia di superficie che di fondo, ricco di proteine per favorire la crescita e le difese immunitarie', 20, 6.80, 6, 'img/pesci&tartarughe/sera5.png', 'image/png', 1),
+('Goldfish Colour', 'Mangime bilanciato e nutriente in granuli da 75 g per pesci rossi, con alga spirulina e carotenoidi per intensificare i colori naturali dei pesci e migliorarne la brillantezza', 20, 5.20, 6, 'img/pesci&tartarughe/tetra1.png', 'image/png', 1),
+('Goldfish Energy', 'Mangime bilanciato e nutriente in granuli da 75 g per tutti i pesci rossi, con sostanze nutritive essenziali come proteine e minerali per una migliore digestione e vitalità', 20, 5.20, 6, 'img/pesci&tartarughe/tetra2.png', 'image/png', 1),
+('Goldfish Japan', 'Mangime bilanciato e nutriente in stick da 75 g per pesci rossi giapponesi ed esotici, con proteine di alta qualità e ingredienti a base vegetale per favorire la crescita e il benessere', 20, 5.20, 6, 'img/pesci&tartarughe/tetra3.png', 'image/png', 1);
