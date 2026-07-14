@@ -27,7 +27,7 @@
 
 <!-- controlliamo se l'utente in sessione è loggato -->
 <% if(session.getAttribute("utenteLoggato")==null){ %>
-	<a href="login.jsp" class="loginButton" title="Accedi / Registrati">
+	<a href="<%= request.getContextPath() %>/LoginServlet" class="loginButton" title="Accedi / Registrati">
             <span class="icon">👤</span> 
      </a>
    <%}else{ %>  
