@@ -9,6 +9,7 @@ import java.util.Collection;
 
 import it.animalcare.model.UtenteModel;
 import it.animalcare.util.ConnectionFactory;
+import it.animalcare.util.PasswordUtil;
 
 public class UtenteDaoImpl implements UtenteDao {
 
@@ -24,7 +25,7 @@ public class UtenteDaoImpl implements UtenteDao {
             stmt.setString(1, utente.getNome());
             stmt.setString(2, utente.getCognome());
             stmt.setString(3, utente.getMail());
-            stmt.setString(4, utente.getPassword());
+            stmt.setString(4, PasswordUtil.toDigest(utente.getPassword()));
             stmt.setString(5, utente.getRuolo());
             stmt.setString(6, utente.getIndirizzo());
             stmt.executeUpdate();
@@ -41,7 +42,7 @@ public class UtenteDaoImpl implements UtenteDao {
             stmt.setString(1, utente.getNome());
             stmt.setString(2, utente.getCognome());
             stmt.setString(3, utente.getMail());
-            stmt.setString(4, utente.getPassword());
+            stmt.setString(4, PasswordUtil.toDigest(utente.getPassword()));
             stmt.setString(5, utente.getRuolo());
             stmt.setString(6, utente.getIndirizzo());
             stmt.setInt(7, utente.getId());
@@ -90,10 +91,36 @@ public class UtenteDaoImpl implements UtenteDao {
     }
 
     @Override
+    public synchronized UtenteModel doRetrieveByMail(String mail) throws SQLException {
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE Mail = ?";
+        UtenteModel utente = null;
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(query)) {
+
+            stmt.setString(1, mail);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    utente = new UtenteModel();
+                    utente.setId(rs.getInt("ID"));
+                    utente.setNome(rs.getString("Nome"));
+                    utente.setCognome(rs.getString("Cognome"));
+                    utente.setMail(rs.getString("Mail"));
+                    utente.setPassword(rs.getString("Password"));
+                    utente.setRuolo(rs.getString("Ruolo"));
+                    utente.setIndirizzo(rs.getString("Indirizzo"));
+                }
+            }
+        }
+
+        return utente;
+    }
+
+    @Override
     public synchronized Collection<UtenteModel> doRetrieveAll(String order) throws SQLException {
         String query = "SELECT * FROM " + TABLE_NAME;
 
-        // Validiamo l'ordinamento: accettiamo solo colonne note, mai input non controllato
         if ("Nome".equalsIgnoreCase(order) || "Cognome".equalsIgnoreCase(order)
                 || "Mail".equalsIgnoreCase(order) || "Ruolo".equalsIgnoreCase(order)
                 || "ID".equalsIgnoreCase(order)) {
