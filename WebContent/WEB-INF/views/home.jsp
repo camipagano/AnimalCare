@@ -36,7 +36,7 @@
             <span class="icon">👤</span> 
      </a>
      
-     <a href="LogoutServlet" class="logoutButton">logout</a>
+     <a href="<%= request.getContextPath() %>/LogoutServlet" class="logoutButton">logout</a>
      <% } %>
    
      <a href="Carrello.jsp" class="cartButton" title="Carrello">
