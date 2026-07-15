@@ -156,4 +156,151 @@ footer ul li a:hover{
 	color: #e87d09;
 }
 
+/* --------------------- */
 
+.catalogo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.catalogo-container {
+    width: 100%;
+    overflow: hidden; 
+}
+
+.catalogo-layout {
+    display: flex;
+}
+
+.griglia {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  /* 4 colonne */
+    grid-template-rows: repeat(2, auto);     /* 2 righe */
+    gap: 20px;
+    min-width: 100%;                       
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.prodotto-layout {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 280px;  
+    box-sizing: border-box;
+}
+
+.prodotto-layout img {
+    max-width: 100%;
+    max-height: 140px; 
+    object-fit: contain; /* Evita deformazioni delle foto */
+    margin-bottom: 15px;
+}
+
+.prod-info {
+    width: 100%;
+}
+
+.prod-info h3 {
+    margin: 0 0 8px 0;
+    font-family: verdana;
+    font-size: 1rem;
+}
+
+.prod-info h3 a {
+    color: #C0C0C0;
+    text-decoration: none;
+}
+
+.prod-info h3 a:hover {
+    color: #e87d09; 
+}
+
+.prod-info .price {
+    font-family: verdana, sans-serif;
+    font-weight: bold;
+    color: #000000; 
+    margin: 0;
+}
+
+.freccia-sinistra, .freccia-destra {
+    background-color: #C0C0C0;
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 12px 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    user-select: none;
+    margin: 0 10px;
+}
+
+.freccia-sinistra:hover, .freccia-destra:hover {
+    background-color: #e87d09;
+}
+
+.no-prodotti {
+    width: 100%;
+    text-align: center;
+    font-family: verdana;
+    padding: 40px;
+    color: #000000;
+}
+
+/* Sotto i 992px di larghezza */
+@media (max-width: 992px) {
+    .griglia {
+        grid-template-columns: repeat(2, 1fr);  /* Diventa una griglia 2x2  */
+        grid-template-rows: repeat(2, auto);     
+        gap: 15px;
+    }
+    
+    .prodotto-layout {
+        height: 260px; 
+    }
+    
+    .freccia-sinistra, .freccia-destra {
+        padding: 8px 12px;
+        font-size: 20px;
+    }
+}
+
+/* Sotto i 576px di larghezza */
+@media (max-width: 576px) {
+    .griglia {
+        grid-template-columns: 1fr;              /* 1 sola colonna  */
+        grid-template-rows: repeat(2, auto);    
+        gap: 10px;
+    }
+    
+    .prodotto-layout {
+        height: 240px; 
+    }
+    
+    .catalogo {
+        width: 100%; 
+    }
+    
+    .freccia-sinistra, .freccia-destra {
+        padding: 6px 10px;
+        font-size: 16px;
+        margin: 0 5px;
+    }
+    
+    header h1 {
+        font-size: 200%; 
+        text-align: left; 
+        padding-right: 80px;
+    }
+}
