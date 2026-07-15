@@ -41,7 +41,7 @@
      <a href="<%= request.getContextPath() %>/LogoutServlet" class="logoutButton">logout</a>
      <% } %>
    
-     <a href="Carrello.jsp" class="cartButton" title="Carrello">
+     <a href="<%= request.getContextPath() %>/CarrelloServlet" class="cartButton" title="Carrello">
             <span class="icon">🛒</span> 
      </a>
 </div>

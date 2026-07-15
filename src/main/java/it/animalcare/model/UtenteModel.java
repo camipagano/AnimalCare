@@ -3,9 +3,9 @@ package it.animalcare.model;
 import java.io.Serializable;
 
 public class UtenteModel implements Serializable{
-	
+
 	private static final long serialVersionUID =1L;
-	
+
 	private int id;
 	private String nome;
 	private String Cognome;
@@ -13,9 +13,9 @@ public class UtenteModel implements Serializable{
 	private String password;
 	private String ruolo;
 	private String indirizzo;
-	
+
 	public UtenteModel() {
-		
+
 	}
 
 	public int getId() {
@@ -73,7 +73,7 @@ public class UtenteModel implements Serializable{
 	public void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
 	}
-	
-	
+
+
 
 }
