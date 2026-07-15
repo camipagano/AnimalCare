@@ -101,6 +101,13 @@ if(prodotti!=null && !prodotti.isEmpty()){
 <button class= "freccia-destra" onclick="moveSlide(1)"> &#10095; </button>
 </div>
 
+<section class="info-section">
+    <div class="info-spedizione"></div>
+    <a href="<%= request.getContextPath() %>/ContattiServlet" class="info-job-link">
+    <div class="info-job"></div>
+    </a>
+</section>
+
  </main>
 <footer>
     <ul>

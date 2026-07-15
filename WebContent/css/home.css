@@ -222,7 +222,7 @@ footer ul li a:hover{
 }
 
 .prod-info h3 a {
-    color: #C0C0C0;
+    color: #A9A9A9;
     text-decoration: none;
 }
 
@@ -260,6 +260,54 @@ footer ul li a:hover{
     font-family: verdana;
     padding: 40px;
     color: #000000;
+}
+
+/*-----------------------------*/
+
+.info-section {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 20px;
+    background-color: #fcfcfc; 
+    flex-wrap: wrap; /* Permette ai box di andare a capo su schermi piccoli */
+}
+
+.info-job-link {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    text-decoration: none; /
+}
+
+.info-spedizione,
+.info-job {
+    width: 100%;
+    max-width: 450px;
+    height: 450px;
+    border: 3px solid #333333; 
+    box-sizing: border-box; 
+    background-color: #ffffff; 
+}
+
+
+.info-spedizione {
+    background-image: url('../img/spedizione.jpg'); 
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.info-job {
+    background-image: url('../img/Ciccio.jpg'); 
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer; /* Cursore con la manina per far capire che si può cliccare */
+}
+
+.info-job-link:hover .info-job {
+   border-color:#e87d09;
 }
 
 /* Sotto i 992px di larghezza */

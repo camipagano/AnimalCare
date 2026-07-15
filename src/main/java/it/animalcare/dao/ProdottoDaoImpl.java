@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 
 import it.animalcare.model.ProdottoModel;
 import it.animalcare.util.ConnectionFactory;
@@ -135,6 +136,25 @@ public class ProdottoDaoImpl implements ProdottoDao {
 
         return prodotti;
     }
+    
+    public synchronized Collection<ProdottoModel> doRetrieveByKeyword(String keyword) throws SQLException{
+    	Collection<ProdottoModel> prodotti = new ArrayList<>();
+    	String query = "SELECT * FROM prodotto WHERE LOWER(nome) LIKE ? OR LOWER(descrizione) LIKE ?";
+    	try (Connection con = ConnectionFactory.getConnection();
+    			PreparedStatement stmt = con.prepareStatement(query)) {
+    				String searchParam = "%" + keyword.toLowerCase() + "%";
+    		        stmt.setString(1, searchParam);
+    		        stmt.setString(2, searchParam);
+    			
+    	try (ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+            	 prodotti.add(mappaProdotto(rs));
+            }
+    	}
+    	}
+    	return prodotti;
+    }
+    	
 
     // Metodo di utilità privato per non ripetere lo stesso mapping in ogni metodo
     private ProdottoModel mappaProdotto(ResultSet rs) throws SQLException {
