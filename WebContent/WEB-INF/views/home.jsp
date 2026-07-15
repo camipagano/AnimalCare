@@ -1,3 +1,4 @@
+<%@page import="it.animalcare.model.ProdottoModel"%>
 <%@page import="it.animalcare.model.CategoriaModel"%>
 <%@page import="java.util.Collection"%>
 <%@page import="it.animalcare.dao.CategoriaDaoImpl"%>
@@ -10,6 +11,7 @@
 <meta charset="UTF-8">
 <title>Home Page</title>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/home.css">
+<script src="<%= request.getContextPath() %>/script/home.js" defer></script>
 </head>
 <body>
 <header>
@@ -62,7 +64,44 @@
 </ul>
 </nav>
 
-<main>  <!-- qui vanno i prodotti --> </main>
+<main>  
+<div class= "catalogo">
+	<button class="freccia-sinistra" onclick="moveSlide(-1)"> &#10094; </button>
+	<div class="catalogo-container">
+		<div class= "catalogo-layout">
+<%
+Collection<ProdottoModel> prodotti= (Collection<ProdottoModel>) request.getAttribute ("prodotti");
+if(prodotti!=null && !prodotti.isEmpty()){
+	int count=0;
+	for(ProdottoModel prod: prodotti){
+	//apriamo una nuova pagina a griglia
+	if(count%8==0){ %>
+		<div class= "griglia">
+	<% } %>
+	<div class="prodotto-layout">
+	<img alt="<%= prod.getNome() %>" src="<%= request.getContextPath() %>/<%=prod.getImmagine()%>">
+		<div class= "prod-info">
+			<h3> <a href= "prodotto.jsp?id=<%=prod.getId()%>"> <%=prod.getNome() %></a></h3>
+			<p class= "price">€<%= String.format("%.2f", prod.getPrezzo()) %></p>
+		</div>
+	</div>
+	<%
+		count++;
+	//se abbiamo raggiunto gli 8 prodotti o sono finiti i prodotti, chiudiamo la griglia
+	if(count%8==0 || count==prodotti.size()){ %>
+		</div>
+	<% }
+	}
+}else{%>
+	<p class= "no-prodotti"> Non ci sono prodotti disponibili </p>
+<% }%>
+</div>
+</div>
+
+<button class= "freccia-destra" onclick="moveSlide(1)"> &#10095; </button>
+</div>
+
+ </main>
 <footer>
     <ul>
         <li><a href="<%= request.getContextPath() %>/ChiSiamoServlet">Chi Siamo</a></li>

@@ -12,7 +12,10 @@ import java.util.Collection;
 
 import it.animalcare.dao.CategoriaDao;
 import it.animalcare.dao.CategoriaDaoImpl;
+import it.animalcare.dao.ProdottoDao;
+import it.animalcare.dao.ProdottoDaoImpl;
 import it.animalcare.model.CategoriaModel;
+import it.animalcare.model.ProdottoModel;
 
 /**
  * Servlet implementation class HomeServlet
@@ -34,10 +37,13 @@ public class HomeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategoriaDao categoriaDao= new CategoriaDaoImpl();
+		ProdottoDao prodottoDao= new ProdottoDaoImpl();
 		
 		try {
 		Collection<CategoriaModel> categorie= categoriaDao.doRetrieveAll(null);
 		request.setAttribute("categorie", categorie);
+		Collection<ProdottoModel> prodotti = prodottoDao.doRetrieveAll("");
+		request.setAttribute("prodotti", prodotti);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
