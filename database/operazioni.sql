@@ -185,3 +185,7 @@ INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, im
 ('Goldfish Colour', 'Mangime bilanciato e nutriente in granuli da 75 g per pesci rossi, con alga spirulina e carotenoidi per intensificare i colori naturali dei pesci e migliorarne la brillantezza', 20, 5.20, 6, 'img/pesci&tartarughe/tetra1.png', 'image/png', 1),
 ('Goldfish Energy', 'Mangime bilanciato e nutriente in granuli da 75 g per tutti i pesci rossi, con sostanze nutritive essenziali come proteine e minerali per una migliore digestione e vitalità', 20, 5.20, 6, 'img/pesci&tartarughe/tetra2.png', 'image/png', 1),
 ('Goldfish Japan', 'Mangime bilanciato e nutriente in stick da 75 g per pesci rossi giapponesi ed esotici, con proteine di alta qualità e ingredienti a base vegetale per favorire la crescita e il benessere', 20, 5.20, 6, 'img/pesci&tartarughe/tetra3.png', 'image/png', 1);
+
+DELETE FROM categoria WHERE ID > 6;
+ALTER TABLE categoria AUTO_INCREMENT = 7;
+SELECT * FROM categoria;
