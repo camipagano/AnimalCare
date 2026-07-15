@@ -22,16 +22,21 @@ position: relative;
 background-image: url('../img/homeHeader.jpeg');
 background-position: center;
 background-size: cover; /* Forza l'immagine a coprire tutto l'header senza deformarsi */
-height: 300px;
-padding: 20px;
+min-height: 280px;
+padding: 40px 20px;
 text-align: center;
 box-sizing: border-box;
+/* Usiamo Flexbox per distribuire gli elementi in verticale in modo ordinato */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
 }
 
 
 
 header h1 {
-margin: 0 0 20px 0;
+margin: 10 0 15px 0;
 color: #ffffff;
 font-family: impact;
 font-size: 300%
@@ -40,13 +45,11 @@ font-size: 300%
 
 
 header .search {
-position: absolute;   /* Si ancora all'header */
+position: relative;  
 bottom: 20px;
 width: 90%;
 max-width: 500px;
-margin: 0 auto;
-left: 0;              
-right: 0;
+margin: 0 auto 10px auto;
 }
 
 
@@ -69,7 +72,7 @@ border: 1px solid #cccccc;
 
 header .search button {
     padding: 10px 15px;
-    background-color: #ff9900; /* Colore di sfondo per il tasto della lente */
+    background-color: #C0C0C0; /* Colore di sfondo per il tasto della lente */
     border: none;
     cursor: pointer;
 }
@@ -89,9 +92,10 @@ gap: 1px;
 header .header-actions .loginButton,
 header .header-actions .cartButton {
 border: none;
-padding: 10px;
-width: 25px;
-height: 25px;
+padding: 5px;
+width: 32px;
+height: 32px;
+display: flex;
 align-items: center;
 justify-content: center;
 text-decoration: none;
