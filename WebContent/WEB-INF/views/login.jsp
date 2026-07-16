@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Accedi</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/login.css">
 </head>
 <body>
 <header>

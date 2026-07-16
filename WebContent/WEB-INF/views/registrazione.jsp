@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Registrati</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/registrazione.css">
 </head>
 <body>
 <header>
