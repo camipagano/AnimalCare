@@ -19,7 +19,7 @@
 <h1>AnimalCare</h1>
 
 <div class="search">
-    <form action="CercaProdottiServlet" method="GET">
+    <form action="<%= request.getContextPath() %>/CercaProdottiServlet" method="GET">
         <input type="text" name="cercaProdotti" placeholder="Cerca prodotti..." required>
         <button type="submit">🔍</button>
     </form>

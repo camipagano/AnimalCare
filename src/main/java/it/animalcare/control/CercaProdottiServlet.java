@@ -36,7 +36,7 @@ public class CercaProdottiServlet extends HttpServlet {
         String testo = request.getParameter("cercaProdotti");
         
         if (testo == null || testo.trim().isEmpty()) {
-            response.sendRedirect(request.getContextPath() + "/home.jsp");
+            response.sendRedirect(request.getContextPath() + "WEB-INF/views/home.jsp");
             return;
         }
 
@@ -46,11 +46,11 @@ public class CercaProdottiServlet extends HttpServlet {
            
             request.setAttribute("prodottiRicerca", prodottiTrovati);
             request.setAttribute("testoCercato", testo);
-            request.getRequestDispatcher("/ricerca.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/views/ricerca.jsp").forward(request, response);
             
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect(request.getContextPath() + "/home.jsp"); 
+            response.sendRedirect(request.getContextPath() + "WEB-INF/views/home.jsp"); 
         }
 	}
 
