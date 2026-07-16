@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eae1f7; 
+    font-family: verdana;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; 
+}
+
+header {
+    background-image: url('../img/cat2.jpeg'); 
+    background-size: cover;      
+    background-position: center 30%; /* Mostra la parte centrale/alta della foto, di solito dove c'è il soggetto */
+    background-repeat: no-repeat; 
+    aspect-ratio: 16 / 5;
+    padding:  60px 40px 60px 120px;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    max-height: 300px; 
+    box-sizing: border-box;
+    width: 100%;
+}
+
+header .logo {
+    margin: 0;
+    color: #ffffff;
+    font-family: impact;
+    font-size: 300%;
+    text-align: left;
+}
+
+/*---------------------------------*/
+
+main {
+    flex: 1;
+    max-width: 1100px;
+    margin: 40px auto; 
+    padding: 0 30px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+}
+
+.contatti-testo {
+	flex: 1.2;
+	display: flex;
+    flex-direction: column;
+}
+
+.contatti-foto {
+    flex: 0.8; /* Prende una quota di spazio equivalente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    transform: translateY(-30px);
+}
+
+.contatti-foto img {
+    max-width: 90%;
+    height: auto;
+}
+
+.sezione-contatti {
+    margin-bottom: 35px;
+}
+
+main h2 {
+    font-family: impact;
+    font-size: 1.8rem;
+    color: #646464;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.lista-contatti li {
+    font-family: verdana;
+    color: #646464;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/*--------------------------------*/
+
+footer{
+	background-color: #000080;
+	padding: 20px 0;
+	text-align: left;
+	width:100%;        
+}
+
+footer ul {
+    list-style-type: none;     
+    margin: 20px;
+    padding: 0;
+}
+
+footer ul li a {
+    color: #ffffff;             
+    text-decoration: none;     
+    font-family: verdana;
+}
+
+footer ul li a:hover{
+	color: #e87d09;
+}
+
+@media (max-width: 768px) {
+    header {
+        min-height: 150px;
+        padding:40px 30px 40px 60px;
+    }
+    
+    header .logo {
+        font-size: 2.2rem; 
+    }
+
+    main h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        min-height: 120px;
+        padding: 30px 15px;
+    }
+
+    header .logo {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    main {
+        margin: 25px auto; 
+    }
+    
+    footer ul {
+        flex-direction: column; /* I link del footer si incolonnano sui telefoni */
+        gap: 12px;
+        margin: 10px 20px;
+    }
+}
+
