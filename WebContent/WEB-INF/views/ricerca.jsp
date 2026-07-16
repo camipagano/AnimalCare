@@ -49,10 +49,19 @@
 <div class= "risultati ricerca">
 	<%
 	String testo= (String) request.getAttribute("testoCercato");
+	String categoria= (String) request.getAttribute("nomeCategoria");
 	Collection<ProdottoModel> prodottiTrovati= (Collection<ProdottoModel>) request.getAttribute("prodottiRicerca");
+	String titoloDaMostrare = "";
+	if (categoria != null) {
+	    titoloDaMostrare = "Categoria: " + categoria;
+	} else if (testo != null) {
+	    titoloDaMostrare = "Risultati di ricerca per: " + testo;
+	} else {
+	    titoloDaMostrare = "Prodotti";
+	}
 	%>
 	
-	<h2>Risultati di ricerca per: <%=(testo != null) ? testo : "" %> </h2>
+	<h2><%= titoloDaMostrare %> </h2>
 	
 	<div class="griglia-ricerca">
 	
@@ -65,7 +74,7 @@
 				<img alt="<%=prod.getNome() %>" src="<%=request.getContextPath() %>/<%=prod.getImmagine() %>">
 				</div>
 				<div class="prod-info">
-				<h3><a href="prodotto.jsp?id=<%= prod.getId() %>"><%= prod.getNome() %></a></h3>
+				<h3><a href="prodotto.jsp?id=<%= prod.getId() %>"><%= prod.getNome() %>"</a></h3>
 				<p class="price">€<%= String.format("%.2f", prod.getPrezzo()) %></p>
 				</div>
 			</div>

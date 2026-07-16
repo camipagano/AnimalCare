@@ -56,7 +56,7 @@
 	if(categorie != null && !categorie.isEmpty()){
 		for(CategoriaModel cat : categorie){ %>
 		
-		<li><a href="prodotti.jsp?categoria=<%= cat.getId() %>"><%= cat.getNome() %></a></li>
+		<li><a href="<%= request.getContextPath() %>/CategoriaServlet?categoria=<%= cat.getId() %>"><%= cat.getNome() %></a></li>
 			
 	<% 	}
 	}%>

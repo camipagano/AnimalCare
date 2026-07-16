@@ -36,7 +36,7 @@ public class CercaProdottiServlet extends HttpServlet {
         String testo = request.getParameter("cercaProdotti");
         
         if (testo == null || testo.trim().isEmpty()) {
-            response.sendRedirect(request.getContextPath() + "WEB-INF/views/home.jsp");
+            response.sendRedirect(request.getContextPath() + "/HomeServlet");
             return;
         }
 
@@ -50,7 +50,7 @@ public class CercaProdottiServlet extends HttpServlet {
             
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendRedirect(request.getContextPath() + "WEB-INF/views/home.jsp"); 
+            response.sendRedirect(request.getContextPath() + "/HomeServlet"); 
         }
 	}
 
