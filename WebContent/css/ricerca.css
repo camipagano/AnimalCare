@@ -160,6 +160,7 @@ header .header-actions .cartButton {
 
 .price {
     margin: 0;
+    font-family:verdana;
     font-size: 1.3rem;
     font-weight: bold;
     color: #000000;
@@ -202,10 +203,17 @@ footer ul li a:hover{
 @media (max-width: 992px) {
 	header {
         padding: 15px 25px;
+        flex-direction:row;
+        gap:10px;
     }
-
+	
+	header h1 {
+        font-size: 160%; 
+    }
+	
     header .search {
-        margin: 0 15px; 
+        margin: 0 10px;
+        max-width: 350px; 
     }
 
     .risultati.ricerca {
@@ -230,23 +238,52 @@ footer ul li a:hover{
 }
 
 @media (max-width: 576px) {
-    header {
-        flex-direction: column;
+ 	 header {
+        flex-wrap: wrap;
         gap: 15px;
         padding: 20px 15px;
         text-align: center;
-    }
+  	}
 
     header h1 {
-        font-size: 1.6rem; 
+        font-size: 1.3rem; 
+        flex: 1 1 auto;
+        text-align: left;
+        order: 1;
     }
 
-    header .search {
-        margin: 0;
+   header .search {
+        flex: 1 0 100%; 
+        margin: 8px 0 2px 0;
+        order: 3;
+        display: flex;
+        justify-content: center;
         width: 100%;
         max-width: 100%;
     }
-
+	
+	header .header-actions {
+        flex: 1 1 auto;
+        justify-content: flex-end;
+        order: 2;
+        gap: 8px;
+    }
+	
+	header .header-actions .loginButton,
+    header .header-actions .cartButton {
+        width: 28px;
+        height: 28px;
+    }
+    
+    header .search input {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+    
+    header .search button {
+        padding: 8px 12px;
+    }
+	
     .griglia-ricerca {
         grid-template-columns: 1fr;
         gap: 15px;
