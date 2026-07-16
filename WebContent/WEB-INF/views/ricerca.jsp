@@ -27,19 +27,19 @@
 <!-- controlliamo se l'utente in sessione è loggato -->
 <% if(session.getAttribute("utenteLoggato")==null){ %>
 	<a href="<%= request.getContextPath() %>/LoginServlet" class="loginButton" title="Accedi / Registrati">
-            <span class="icon">👤</span> 
+            <span class="icon">👤</span>
      </a>
-   <%}else{ %>  
-   
+   <%}else{ %>
+
    	<a href="ordini.jsp" class="loginButton" title="Gestisci ordini">
-            <span class="icon">👤</span> 
+            <span class="icon">👤</span>
      </a>
-     
+
      <a href="<%= request.getContextPath() %>/LogoutServlet" class="logoutButton">logout</a>
      <% } %>
-   
+
      <a href="<%= request.getContextPath() %>/CarrelloServlet" class="cartButton" title="Carrello">
-            <span class="icon">🛒</span> 
+            <span class="icon">🛒</span>
      </a>
 </div>
 </header>
@@ -60,25 +60,25 @@
 	    titoloDaMostrare = "Prodotti";
 	}
 	%>
-	
+
 	<h2><%= titoloDaMostrare %> </h2>
-	
+
 	<div class="griglia-ricerca">
-	
+
 	<%
 	if(prodottiTrovati!=null && !prodottiTrovati.isEmpty()){
 		for(ProdottoModel prod : prodottiTrovati){ %>
-			
+
 			<div class= "riquadro-prodotto">
 				<div class= "prod-img">
 				<img alt="<%=prod.getNome() %>" src="<%=request.getContextPath() %>/<%=prod.getImmagine() %>">
 				</div>
 				<div class="prod-info">
-				<h3><a href="prodotto.jsp?id=<%= prod.getId() %>"><%= prod.getNome() %>"</a></h3>
+				<h3><a href="<%= request.getContextPath() %>/ProdottoServlet?id=<%= prod.getId() %>&categoria=<%= prod.getIdCategoria() %>"><%= prod.getNome() %></a></h3>
 				<p class="price">€<%= String.format("%.2f", prod.getPrezzo()) %></p>
 				</div>
 			</div>
-			
+
 		<%}
 	}else{
 	%>

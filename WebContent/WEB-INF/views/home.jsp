@@ -30,19 +30,19 @@
 <!-- controlliamo se l'utente in sessione è loggato -->
 <% if(session.getAttribute("utenteLoggato")==null){ %>
 	<a href="<%= request.getContextPath() %>/LoginServlet" class="loginButton" title="Accedi / Registrati">
-            <span class="icon">👤</span> 
+            <span class="icon">👤</span>
      </a>
-   <%}else{ %>  
-   
+   <%}else{ %>
+
    	<a href="ordini.jsp" class="loginButton" title="Gestisci ordini">
-            <span class="icon">👤</span> 
+            <span class="icon">👤</span>
      </a>
-     
+
      <a href="<%= request.getContextPath() %>/LogoutServlet" class="logoutButton">logout</a>
      <% } %>
-   
+
      <a href="<%= request.getContextPath() %>/CarrelloServlet" class="cartButton" title="Carrello">
-            <span class="icon">🛒</span> 
+            <span class="icon">🛒</span>
      </a>
 </div>
 </header>
@@ -50,21 +50,21 @@
 <nav class= "navBar">
 <ul>
 
-<% 
+<%
 	Collection<CategoriaModel> categorie= (Collection<CategoriaModel>) request.getAttribute("categorie");
-	
+
 	if(categorie != null && !categorie.isEmpty()){
 		for(CategoriaModel cat : categorie){ %>
-		
+
 		<li><a href="<%= request.getContextPath() %>/CategoriaServlet?categoria=<%= cat.getId() %>"><%= cat.getNome() %></a></li>
-			
+
 	<% 	}
 	}%>
     <li><a href="<%= request.getContextPath() %>/ContattiServlet">Contatti</a></li>
 </ul>
 </nav>
 
-<main>  
+<main>
 <div class= "catalogo">
 	<button class="freccia-sinistra" onclick="moveSlide(-1)"> &#10094; </button>
 	<div class="catalogo-container">
@@ -81,7 +81,7 @@ if(prodotti!=null && !prodotti.isEmpty()){
 	<div class="prodotto-layout">
 	<img alt="<%= prod.getNome() %>" src="<%= request.getContextPath() %>/<%=prod.getImmagine()%>">
 		<div class= "prod-info">
-			<h3> <a href= "prodotto.jsp?id=<%=prod.getId()%>"> <%=prod.getNome() %></a></h3>
+			<h3> <a href="<%= request.getContextPath() %>/ProdottoServlet?id=<%= prod.getId() %>&categoria=<%= prod.getIdCategoria() %>"> <%=prod.getNome() %></a></h3>
 			<p class= "price">€<%= String.format("%.2f", prod.getPrezzo()) %></p>
 		</div>
 	</div>

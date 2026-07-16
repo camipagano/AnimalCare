@@ -1,0 +1,195 @@
+@charset "UTF-8";
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #eae1f7;
+    font-family: verdana;
+}
+header {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../img/homeHeader.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 280px;
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+header .logo {
+    color: #ffffff;
+    font-family: impact;
+    font-size: 300%;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+header .logo:hover {
+    color: #e87d09;
+}
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+main h1 {
+    font-family: impact;
+    font-weight: normal;
+    color: #3d3d3d;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+main h2 {
+    font-family: verdana;
+    color: #3d3d3d;
+    font-size: 1.4rem;
+    margin-top: 25px;
+}
+
+/* Messaggio carrello vuoto */
+main > p {
+    font-family: verdana;
+    color: #646464;
+    font-size: 1rem;
+    text-align: center;
+}
+main > p a {
+    color: #e87d09;
+    text-decoration: none;
+}
+main > p a:hover {
+    text-decoration: underline;
+}
+
+/* Tabella */
+table {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+thead {
+    background-color: #e87d09;
+}
+thead th {
+    color: #ffffff;
+    font-family: verdana;
+    font-weight: bold;
+    padding: 14px;
+    text-align: left;
+}
+tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #eeeeee;
+    font-family: verdana;
+    color: #3d3d3d;
+    vertical-align: middle;
+}
+tbody tr:last-child td {
+    border-bottom: none;
+}
+tbody tr:hover {
+    background-color: #faf7fd;
+}
+td img {
+    vertical-align: middle;
+    margin-right: 10px;
+    border-radius: 4px;
+    max-height: 50px;
+}
+
+/* Form inline per +/-/rimuovi dentro le celle */
+td form {
+    display: inline-block;
+    margin: 0 3px;
+}
+td form button {
+    padding: 6px 12px;
+    font-size: 0.95rem;
+    font-family: verdana;
+    font-weight: bold;
+    background-color: #C0C0C0;
+    color: #000000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+td form button:hover {
+    background-color: #e87d09;
+    color: #ffffff;
+}
+
+/* Bottone "Svuota carrello" */
+main > form {
+    margin-top: 20px;
+}
+main > form button {
+    padding: 10px 20px;
+    background-color: #c0392b;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-family: verdana;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+main > form button:hover {
+    background-color: #a5301f;
+}
+
+/* Errore */
+.errore {
+    background-color: #fdeaea;
+    color: #c0392b;
+    border: 1px solid #c0392b;
+    border-radius: 4px;
+    padding: 10px 15px;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    font-family: verdana;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 700px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    thead {
+        display: none;
+    }
+    tbody tr {
+        margin-bottom: 15px;
+        border: 1px solid #eeeeee;
+        border-radius: 8px;
+        padding: 10px;
+    }
+    tbody td {
+        border-bottom: none;
+        padding: 8px 5px;
+    }
+    tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: inline-block;
+        width: 100px;
+        color: #e87d09;
+    }
+}
