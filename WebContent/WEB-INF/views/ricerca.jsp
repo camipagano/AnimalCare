@@ -31,7 +31,7 @@
      </a>
    <%}else{ %>
 
-   	<a href="ordini.jsp" class="loginButton" title="Gestisci ordini">
+   	<a href="<%= request.getContextPath() %>/OrdiniServlet" class="loginButton" title="Gestisci ordini">
             <span class="icon">👤</span>
      </a>
 

@@ -1,220 +1,196 @@
 @charset "UTF-8";
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
+
 body {
     display: flex;
     flex-direction: column;
     background-color: #eae1f7;
     font-family: verdana;
 }
+
 header {
-    position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../img/homeHeader.jpeg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 280px;
-    padding: 40px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
+    background-color: #000080;
+    padding: 20px;
+    text-align: center;
 }
+
 header .logo {
     color: #ffffff;
     font-family: impact;
-    font-size: 300%;
+    font-size: 2rem;
     text-decoration: none;
-    letter-spacing: 1px;
 }
+
 header .logo:hover {
     color: #e87d09;
 }
+
 main {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
+    max-width: 900px;
+    width: 90%;
+    margin: 40px auto;
     box-sizing: border-box;
 }
+
 main h1 {
     font-family: impact;
-    font-weight: normal;
-    color: #3d3d3d;
-    font-size: 2rem;
-    letter-spacing: 1px;
-    margin-bottom: 30px;
-    text-align: center;
-}
-main h2 {
-    font-family: verdana;
-    color: #3d3d3d;
-    font-size: 1.4rem;
-    margin-top: 25px;
-}
-
-/* Messaggio carrello vuoto */
-main > p {
-    font-family: verdana;
     color: #646464;
-    font-size: 1rem;
-    text-align: center;
-}
-main > p a {
-    color: #e87d09;
-    text-decoration: none;
-}
-main > p a:hover {
-    text-decoration: underline;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
-/* Tabella */
 table {
     width: 100%;
-    max-width: 800px;
     border-collapse: collapse;
     background-color: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
 }
+
 thead {
-    background-color: #e87d09;
+    background-color: #C0C0C0;
 }
-thead th {
-    color: #ffffff;
+
+th {
     font-family: verdana;
-    font-weight: bold;
-    padding: 14px;
+    color: #000000;
+    padding: 12px;
     text-align: left;
+    font-size: 0.9rem;
 }
-tbody td {
-    padding: 12px 14px;
-    border-bottom: 1px solid #eeeeee;
+
+td {
+    padding: 12px;
+    border-top: 1px solid #e0e0e0;
     font-family: verdana;
-    color: #3d3d3d;
+    color: #646464;
     vertical-align: middle;
 }
-tbody tr:last-child td {
-    border-bottom: none;
-}
-tbody tr:hover {
-    background-color: #faf7fd;
-}
 
-/* Cella prodotto: immagine + nome sempre in riga */
-tbody td:first-child {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    white-space: nowrap;
-}
 td img {
+    vertical-align: middle;
+    margin-right: 10px;
     border-radius: 4px;
-    max-height: 50px;
-    flex-shrink: 0;
 }
 
-/* Cella quantità: bottoni + numero tutti in riga */
-tbody td:nth-child(3) {
-    white-space: nowrap;
-}
-.quantita-controlli {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* Celle Prezzo e Subtotale: testo compatto e più leggibile */
-tbody td:nth-child(2),
-tbody td:nth-child(4) {
-    white-space: nowrap;
-    font-size: 1.05rem;
-    font-weight: bold;
-}
-
-/* Form inline per +/-/rimuovi dentro le celle */
 td form {
-    display: inline-flex;
-    margin: 0;
+    display: inline;
 }
-td form button {
-    padding: 6px 12px;
-    font-size: 0.95rem;
-    font-family: verdana;
-    font-weight: bold;
+
+td button {
     background-color: #C0C0C0;
     color: #000000;
     border: none;
+    padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
+    font-family: verdana;
 }
-td form button:hover {
+
+td button:hover {
     background-color: #e87d09;
     color: #ffffff;
 }
 
-/* Bottone "Svuota carrello" */
-main > form {
-    margin-top: 20px;
-}
-main > form button {
-    padding: 10px 20px;
-    background-color: #c0392b;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    font-family: verdana;
-    font-size: 0.95rem;
-    font-weight: bold;
-    cursor: pointer;
-}
-main > form button:hover {
-    background-color: #a5301f;
+main h2 {
+    font-family: impact;
+    color: #646464;
+    font-size: 1.5rem;
+    margin-top: 25px;
+    text-align: right;
 }
 
-/* Errore */
+.btn-checkout {
+    display: inline-block;
+    background-color: #000080;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: verdana;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btn-checkout:hover {
+    background-color: #e87d09;
+}
+
+main > form button {
+    background-color: #C0C0C0;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: verdana;
+    margin-top: 10px;
+    display: block;
+}
+
+main > form button:hover {
+    background-color: #e87d09;
+    color: #ffffff;
+}
+
+main p {
+    font-family: verdana;
+    color: #646464;
+    margin-top: 20px;
+}
+
+main p a {
+    color: #e87d09;
+    text-decoration: none;
+}
+
+main p a:hover {
+    text-decoration: underline;
+}
+
 .errore {
     background-color: #fdeaea;
     color: #c0392b;
     border: 1px solid #c0392b;
     border-radius: 4px;
     padding: 10px 15px;
-    width: 100%;
-    max-width: 800px;
-    box-sizing: border-box;
     font-family: verdana;
-    font-size: 0.9rem;
-    text-align: center;
     margin-bottom: 20px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     table, thead, tbody, th, td, tr {
         display: block;
     }
+
     thead {
         display: none;
     }
-    tbody tr {
+
+    tr {
         margin-bottom: 15px;
-        border: 1px solid #eeeeee;
-        border-radius: 8px;
-        padding: 10px;
+        border: 1px solid #e0e0e0;
     }
-    tbody td {
-        border-bottom: none;
-        padding: 8px 5px;
+
+    td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border-top: none;
+        border-bottom: 1px solid #eeeeee;
     }
-    tbody td::before {
+
+    td::before {
         content: attr(data-label);
+        position: absolute;
+        left: 12px;
         font-weight: bold;
-        display: inline-block;
-        width: 100px;
-        color: #e87d09;
+        color: #000080;
+        text-align: left;
     }
 }

@@ -88,6 +88,8 @@
 
     <h2>Totale: € <%= String.format("%.2f", totale) %></h2>
 
+    <a href="<%= request.getContextPath() %>/CheckoutServlet" class="btn-checkout">Vai al checkout</a>
+
     <form action="<%= request.getContextPath() %>/CarrelloServlet" method="POST">
         <input type="hidden" name="azione" value="svuota">
         <button type="submit">Svuota carrello</button>

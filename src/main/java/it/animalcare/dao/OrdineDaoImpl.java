@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -19,7 +20,7 @@ public class OrdineDaoImpl implements OrdineDao {
         String query = "INSERT INTO " + TABLE_NAME + " (Indirizzo, Stato, Data, ID_Utente) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(query)) {
+             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, ordine.getIndirizzo());
             stmt.setString(2, ordine.getStato());
@@ -27,6 +28,12 @@ public class OrdineDaoImpl implements OrdineDao {
             stmt.setInt(4, ordine.getIdUtente());
 
             stmt.executeUpdate();
+
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    ordine.setCodice(generatedKeys.getInt(1));
+                }
+            }
         }
     }
 
@@ -126,7 +133,7 @@ public class OrdineDaoImpl implements OrdineDao {
         return ordini;
     }
 
-        private OrdineModel mappaOrdine(ResultSet rs) throws SQLException {
+    private OrdineModel mappaOrdine(ResultSet rs) throws SQLException {
         OrdineModel ordine = new OrdineModel();
         ordine.setCodice(rs.getInt("Codice"));
         ordine.setIndirizzo(rs.getString("Indirizzo"));
