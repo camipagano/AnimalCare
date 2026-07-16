@@ -189,3 +189,11 @@ INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, im
 DELETE FROM categoria WHERE ID > 6;
 ALTER TABLE categoria AUTO_INCREMENT = 7;
 SELECT * FROM categoria;
+
+DELETE p1 FROM prodotto p1
+INNER JOIN prodotto p2
+WHERE p1.ID > p2.ID
+AND p1.Nome = p2.Nome
+AND p1.immagine = p2.immagine
+AND p1.ID_Categoria = p2.ID_Categoria
+AND p1.ID_Categoria IN (2, 3, 4);

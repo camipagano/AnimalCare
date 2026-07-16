@@ -105,17 +105,42 @@ tbody tr:last-child td {
 tbody tr:hover {
     background-color: #faf7fd;
 }
+
+/* Cella prodotto: immagine + nome sempre in riga */
+tbody td:first-child {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
 td img {
-    vertical-align: middle;
-    margin-right: 10px;
     border-radius: 4px;
     max-height: 50px;
+    flex-shrink: 0;
+}
+
+/* Cella quantità: bottoni + numero tutti in riga */
+tbody td:nth-child(3) {
+    white-space: nowrap;
+}
+.quantita-controlli {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Celle Prezzo e Subtotale: testo compatto e più leggibile */
+tbody td:nth-child(2),
+tbody td:nth-child(4) {
+    white-space: nowrap;
+    font-size: 1.05rem;
+    font-weight: bold;
 }
 
 /* Form inline per +/-/rimuovi dentro le celle */
 td form {
-    display: inline-block;
-    margin: 0 3px;
+    display: inline-flex;
+    margin: 0;
 }
 td form button {
     padding: 6px 12px;

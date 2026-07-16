@@ -57,17 +57,19 @@
                 </td>
                 <td>€ <%= String.format("%.2f", riga.getProdotto().getPrezzo()) %></td>
                 <td>
-                    <form action="<%= request.getContextPath() %>/CarrelloServlet" method="POST" style="display:inline">
-                        <input type="hidden" name="azione" value="diminuisci">
-                        <input type="hidden" name="idProdotto" value="<%= riga.getProdotto().getId() %>">
-                        <button type="submit">-</button>
-                    </form>
-                    <%= riga.getQuantita() %>
-                    <form action="<%= request.getContextPath() %>/CarrelloServlet" method="POST" style="display:inline">
-                        <input type="hidden" name="azione" value="aumenta">
-                        <input type="hidden" name="idProdotto" value="<%= riga.getProdotto().getId() %>">
-                        <button type="submit">+</button>
-                    </form>
+                    <div class="quantita-controlli">
+                        <form action="<%= request.getContextPath() %>/CarrelloServlet" method="POST" style="display:inline">
+                            <input type="hidden" name="azione" value="diminuisci">
+                            <input type="hidden" name="idProdotto" value="<%= riga.getProdotto().getId() %>">
+                            <button type="submit">-</button>
+                        </form>
+                        <%= riga.getQuantita() %>
+                        <form action="<%= request.getContextPath() %>/CarrelloServlet" method="POST" style="display:inline">
+                            <input type="hidden" name="azione" value="aumenta">
+                            <input type="hidden" name="idProdotto" value="<%= riga.getProdotto().getId() %>">
+                            <button type="submit">+</button>
+                        </form>
+                    </div>
                 </td>
                 <td>€ <%= String.format("%.2f", riga.getSubtotale()) %></td>
                 <td>
