@@ -1,35 +1,29 @@
 @charset "UTF-8";
-
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
-
 body {
     display: flex;
     flex-direction: column;
     background-color: #eae1f7;
     font-family: verdana;
 }
-
 header {
     background-color: #000080;
     padding: 20px;
     text-align: center;
 }
-
 header .logo {
     color: #ffffff;
     font-family: impact;
     font-size: 2rem;
     text-decoration: none;
 }
-
 header .logo:hover {
     color: #e87d09;
 }
-
 main {
     flex: 1;
     max-width: 900px;
@@ -37,20 +31,17 @@ main {
     margin: 40px auto;
     box-sizing: border-box;
 }
-
 main h1 {
     font-family: impact;
     color: #646464;
     font-size: 2rem;
     margin-bottom: 20px;
 }
-
 .checkout-container {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
 }
-
 .riepilogo,
 .form-checkout {
     background-color: #ffffff;
@@ -61,7 +52,6 @@ main h1 {
     min-width: 280px;
     box-sizing: border-box;
 }
-
 .riepilogo h2,
 .form-checkout h2 {
     font-family: impact;
@@ -70,13 +60,11 @@ main h1 {
     font-size: 1.3rem;
     margin: 0 0 15px 0;
 }
-
 .lista-riepilogo {
     list-style: none;
     margin: 0;
     padding: 0;
 }
-
 .lista-riepilogo li {
     display: flex;
     justify-content: space-between;
@@ -86,11 +74,9 @@ main h1 {
     color: #646464;
     font-size: 0.9rem;
 }
-
 .lista-riepilogo li:last-child {
     border-bottom: none;
 }
-
 .totale-ordine {
     text-align: right;
     font-family: impact;
@@ -99,12 +85,10 @@ main h1 {
     font-size: 1.3rem;
     margin-top: 15px;
 }
-
 .form-checkout form {
     display: flex;
     flex-direction: column;
 }
-
 .form-checkout label {
     font-family: verdana;
     color: #646464;
@@ -112,11 +96,9 @@ main h1 {
     margin-bottom: 5px;
     margin-top: 15px;
 }
-
 .form-checkout label:first-child {
     margin-top: 0;
 }
-
 .form-checkout textarea,
 .form-checkout select {
     padding: 10px;
@@ -127,13 +109,11 @@ main h1 {
     box-sizing: border-box;
     resize: vertical;
 }
-
 .form-checkout textarea:focus,
 .form-checkout select:focus {
     outline: none;
     border-color: #e87d09;
 }
-
 .form-checkout button {
     margin-top: 25px;
     padding: 12px;
@@ -146,26 +126,21 @@ main h1 {
     font-weight: bold;
     cursor: pointer;
 }
-
 .form-checkout button:hover {
     background-color: #c96a06;
 }
-
 main > p {
     text-align: center;
     font-family: verdana;
     margin-top: 20px;
 }
-
 main > p a {
     color: #e87d09;
     text-decoration: none;
 }
-
 main > p a:hover {
     text-decoration: underline;
 }
-
 .errore {
     background-color: #fdeaea;
     color: #c0392b;
@@ -175,7 +150,15 @@ main > p a:hover {
     font-family: verdana;
     margin-bottom: 20px;
 }
-
+.errore-js {
+    display: none;
+    color: #c0392b;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+.errore-js.visibile {
+    display: block;
+}
 @media (max-width: 768px) {
     .checkout-container {
         flex-direction: column;

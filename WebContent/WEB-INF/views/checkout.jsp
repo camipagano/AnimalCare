@@ -3,7 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%! 
+    <%!
     private String escapeHtml(String input) {
         if (input == null) return "";
         return input.replace("&", "&amp;")
@@ -19,6 +19,7 @@
 <meta charset="UTF-8">
 <title>Checkout</title>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/styles/checkout.css">
+<script src="<%= request.getContextPath() %>/script/checkout.js" defer></script>
 </head>
 <body>
 
