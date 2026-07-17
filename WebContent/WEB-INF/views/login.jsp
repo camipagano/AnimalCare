@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Accedi</title>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/login.css">
+<script src="<%= request.getContextPath() %>/script/login.js" defer></script>
 </head>
 <body>
 <header>
