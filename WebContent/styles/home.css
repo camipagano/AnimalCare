@@ -57,6 +57,7 @@ margin: 0 auto 10px auto;
 header .search form {
 display: flex; /* Mette input e lente perfettamente affiancati */
 width: 100%;
+flex-wrap: wrap;
 
 }
 
@@ -308,6 +309,20 @@ footer ul li a:hover{
 
 .info-job-link:hover .info-job {
    border-color:#e87d09;
+}
+
+.errore-js {
+    display: none;
+    flex-basis: 100%;
+    text-align: left;
+    color: #ffd6d6;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.errore-js.visibile {
+    display: block;
 }
 
 /* Sotto i 992px di larghezza */

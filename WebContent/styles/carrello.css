@@ -163,6 +163,16 @@ main p a:hover {
     margin-bottom: 20px;
 }
 
+.avviso {
+    background-color: #fff8e1;
+    color: #8a6d00;
+    border: 1px solid #e0c200;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-family: verdana;
+    margin-bottom: 20px;
+}
+
 @media (max-width: 768px) {
     table, thead, tbody, th, td, tr {
         display: block;

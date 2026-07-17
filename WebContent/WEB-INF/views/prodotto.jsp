@@ -51,7 +51,7 @@
         <p class="price">€ <%= String.format("%.2f", prodotto.getPrezzo()) %></p>
 
         <% if (prodotto.getDisponibilità() > 0) { %>
-        <form action="<%= request.getContextPath() %>/CarrelloServlet" method="POST">
+        <form action="<%= request.getContextPath() %>/CarrelloServlet" method="POST" novalidate>
             <input type="hidden" name="azione" value="aggiungi">
             <input type="hidden" name="idProdotto" value="<%= prodotto.getId() %>">
             <input type="hidden" name="idCategoria" value="<%= prodotto.getIdCategoria() %>">

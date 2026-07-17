@@ -49,6 +49,7 @@ public class CarrelloServlet extends HttpServlet {
 		}
 
 		String azione = request.getParameter("azione");
+		ProdottoDao prodottoDao = new ProdottoDaoImpl();
 
 		if ("aggiungi".equals(azione)) {
 			int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
@@ -60,11 +61,27 @@ public class CarrelloServlet extends HttpServlet {
 				quantita = Integer.parseInt(quantitaParam);
 			}
 
-			if (carrello.containsKey(idProdotto)) {
-				ItemCarrelloModel item = carrello.get(idProdotto);
-				item.setQuantita(item.getQuantita() + quantita);
-			} else {
-				carrello.put(idProdotto, new ItemCarrelloModel(idProdotto, idCategoria, quantita));
+			try {
+				ProdottoModel prodotto = prodottoDao.doRetrieveByKey(idProdotto, idCategoria);
+
+				if (prodotto != null) {
+					int disponibilita = prodotto.getDisponibilità();
+					int quantitaAttuale = carrello.containsKey(idProdotto) ? carrello.get(idProdotto).getQuantita() : 0;
+					int nuovaQuantita = quantitaAttuale + quantita;
+
+					if (nuovaQuantita > disponibilita) {
+						nuovaQuantita = disponibilita;
+						session.setAttribute("messaggioCarrello", "Hai raggiunto la disponibilità massima per questo prodotto.");
+					}
+
+					if (carrello.containsKey(idProdotto)) {
+						carrello.get(idProdotto).setQuantita(nuovaQuantita);
+					} else {
+						carrello.put(idProdotto, new ItemCarrelloModel(idProdotto, idCategoria, nuovaQuantita));
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 
 			response.sendRedirect(request.getContextPath() + "/CarrelloServlet");
@@ -73,8 +90,21 @@ public class CarrelloServlet extends HttpServlet {
 		} else if ("aumenta".equals(azione)) {
 			int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
 			ItemCarrelloModel item = carrello.get(idProdotto);
+
 			if (item != null) {
-				item.setQuantita(item.getQuantita() + 1);
+				try {
+					ProdottoModel prodotto = prodottoDao.doRetrieveByKey(item.getIdProdotto(), item.getIdCategoria());
+
+					if (prodotto != null) {
+						if (item.getQuantita() < prodotto.getDisponibilità()) {
+							item.setQuantita(item.getQuantita() + 1);
+						} else {
+							session.setAttribute("messaggioCarrello", "Hai raggiunto la disponibilità massima per questo prodotto.");
+						}
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 
 			response.sendRedirect(request.getContextPath() + "/CarrelloServlet");
@@ -108,7 +138,6 @@ public class CarrelloServlet extends HttpServlet {
 			return;
 		}
 
-		ProdottoDao prodottoDao = new ProdottoDaoImpl();
 		List<CarrelloModel> righeCarrello = new ArrayList<>();
 		float totale = 0;
 
@@ -125,6 +154,13 @@ public class CarrelloServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			request.setAttribute("errore", "Errore nel caricamento del carrello.");
+		}
+
+		// Recuperiamo e "consumiamo" il messaggio flash, se presente
+		String messaggio = (String) session.getAttribute("messaggioCarrello");
+		if (messaggio != null) {
+			request.setAttribute("messaggioCarrello", messaggio);
+			session.removeAttribute("messaggioCarrello");
 		}
 
 		request.setAttribute("righeCarrello", righeCarrello);
