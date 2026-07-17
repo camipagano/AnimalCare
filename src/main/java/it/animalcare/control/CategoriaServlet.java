@@ -56,7 +56,7 @@ public class CategoriaServlet extends HttpServlet {
             
             request.setAttribute("prodottiRicerca", prodottiCategoria); 
             request.setAttribute("nomeCategoria", nomeCategoria);
-            request.getRequestDispatcher("WEB-INF/views/ricerca.jsp").forward(request, response);           
+            request.getRequestDispatcher("/WEB-INF/views/ricerca.jsp").forward(request, response);           
 	}catch(NumberFormatException | SQLException e) {
 		e.printStackTrace();
         response.sendRedirect(request.getContextPath() + "/HomeServlet");

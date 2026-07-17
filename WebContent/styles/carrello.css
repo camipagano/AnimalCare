@@ -1,0 +1,196 @@
+@charset "UTF-8";
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #eae1f7;
+    font-family: verdana;
+}
+
+header {
+    background-color: #000080;
+    padding: 20px;
+    text-align: center;
+}
+
+header .logo {
+    color: #ffffff;
+    font-family: impact;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+header .logo:hover {
+    color: #e87d09;
+}
+
+main {
+    flex: 1;
+    max-width: 900px;
+    width: 90%;
+    margin: 40px auto;
+    box-sizing: border-box;
+}
+
+main h1 {
+    font-family: impact;
+    color: #646464;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+thead {
+    background-color: #C0C0C0;
+}
+
+th {
+    font-family: verdana;
+    color: #000000;
+    padding: 12px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+td {
+    padding: 12px;
+    border-top: 1px solid #e0e0e0;
+    font-family: verdana;
+    color: #646464;
+    vertical-align: middle;
+}
+
+td img {
+    vertical-align: middle;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+td form {
+    display: inline;
+}
+
+td button {
+    background-color: #C0C0C0;
+    color: #000000;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: verdana;
+}
+
+td button:hover {
+    background-color: #e87d09;
+    color: #ffffff;
+}
+
+main h2 {
+    font-family: impact;
+    color: #646464;
+    font-size: 1.5rem;
+    margin-top: 25px;
+    text-align: right;
+}
+
+.btn-checkout {
+    display: inline-block;
+    background-color: #000080;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: verdana;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btn-checkout:hover {
+    background-color: #e87d09;
+}
+
+main > form button {
+    background-color: #C0C0C0;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: verdana;
+    margin-top: 10px;
+    display: block;
+}
+
+main > form button:hover {
+    background-color: #e87d09;
+    color: #ffffff;
+}
+
+main p {
+    font-family: verdana;
+    color: #646464;
+    margin-top: 20px;
+}
+
+main p a {
+    color: #e87d09;
+    text-decoration: none;
+}
+
+main p a:hover {
+    text-decoration: underline;
+}
+
+.errore {
+    background-color: #fdeaea;
+    color: #c0392b;
+    border: 1px solid #c0392b;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-family: verdana;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0;
+    }
+
+    td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border-top: none;
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 12px;
+        font-weight: bold;
+        color: #000080;
+        text-align: left;
+    }
+}

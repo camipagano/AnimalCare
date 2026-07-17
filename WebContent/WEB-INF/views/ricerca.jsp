@@ -2,6 +2,17 @@
 <%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%! 
+    // Metodo di utilità interno alla JSP per evitare attacchi XSS
+    private String escapeHtml(String input) {
+        if (input == null) return "";
+        return input.replace("&", "&amp;")
+                    .replace("<", "&lt;")
+                    .replace(">", "&gt;")
+                    .replace("\"", "&quot;")
+                    .replace("'", "&#x27;");
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,9 +64,9 @@
 	Collection<ProdottoModel> prodottiTrovati= (Collection<ProdottoModel>) request.getAttribute("prodottiRicerca");
 	String titoloDaMostrare = "";
 	if (categoria != null) {
-	    titoloDaMostrare = "Categoria: " + categoria;
+	    titoloDaMostrare = "Categoria: " + escapeHtml(categoria);
 	} else if (testo != null) {
-	    titoloDaMostrare = "Risultati di ricerca per: " + testo;
+	    titoloDaMostrare = "Risultati di ricerca per: " + escapeHtml(testo);
 	} else {
 	    titoloDaMostrare = "Prodotti";
 	}
@@ -71,10 +82,10 @@
 
 			<div class= "riquadro-prodotto">
 				<div class= "prod-img">
-				<img alt="<%=prod.getNome() %>" src="<%=request.getContextPath() %>/<%=prod.getImmagine() %>">
+				<img alt="<%= escapeHtml(prod.getNome()) %>" src="<%=request.getContextPath() %>/<%=prod.getImmagine() %>">
 				</div>
 				<div class="prod-info">
-				<h3><a href="<%= request.getContextPath() %>/ProdottoServlet?id=<%= prod.getId() %>&categoria=<%= prod.getIdCategoria() %>"><%= prod.getNome() %></a></h3>
+				<h3><a href="<%= request.getContextPath() %>/ProdottoServlet?id=<%= prod.getId() %>&categoria=<%= prod.getIdCategoria() %>"><%= escapeHtml(prod.getNome()) %></a></h3>
 				<p class="price">€<%= String.format("%.2f", prod.getPrezzo()) %></p>
 				</div>
 			</div>

@@ -46,7 +46,7 @@ public class CercaProdottiServlet extends HttpServlet {
            
             request.setAttribute("prodottiRicerca", prodottiTrovati);
             request.setAttribute("testoCercato", testo);
-            request.getRequestDispatcher("WEB-INF/views/ricerca.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/ricerca.jsp").forward(request, response);
             
         } catch (SQLException e) {
             e.printStackTrace();

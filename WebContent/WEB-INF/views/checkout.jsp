@@ -3,6 +3,16 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%! 
+    private String escapeHtml(String input) {
+        if (input == null) return "";
+        return input.replace("&", "&amp;")
+                    .replace("<", "&lt;")
+                    .replace(">", "&gt;")
+                    .replace("\"", "&quot;")
+                    .replace("'", "&#x27;");
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +52,7 @@
             for (CarrelloModel riga : righeCarrello) {
 %>
             <li>
-                <span class="nome-prod"><%= riga.getProdotto().getNome() %> × <%= riga.getQuantita() %></span>
+                <span class="nome-prod"><%= escapeHtml(riga.getProdotto().getNome()) %> × <%= riga.getQuantita() %></span>
                 <span class="subtotale">€ <%= String.format("%.2f", riga.getSubtotale()) %></span>
             </li>
 <%
@@ -59,7 +69,7 @@
         <form action="<%= request.getContextPath() %>/CheckoutServlet" method="POST">
 
             <label for="indirizzo">Indirizzo di spedizione</label>
-            <textarea id="indirizzo" name="indirizzo" rows="3" required><%= (utenteLoggato != null && utenteLoggato.getIndirizzo() != null) ? utenteLoggato.getIndirizzo() : "" %></textarea>
+            <textarea id="indirizzo" name="indirizzo" rows="3" required><%= (utenteLoggato != null && utenteLoggato.getIndirizzo() != null) ? escapeHtml(utenteLoggato.getIndirizzo()) : "" %></textarea>
 
             <label for="metodoPagamento">Metodo di pagamento</label>
             <select id="metodoPagamento" name="metodoPagamento" required>

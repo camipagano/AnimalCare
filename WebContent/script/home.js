@@ -1,9 +1,8 @@
 let currentIndex = 0;
 
-function moveSlide(direction) {
-    const cat = document.querySelector('.catalogo-layout');
-    const totalGrids = document.querySelectorAll('.griglia').length;
-	
+	function moveSlide(direction) {
+	const cat = document.querySelector('.catalogo-layout');
+	const totalGrids = document.querySelectorAll('.griglia').length;
 	if (!cat || totalGrids === 0) return;
 	
 	currentIndex += direction;
@@ -16,3 +15,5 @@ function moveSlide(direction) {
 		const amountToMove = -currentIndex * 100;
 		    cat.style.transform = `translateX(${amountToMove}%)`;
 		}
+
+		
