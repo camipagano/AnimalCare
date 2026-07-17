@@ -18,7 +18,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Checkout</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/checkout.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/styles/checkout.css">
 </head>
 <body>
 

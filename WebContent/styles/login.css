@@ -146,6 +146,17 @@ main p a:hover {
     margin-bottom: 12px;
 }
 
+.errore-js {
+    display: none;
+    color: #c0392b;
+    font-size: 0.78rem;
+    margin-top: 3px;
+}
+
+.errore-js.visibile {
+    display: block;
+}
+
 @media (max-width: 576px) {
     body {
         background-attachment: scroll;

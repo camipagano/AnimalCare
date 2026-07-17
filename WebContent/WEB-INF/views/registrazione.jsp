@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Registrati</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/registrazione.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/styles/registrazione.css">
+<script src="<%= request.getContextPath() %>/script/registrazione.js" defer></script>
 </head>
 <body>
 <header>

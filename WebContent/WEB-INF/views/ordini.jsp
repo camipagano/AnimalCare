@@ -12,7 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title>I miei ordini</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/ordini.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/styles/ordini.css">
 </head>
 <body>
 

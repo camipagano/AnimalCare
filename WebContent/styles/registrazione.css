@@ -41,7 +41,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 10px 20px 20px 20px;
     box-sizing: border-box;
 }
@@ -144,6 +144,17 @@ main p a:hover {
     font-size: 0.85rem;
     text-align: center;
     margin-bottom: 12px;
+}
+
+.errore-js {
+    display: none;
+    color: #c0392b;
+    font-size: 0.8rem;
+    margin-top: 3px;
+}
+
+.errore-js.visibile {
+    display: block;
 }
 
 @media (max-width: 576px) {

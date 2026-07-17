@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Home Page</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/home.css">
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/styles/home.css">
 <script src="<%= request.getContextPath() %>/script/home.js" defer></script>
 </head>
 <body>

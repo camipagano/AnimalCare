@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Dettaglio Prodotto</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/prodotto.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/styles/prodotto.css">
 </head>
 <body>
 

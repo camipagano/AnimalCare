@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Contatti</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/contatti.css">
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/styles/contatti.css">
 </head>
 <body>
 <header>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Chi siamo</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/chi-siamo.css">
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/styles/chi-siamo.css">
 </head>
 <body>
 

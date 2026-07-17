@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Il tuo carrello</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/carrello.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/styles/carrello.css">
 </head>
 <body>
 

@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const mailInput = document.getElementById("mail");
     const passwordInput = document.getElementById("password");
 
-    // Creiamo dinamicamente i contenitori per i messaggi d'errore nel DOM
     const mailError = document.createElement("span");
     mailError.className = "errore-js";
     mailInput.parentNode.insertBefore(mailError, mailInput.nextSibling);
@@ -12,10 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
     passwordError.className = "errore-js";
     passwordInput.parentNode.insertBefore(passwordError, passwordInput.nextSibling);
 
-    // Regex per validare l'email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // 1. Validazione all'evento "change" (quando l'utente esce dal campo)
     mailInput.addEventListener("change", function() {
         validaEmail();
     });
@@ -23,12 +20,10 @@ document.addEventListener("DOMContentLoaded", function() {
         validaPassword();
     });
 
-    // 2. Validazione all'evento "submit"
     form.addEventListener("submit", function(event) {
         const isEmailValid = validaEmail();
         const isPasswordValid = validaPassword();
 
-        // Se uno dei campi non è valido, blocca l'invio del form al server
         if (!isEmailValid || !isPasswordValid) {
             event.preventDefault();
         }
@@ -37,10 +32,11 @@ document.addEventListener("DOMContentLoaded", function() {
     function validaEmail() {
         if (!emailRegex.test(mailInput.value)) {
             mailError.textContent = "Inserisci un indirizzo email valido (es. nome@dominio.it).";
-            mailError.style.color = "red";
+            mailError.classList.add("visibile");
             return false;
         } else {
             mailError.textContent = "";
+            mailError.classList.remove("visibile");
             return true;
         }
     }
@@ -48,10 +44,11 @@ document.addEventListener("DOMContentLoaded", function() {
     function validaPassword() {
         if (passwordInput.value.trim() === "") {
             passwordError.textContent = "La password non può essere vuota.";
-            passwordError.style.color = "red";
+            passwordError.classList.add("visibile");
             return false;
         } else {
             passwordError.textContent = "";
+            passwordError.classList.remove("visibile");
             return true;
         }
     }
