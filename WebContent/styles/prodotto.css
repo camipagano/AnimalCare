@@ -244,6 +244,17 @@ main > p a:hover {
     color: #e87d09;
 }
 
+.errore-js {
+    display: none;
+    color: #c0392b;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+.errore-js.visibile {
+    display: block;
+}
+
 @media (max-width: 600px) {
     .dettaglio-prodotto {
         flex-direction: column;

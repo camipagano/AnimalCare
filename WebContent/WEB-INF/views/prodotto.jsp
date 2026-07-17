@@ -11,6 +11,7 @@
 <meta charset="UTF-8">
 <title>Dettaglio Prodotto</title>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/styles/prodotto.css">
+<script src="<%= request.getContextPath() %>/script/prodotto.js" defer></script>
 </head>
 <body>
 
