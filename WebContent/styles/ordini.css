@@ -9,7 +9,11 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    background-color: #eae1f7;
+    background-image: url('../img/cat3.jpeg');
+    background-position:center 78%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     font-family: verdana;
 }
 
@@ -40,7 +44,7 @@ main {
 
 main h1 {
     font-family: impact;
-    color: #646464;
+    color: #e6f7e6; 
     font-size: 2rem;
     margin-bottom: 20px;
 }
@@ -143,6 +147,20 @@ main > p a:hover {
     font-size: 0.9rem;
 }
 
+.ordine-prodotti li span a,
+.ordine-prodotti li span a:link,
+.ordine-prodotti li span a:visited {
+    color: #646464;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.ordine-prodotti li span a:hover,
+.ordine-prodotti li span a:active {
+    color: #e87d09;
+    text-decoration: underline;
+}
+
 .ordine-totale {
     text-align: right;
     font-family: impact;
@@ -159,5 +177,3 @@ main > p a:hover {
         gap: 8px;
     }
 }
-
-
