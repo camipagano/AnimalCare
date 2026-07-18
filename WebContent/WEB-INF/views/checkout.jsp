@@ -40,6 +40,8 @@
 
     List<CarrelloModel> righeCarrello = (List<CarrelloModel>) request.getAttribute("righeCarrello");
     Float totale = (Float) request.getAttribute("totale");
+    Float spedizione = (Float) request.getAttribute("spedizione");
+    Float totaleComplessivo = (Float) request.getAttribute("totaleComplessivo");
     UtenteModel utenteLoggato = (UtenteModel) request.getAttribute("utenteLoggato");
 %>
 
@@ -61,7 +63,20 @@
         }
 %>
         </ul>
-        <p class="totale-ordine">Totale: € <%= (totale != null) ? String.format("%.2f", totale) : "0.00" %></p>
+        <div class="dettaglio-costi">
+            <p>Subtotale prodotti: <span>€ <%= (totale != null) ? String.format("%.2f", totale) : "0.00" %></span></p>
+            <p>Spedizione: <span>
+                <% if (spedizione != null && spedizione == 0) { %>
+                    <strong>Gratis</strong>
+                <% } else if (spedizione != null) { %>
+                    € <%= String.format("%.2f", spedizione) %>
+                <% } else { %>
+                    € 0.00
+                <% } %>
+            </span></p>
+            <hr>
+            </div>
+        <p class="totale-ordine">Totale: € <%= (totaleComplessivo != null) ? String.format("%.2f", totaleComplessivo) : "0.00" %></p>
     </section>
 
     <section class="form-checkout">

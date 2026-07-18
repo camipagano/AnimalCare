@@ -41,12 +41,15 @@
             <span class="icon">👤</span>
      </a>
    <%}else{ %>
-
-   	<a href="<%= request.getContextPath() %>/OrdiniServlet" class="loginButton" title="Gestisci ordini">
+   	<div class="utente-dropdown">
+        <button class="loginButton dropdown-toggle" title="Profilo">
             <span class="icon">👤</span>
-     </a>
-
-     <a href="<%= request.getContextPath() %>/LogoutServlet" class="logoutButton">logout</a>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="<%= request.getContextPath() %>/OrdiniServlet">Gestisci ordini</a></li>
+            <li><a href="<%= request.getContextPath() %>/LogoutServlet">Logout</a></li>
+        </ul>
+    </div>
      <% } %>
 
      <a href="<%= request.getContextPath() %>/CarrelloServlet" class="cartButton" title="Carrello">

@@ -83,6 +83,45 @@ header .header-actions .cartButton {
 	text-decoration: none;
 } 
 
+.utente-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #ffffff;
+    min-width: 150px;
+    padding: 5px 0;
+    list-style: none;
+    z-index: 1000;
+    margin: 5px 0 0 0;
+}
+.dropdown-menu li a {
+    color: #646464;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-family: verdana;
+    font-size: 0.85rem;
+    text-align: left;
+}
+.dropdown-menu li a:hover {
+    color: #e87d09;
+}
+
+.utente-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 /*-----------------------------------*/
 
 .risultati.ricerca {

@@ -73,9 +73,14 @@ public class CheckoutServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("errore", "Errore nel caricamento del carrello.");
 		}
-
+		
+		float spedizione = (totale > 50.0f) ? 0.00f : 5.99f;
+		float totaleComplessivo = totale + spedizione;
+		
 		request.setAttribute("righeCarrello", righeCarrello);
 		request.setAttribute("totale", totale);
+		request.setAttribute("spedizione", spedizione); 
+		request.setAttribute("totaleComplessivo", totaleComplessivo);
 		request.setAttribute("utenteLoggato", utenteLoggato);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/checkout.jsp");
@@ -114,6 +119,17 @@ public class CheckoutServlet extends HttpServlet {
 		MetodoPagamentoDao metodoPagamentoDao = new MetodoPagamentoDaoImpl();
 
 		try {
+			// Ricalcoliamo il totale velocemente per sicurezza
+			float totaleProdotti = 0;
+			for (ItemCarrelloModel item : carrello.values()) {
+				ProdottoModel prodotto = prodottoDao.doRetrieveByKey(item.getIdProdotto(), item.getIdCategoria());
+				if (prodotto != null) {
+					totaleProdotti += (prodotto.getPrezzo() * item.getQuantita());
+				}
+			}
+			float spedizione = (totaleProdotti > 50.0f) ? 0.00f : 5.99f;
+			float totaleOrdine = totaleProdotti + spedizione;
+			
 			OrdineModel ordine = new OrdineModel();
 			ordine.setIndirizzo(indirizzo);
 			ordine.setStato("In lavorazione");

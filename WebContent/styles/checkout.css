@@ -77,6 +77,30 @@ main h1 {
 .lista-riepilogo li:last-child {
     border-bottom: none;
 }
+
+.dettaglio-costi {
+    margin-top: 20px;
+    font-family: verdana;
+    color: #646464;
+    font-size: 0.9rem;
+}
+
+.dettaglio-costi p {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.dettaglio-costi strong {
+    color: #27ae60; 
+}
+
+.dettaglio-costi hr {
+    border: 0;
+    border-top: 1px solid #eeeeee;
+    margin: 15px 0;
+}
+
 .totale-ordine {
     text-align: right;
     font-family: impact;
