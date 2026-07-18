@@ -148,6 +148,14 @@ public class CheckoutServlet extends HttpServlet {
 					dettaglio.setPrezzoUnitario(prodotto.getPrezzo());
 					dettaglio.setQuantità(item.getQuantita());
 					dettaglioOrdineDao.doSave(dettaglio);
+					
+					int quantitaAttuale = prodotto.getDisponibilità(); 
+					int nuovaQuantita = quantitaAttuale - item.getQuantita();
+					
+					if (nuovaQuantita < 0) {
+						nuovaQuantita = 0; 
+					}
+					prodottoDao.doUpdateQuantita(item.getIdProdotto(), item.getIdCategoria(), nuovaQuantita);
 				}
 			}
 

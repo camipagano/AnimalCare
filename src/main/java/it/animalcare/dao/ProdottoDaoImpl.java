@@ -71,6 +71,17 @@ public class ProdottoDaoImpl implements ProdottoDao {
             return righeCancellate > 0;
         }
     }
+    
+    public synchronized void doUpdateQuantita(int idProdotto, int idCategoria, int nuovaQuantita) throws SQLException {
+        String sql = "UPDATE prodotto SET quantita = ? WHERE id = ? AND id_categoria = ?";
+        try (Connection connection = ConnectionFactory.getConnection(); 
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, nuovaQuantita);
+            ps.setInt(2, idProdotto);
+            ps.setInt(3, idCategoria);
+            ps.executeUpdate();
+        }
+    }
 
     @Override
     public synchronized ProdottoModel doRetrieveByKey(int id, int idCategoria) throws SQLException {

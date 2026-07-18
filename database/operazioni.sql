@@ -197,3 +197,8 @@ AND p1.Nome = p2.Nome
 AND p1.immagine = p2.immagine
 AND p1.ID_Categoria = p2.ID_Categoria
 AND p1.ID_Categoria IN (2, 3, 4);
+
+
+INSERT INTO utente (Nome, Cognome, Mail, Password, Ruolo, Indirizzo) VALUES
+('Camilla', 'Pagano', 'camillapagano1@admin.ac.it', sha2('Admin1', 512), 'amministratore','via Admin, 1'),
+('Giulia', 'Sabatino', 'giuliasabatino2@admin.ac.it', sha2('Admin2', 512), 'amministratore', 'via Admin, 2');

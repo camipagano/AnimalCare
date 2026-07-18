@@ -9,6 +9,7 @@ public interface ProdottoDao {
 	public void doSave (ProdottoModel prodotto) throws SQLException;
 	public void doUpdate (ProdottoModel prodotto) throws SQLException;
 	public boolean doDelete (int id, int idCategoria) throws SQLException;
+	public void doUpdateQuantita(int idProdotto, int idCategoria, int nuovaQuantita) throws SQLException;
 	public ProdottoModel doRetrieveByKey (int id, int idCategoria) throws SQLException;
 	public Collection<ProdottoModel> doRetrieveAll (String order) throws SQLException;
 	public Collection<ProdottoModel> doRetrieveByCategoria (int idCategoria) throws SQLException;

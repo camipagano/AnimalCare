@@ -55,7 +55,13 @@ public class LoginServlet extends HttpServlet {
 					// Login riuscito
 					HttpSession session = request.getSession();
 					session.setAttribute("utenteLoggato", utente);
-					response.sendRedirect(request.getContextPath() + "/HomeServlet");
+					if ("amministratore".equalsIgnoreCase(utente.getRuolo())) {
+						// Se è admin, lo rimandiamo alla Servlet dell'amministratore
+						response.sendRedirect(request.getContextPath() + "/AdminServlet");
+					} else {
+						// Se è un utente normale, va alla Home normale
+						response.sendRedirect(request.getContextPath() + "/HomeServlet");
+					}
 					return;
 				}
 			}
