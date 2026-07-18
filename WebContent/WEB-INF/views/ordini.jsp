@@ -23,23 +23,6 @@
 <meta charset="UTF-8">
 <title>I miei ordini</title>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/styles/ordini.css">
-<style>
-    /* Stato iniziale del link del prodotto: grigio, grassetto, niente linea */
-    .ordine-prodotti li span a, 
-    .ordine-prodotti li span a:link, 
-    .ordine-prodotti li span a:visited {
-        color: #646464 !important;
-        text-decoration: none !important;
-        font-weight: bold !important;
-    }
-
-    /* Stato al passaggio del mouse: arancione e sottolineato */
-    .ordine-prodotti li span a:hover, 
-    .ordine-prodotti li span a:active {
-        color: #e87d09 !important;
-        text-decoration: underline !important;
-    }
-</style>
 </head>
 <body>
 <header>
