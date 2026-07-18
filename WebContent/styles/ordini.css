@@ -9,11 +9,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    background-image: url('../img/cat3.jpeg');
-    background-position:center;
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-attachment: fixed;
+    background-color: #eae1f7;
     font-family: verdana;
 }
 
