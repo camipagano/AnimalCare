@@ -73,6 +73,7 @@ header .header-actions {
 
 header .header-actions .loginButton,
 header .header-actions .cartButton {
+	background: none;
 	border: none;
 	padding: 5px;
 	width: 32px;
@@ -81,17 +82,27 @@ header .header-actions .cartButton {
 	align-items: center;
 	justify-content: center;
 	text-decoration: none;
+	box-sizing: border-box;
 } 
+
+header .header-actions .icon {
+    font-size: 1 rem;    /* Uniforma la grandezza delle icone */
+    line-height: 1;       /* Elimina spazi vuoti sopra o sotto il testo dell'emoji */
+    display: inline-block;
+}
 
 .utente-dropdown {
     position: relative;
     display: inline-block;
+    align-items: center;
 }
 .dropdown-toggle {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
+    display: flex;
+    align-items: center;
 }
 .dropdown-menu {
     display: none;
@@ -105,6 +116,13 @@ header .header-actions .cartButton {
     z-index: 1000;
     margin: 5px 0 0 0;
 }
+
+.dropdown-menu li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
 .dropdown-menu li a {
     color: #646464;
     padding: 10px 15px;

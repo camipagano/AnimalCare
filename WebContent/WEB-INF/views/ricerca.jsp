@@ -18,7 +18,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Risultati Ricerca</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/styles/ricerca.css">
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/styles/ricerca.css?v=1.1">
 </head>
 <body>
 
