@@ -139,6 +139,8 @@ main h1 {
     border-color: #e87d09;
 }
 .form-checkout button {
+	display: block;
+	width: 100%;
     margin-top: 25px;
     padding: 12px;
     background-color: #e87d09;
@@ -183,6 +185,50 @@ main > p a:hover {
 .errore-js.visibile {
     display: block;
 }
+
+.form-checkout input[type="text"] {
+    padding: 10px;
+    font-size: 0.95rem;
+    font-family: verdana;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 2px;
+    width: 100%;
+}
+
+.form-checkout input[type="text"]:focus {
+    outline: none;
+    border-color: #e87d09;
+}
+
+#sezione-carta {
+    background-color: #fcfaff;
+    border: 1px dashed #b19cd9;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 15px;
+    display: none;
+}
+
+.carta-dettagli-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.campo-numero {
+    flex: 3; 
+    display: flex;
+    flex-direction: column;
+}
+
+.campo-cvv {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 @media (max-width: 768px) {
     .checkout-container {
         flex-direction: column;

@@ -84,19 +84,37 @@
 
         <form action="<%= request.getContextPath() %>/CheckoutServlet" method="POST">
 
-            <label for="indirizzo">Indirizzo di spedizione</label>
-            <textarea id="indirizzo" name="indirizzo" rows="3" required><%= (utenteLoggato != null && utenteLoggato.getIndirizzo() != null) ? escapeHtml(utenteLoggato.getIndirizzo()) : "" %></textarea>
+    <label for="indirizzo">Indirizzo di spedizione</label>
+    <textarea id="indirizzo" name="indirizzo" rows="3" required><%= (utenteLoggato != null && utenteLoggato.getIndirizzo() != null) ? escapeHtml(utenteLoggato.getIndirizzo()) : "" %></textarea>
 
-            <label for="metodoPagamento">Metodo di pagamento</label>
-            <select id="metodoPagamento" name="metodoPagamento" required>
-                <option value="">-- Seleziona --</option>
-                <option value="Carta di credito">Carta di credito</option>
-                <option value="PayPal">PayPal</option>
-                <option value="Contrassegno">Contrassegno</option>
-            </select>
+    <label for="metodoPagamento">Metodo di pagamento</label>
+    <select id="metodoPagamento" name="metodoPagamento" required>
+        <option value="">-- Seleziona --</option>
+        <!-- Modifichiamo i valori per il DB (Punto 3), ma teniamo i testi leggibili -->
+        <option value="carta">Carta di credito</option>
+        <option value="paypal">PayPal</option>
+        <option value="contrassegno">Contrassegno</option>
+    </select>
+    
+    <!-- CONTENITORE FONDAMENTALE PER IL JAVASCRIPT -->
+    <div id="sezione-carta">
+        <label for="intestatarioCarta">Titolare della carta</label>
+        <input type="text" id="intestatarioCarta" name="intestatarioCarta" placeholder="Mario Rossi">
 
-            <button type="submit">Conferma ordine</button>
-        </form>
+        <div class="carta-dettagli-container">
+            <div class="campo-numero">
+                <label for="numeroCarta">Numero Carta</label>
+                <input type="text" id="numeroCarta" name="numeroCarta" placeholder="1234567812345678" maxlength="16">
+            </div>
+            <div class="campo-cvv">
+                <label for="cvvCarta">CVC/CVV</label>
+                <input type="text" id="cvvCarta" name="cvvCarta" placeholder="123" maxlength="3">
+            </div>
+        </div>
+    </div>
+    
+    <button type="submit">Conferma ordine</button>
+</form>
     </section>
 
 </div>
