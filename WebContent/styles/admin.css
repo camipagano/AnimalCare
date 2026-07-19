@@ -91,3 +91,140 @@ main h1 {
     margin: 0;
     line-height: 1.4;
 }
+
+/* Tabella prodotti admin */
+.btn-nuovo {
+    display: inline-block;
+    background-color: #000080;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-family: verdana;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.btn-nuovo:hover {
+    background-color: #e87d09;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+thead {
+    background-color: #C0C0C0;
+}
+
+th {
+    font-family: verdana;
+    color: #000000;
+    padding: 12px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+td {
+    padding: 10px 12px;
+    border-top: 1px solid #e0e0e0;
+    font-family: verdana;
+    color: #3d3d3d;
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+tr.riga-disattivata {
+    background-color: #f5f5f5;
+    opacity: 0.7;
+}
+
+.stato {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.stato.attivo {
+    background-color: #e6f4ea;
+    color: #1e7e34;
+}
+
+.stato.disattivo {
+    background-color: #fdeaea;
+    color: #c0392b;
+}
+
+.azioni {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.form-inline {
+    display: inline;
+}
+
+.btn-modifica {
+    background-color: #C0C0C0;
+    color: #000000;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-family: verdana;
+    font-size: 0.85rem;
+}
+
+.btn-modifica:hover {
+    background-color: #e87d09;
+    color: #ffffff;
+}
+
+.btn-elimina {
+    background-color: #c0392b;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: verdana;
+    font-size: 0.85rem;
+}
+
+.btn-elimina:hover {
+    background-color: #a5301f;
+}
+
+.btn-riattiva {
+    background-color: #1e7e34;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: verdana;
+    font-size: 0.85rem;
+}
+
+.btn-riattiva:hover {
+    background-color: #166529;
+}
+
+.nessun-prodotto {
+    color: #646464;
+    font-family: verdana;
+}
+
+.errore {
+    background-color: #fdeaea;
+    color: #c0392b;
+    border: 1px solid #c0392b;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-family: verdana;
+    margin-bottom: 20px;
+}  
