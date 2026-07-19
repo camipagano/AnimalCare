@@ -167,7 +167,31 @@ main > p a:hover {
     font-weight: normal;
     color: #000080;
     font-size: 1.2rem;
-    margin: 12px 0 0 0;
+    margin: 0;
+}
+
+.ordine-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #eeeeee;
+}
+
+.btn-vedi-fattura {
+    display: inline-block;
+    background-color: #e87d09;
+    color: #ffffff; 
+    text-decoration: none;
+    font-family: verdana;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 6px 14px;
+}
+
+.btn-vedi-fattura:hover {
+    background-color: #000080;
 }
 
 @media (max-width: 576px) {
@@ -175,5 +199,20 @@ main > p a:hover {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
+    }
+    
+    .ordine-footer {
+        flex-direction: column-reverse; 
+        align-items: stretch;
+        gap: 12px;
+    }
+    
+    .ordine-totale {
+        text-align: right;
+        margin-bottom: 8px !important;
+    }
+    
+    .btn-vedi-fattura {
+        text-align: center; 
     }
 }

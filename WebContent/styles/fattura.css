@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #eae1f7; 
+    font-family: verdana;
+    color: #000000;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.foglio-word {
+    background-color: #ffffff;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.btn-stampa {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #e87d09;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    font-family: verdana;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-stampa:hover {
+    background-color: #000080;
+}
+
+.intestazione {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #000080;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.logo h1 {
+    font-family: impact;
+    color: #000000;
+    margin: 0;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+}
+
+.logo p {
+	font-family: verdana;
+    margin: 5px 0 0 0;
+    font-size: 0.85rem;
+    color: #000000;
+}
+
+.titolo-documento {
+    text-align: right;
+}
+
+.titolo-documento h2 {
+    font-family: verdana;
+    color: #000000;
+    margin: 0;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+.titolo-documento p {
+    margin: 5px 0 0 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.sezione-dati {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    font-size: 0.9rem;
+}
+
+.blocco-dati {
+    width: 45%;
+}
+
+.blocco-dati h3 {
+    font-family: verdana;
+    color: #000000;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 4px
+}
+
+.blocco-dati p {
+    margin: 4px 0;
+}
+
+.tabella-fattura {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    font-size: 0.9rem;
+}
+
+.tabella-fattura th {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 2px solid #000000;
+}
+
+.tabella-fattura td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eeeeee;
+    color: #000000;
+}
+
+.allinea-destra {
+    text-align: right;
+}
+
+.riepilogo-totale {
+    float: right;
+    width: 40%;
+    font-size: 0.95rem;
+}
+
+.riga-prezzo {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    color: #000000;
+}
+
+.riga-totale-finale {
+    display: flex;
+    justify-content: space-between;
+    font-family: verdana;
+    font-size: 1.4rem;
+    color: #000000;
+    border-top: 2px solid #000000;
+    padding-top: 10px;
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+}
+
+@media print {
+    
+    .foglio-word {
+        width: 100%;
+        min-height: auto;
+        box-shadow: none;
+        padding: 0;
+    }
+    
+    .btn-stampa {
+        display: none; 
+    }
+}

@@ -73,7 +73,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     }
     
     public synchronized void doUpdateQuantita(int idProdotto, int idCategoria, int nuovaQuantita) throws SQLException {
-        String sql = "UPDATE prodotto SET quantita = ? WHERE id = ? AND id_categoria = ?";
+        String sql = "UPDATE prodotto SET Disponibilita = ? WHERE ID = ? AND ID_Categoria = ?";
         try (Connection connection = ConnectionFactory.getConnection(); 
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, nuovaQuantita);

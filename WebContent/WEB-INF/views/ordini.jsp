@@ -96,7 +96,15 @@
             }
 %>
         </ul>
+        
+        <div class="ordine-footer">
+            <div class="azioni-ordine">
+                <a href="<%= request.getContextPath() %>/FatturaServlet?id=<%= ordine.getCodice() %>" class="btn-vedi-fattura" target="_blank">
+                    Vedi Fattura
+                </a>
+            </div>
         <p class="ordine-totale">Totale: € <%= String.format("%.2f", totaleOrdine) %></p>
+    </div>
     </div>
 <%
         }
