@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #eae1f7;
+    font-family: verdana;
+}
+
+header {
+    background-color: #000080;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    color: #ffffff;
+    font-family: impact;
+    font-size: 1.6rem;
+    text-decoration: none;
+}
+
+header .logoutButton {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: verdana;
+    background-color: #e87d09;
+    padding: 8px 15px;
+    border-radius: 4px;
+}
+
+header .logoutButton:hover {
+    background-color: #c96a06;
+}
+
+main {
+    flex: 1;
+    max-width: 900px;
+    width: 90%;
+    margin: 40px auto;
+    box-sizing: border-box;
+}
+
+main h1 {
+    font-family: impact;
+    color: #646464;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+.admin-menu {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.admin-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
+    flex: 1;
+    min-width: 260px;
+    text-decoration: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.admin-card:hover {
+    border-color: #e87d09;
+}
+
+.admin-card h2 {
+    font-family: impact;
+    font-weight: normal;
+    color: #000080;
+    font-size: 1.3rem;
+    margin: 0 0 10px 0;
+}
+
+.admin-card p {
+    color: #646464;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+}

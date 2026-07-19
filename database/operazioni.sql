@@ -126,11 +126,9 @@ INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, im
 ('Tunnel Gioco Conigli', 'Tunnel colorato in tessuto per conigli. Lunghezza di 2 m', 20, 23.25,  4, 'img/conigli/gioco2.jpg', 'image/jpeg', 1),
 ('Palle Masticabili Gioco Conigli', 'Set da 2. Serie di palle in fieno per conigli e altri roditori, masticabili, per facilitare la cura e usura dei denti', 20, 12.25,  4, 'img/conigli/gioco3.jpg', 'image/jpeg', 1);
 
-SET SQL_SAFE_UPDATES = 0;
 UPDATE prodotto
 SET immagine = CONCAT('img/gatti/', immagine)
 WHERE ID_Categoria = 2 AND immagine NOT LIKE 'img/%';
-SET SQL_SAFE_UPDATES = 1;
 
 INSERT INTO prodotto (Nome, Descrizione, Disponibilita, Prezzo, ID_Categoria, immagine, mime_type, attivo) VALUES
 ('Dispenser Cibo e Acqua', 'Distributore in plastica di capacità 200 cc circa, utilizzabile anche come beverino oltre che come mangiatoia per pappagalli di piccola e media taglia ed altri uccelli domestici', 20, 2.90, 5, 'img/uccelli/decorazione1.png', 'image/png', 1),
