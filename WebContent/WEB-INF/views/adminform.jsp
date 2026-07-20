@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Prodotto - Admin</title>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/styles/admin.css">
-<script src="<%= request.getContextPath() %>/script/admin-prodotto.js" defer></script>
+<script src="<%= request.getContextPath() %>/script/adminprodotto.js" defer></script>
 </head>
 <body>
 
