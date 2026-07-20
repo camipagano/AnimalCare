@@ -28,7 +28,7 @@ public class AuthFilter implements Filter {
         if (loggato) {
             chain.doFilter(request, response);
         } else {
-            httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "Accesso negato: devi effettuare il login.");
+        	httpResponse.sendRedirect(httpRequest.getContextPath() + "/LoginServlet");
         }
     }
 }

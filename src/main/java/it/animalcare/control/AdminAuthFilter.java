@@ -33,7 +33,7 @@ public class AdminAuthFilter implements Filter {
         if (utente != null && "amministratore".equalsIgnoreCase(utente.getRuolo())) { 
             chain.doFilter(request, response);
         } else {
-            httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "Accesso negato: Riservato agli amministratori.");
+        	httpResponse.sendRedirect(httpRequest.getContextPath() + "/LoginServlet");
         }
     }
 }
