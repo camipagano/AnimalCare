@@ -91,12 +91,20 @@ public class FatturaServlet extends HttpServlet {
                 prodottiPerId.put(prodotto.getId(), prodotto);
             }
 
+            // Calcoliamo la spedizione con la stessa regola del checkout
+            float subtotaleProdotti = 0;
+            for (DettaglioOrdineModel d : dettagli) {
+                subtotaleProdotti += d.getPrezzoUnitario() * d.getQuantità();
+            }
+            float spedizione = (subtotaleProdotti > 50.0f) ? 0.00f : 5.99f;
+
             // Passiamo i dati alla pagina JSP della fattura
             request.setAttribute("ordine", ordine);
             request.setAttribute("dettagli", new ArrayList<>(dettagli));
             request.setAttribute("pagamento", pagamento);
             request.setAttribute("prodottiPerId", prodottiPerId);
             request.setAttribute("cliente", utenteLoggato);
+            request.setAttribute("spedizione", spedizione);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/fattura.jsp");
             dispatcher.forward(request, response);

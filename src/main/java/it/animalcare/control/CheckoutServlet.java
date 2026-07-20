@@ -117,18 +117,6 @@ public class CheckoutServlet extends HttpServlet {
 		MetodoPagamentoDao metodoPagamentoDao = new MetodoPagamentoDaoImpl();
 
 		try {
-			// Ricalcoliamo il totale velocemente per sicurezza
-			float totaleProdotti = 0;
-			for (ItemCarrelloModel item : carrello.values()) {
-				ProdottoModel prodotto = prodottoDao.doRetrieveByKey(item.getIdProdotto(), item.getIdCategoria());
-				if (prodotto != null) {
-					totaleProdotti += (prodotto.getPrezzo() * item.getQuantita());
-				}
-			}
-
-			float spedizione = (totaleProdotti > 50.0f) ? 0.00f : 5.99f;
-			float totaleOrdine = totaleProdotti + spedizione;
-			
 			OrdineModel ordine = new OrdineModel();
 			ordine.setIndirizzo(indirizzo);
 			ordine.setStato("In lavorazione");
@@ -173,5 +161,4 @@ public class CheckoutServlet extends HttpServlet {
 			doGet(request, response);
 		}
 	}
-} 
-
+}
