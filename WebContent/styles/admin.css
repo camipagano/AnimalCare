@@ -227,4 +227,151 @@ tr.riga-disattivata {
     padding: 10px 15px;
     font-family: verdana;
     margin-bottom: 20px;
-}  
+}
+
+/* Filtri ordini admin */
+.form-filtri {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 15px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.form-filtri label {
+    display: block;
+    font-size: 0.85rem;
+    color: #646464;
+    margin-bottom: 5px;
+}
+
+.form-filtri input {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-family: verdana;
+}
+
+.form-filtri button {
+    background-color: #000080;
+    color: #ffffff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: verdana;
+    font-weight: bold;
+}
+
+.form-filtri button:hover {
+    background-color: #e87d09;
+}
+
+.btn-reset {
+    color: #646464;
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 9px 0;
+}
+
+.btn-reset:hover {
+    color: #c0392b;
+}
+
+/* Box ordine admin */
+.ordine-box {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.ordine-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.ordine-header h2 {
+    font-family: verdana;
+    color: #000080;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.ordine-stato {
+    background-color: #C0C0C0;
+    color: #000000;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.ordine-data,
+.ordine-indirizzo,
+.ordine-pagamento {
+    color: #646464;
+    font-size: 0.9rem;
+    margin: 4px 0;
+}
+
+.ordine-prodotti {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.ordine-prodotti li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    color: #3d3d3d;
+    font-size: 0.9rem;
+}
+
+.ordine-totale {
+    text-align: right;
+    font-weight: bold;
+    color: #000080;
+    margin: 10px 0;
+}
+
+.form-stato {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.form-stato select {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-family: verdana;
+}
+
+.form-stato button {
+    background-color: #e87d09;
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: verdana;
+    font-weight: bold;
+}
+
+.form-stato button:hover {
+    background-color: #c96a06;
+}
