@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 
 import it.animalcare.model.ProdottoModel;
 import it.animalcare.util.ConnectionFactory;

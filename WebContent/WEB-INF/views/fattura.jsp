@@ -23,6 +23,7 @@
     MetodoPagamentoModel pagamento = (MetodoPagamentoModel) request.getAttribute("pagamento");
     Map<Integer, ProdottoModel> prodottiPerId = (Map<Integer, ProdottoModel>) request.getAttribute("prodottiPerId");
     UtenteModel cliente = (UtenteModel) request.getAttribute("cliente");
+    Float spedizione = (Float) request.getAttribute("spedizione");
 %>
 <!DOCTYPE html>
 <html>
@@ -89,6 +90,7 @@
             <%
                     }
                 }
+                float costoSpedizione = (spedizione != null) ? spedizione : 0.00f;
             %>
         </table>
         
@@ -99,11 +101,11 @@
             </div>
             <div class="riga-prezzo">
                 <span>Spedizione:</span>
-                <span>€ 0.00</span>
+                <span>€ <%= String.format("%.2f", costoSpedizione) %></span>
             </div>
             <div class="riga-totale-finale">
                 <span>TOTALE:</span>
-                <span>€ <%= String.format("%.2f", subtotaleGenerale) %></span>
+                <span>€ <%= String.format("%.2f", subtotaleGenerale + costoSpedizione) %></span>
             </div>
         </div>
     </div>
