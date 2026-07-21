@@ -40,6 +40,7 @@
         </button>
         <ul class="dropdown-menu">
             <li><a href="<%= request.getContextPath() %>/OrdiniServlet">Gestisci ordini</a></li>
+            <li><a href="<%= request.getContextPath() %>/DatiServlet">Cambia dati personali</a></li>
             <li><a href="<%= request.getContextPath() %>/LogoutServlet">Logout</a></li>
         </ul>
     </div>
