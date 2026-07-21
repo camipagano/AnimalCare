@@ -3,6 +3,8 @@ package it.animalcare.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -63,6 +65,7 @@ public class AdminProdottiServlet extends HttpServlet {
 		}
 
 		String azione = request.getParameter("azione");
+		boolean isAjax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
 
 		ProdottoDao prodottoDao = new ProdottoDaoImpl();
 
@@ -97,6 +100,12 @@ public class AdminProdottiServlet extends HttpServlet {
 					prodottoDao.doUpdate(prodotto);
 				}
 
+				if (isAjax) {
+					response.setContentType("text/plain");
+					response.getWriter().print("disattivato");
+					return;
+				}
+
 			} else if ("riattiva".equals(azione)) {
 				int id = Integer.parseInt(request.getParameter("id"));
 				int idCategoria = Integer.parseInt(request.getParameter("categoria"));
@@ -106,10 +115,21 @@ public class AdminProdottiServlet extends HttpServlet {
 					prodotto.setAttivo(true);
 					prodottoDao.doUpdate(prodotto);
 				}
+
+				if (isAjax) {
+					response.setContentType("text/plain");
+					response.getWriter().print("riattivato");
+					return;
+				}
 			}
 
 		} catch (SQLException | NumberFormatException e) {
 			e.printStackTrace();
+			if (isAjax) {
+				response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+				response.getWriter().print("errore");
+				return;
+			}
 			request.setAttribute("errore", "Errore nel salvataggio del prodotto.");
 		}
 
@@ -117,29 +137,29 @@ public class AdminProdottiServlet extends HttpServlet {
 	}
 
 	private void mostraLista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    ProdottoDao prodottoDao = new ProdottoDaoImpl();
-	    CategoriaDao categoriaDao = new CategoriaDaoImpl();
+		ProdottoDao prodottoDao = new ProdottoDaoImpl();
+		CategoriaDao categoriaDao = new CategoriaDaoImpl();
 
-	    try {
-	        Collection<ProdottoModel> prodotti = prodottoDao.doRetrieveAll("Nome");
-	        request.setAttribute("prodotti", prodotti);
+		try {
+			Collection<ProdottoModel> prodotti = prodottoDao.doRetrieveAll("Nome");
+			request.setAttribute("prodotti", prodotti);
 
-	        Collection<CategoriaModel> categorie = categoriaDao.doRetrieveAll(null);
-	        java.util.Map<Integer, String> nomiCategorie = new java.util.HashMap<>();
-	        for (CategoriaModel cat : categorie) {
-	            nomiCategorie.put(cat.getId(), cat.getNome());
-	        }
-	        request.setAttribute("nomiCategorie", nomiCategorie);
+			Collection<CategoriaModel> categorie = categoriaDao.doRetrieveAll("Nome");
+			Map<Integer, String> nomiCategorie = new HashMap<>();
+			for (CategoriaModel categoria : categorie) {
+				nomiCategorie.put(categoria.getId(), categoria.getNome());
+			}
+			request.setAttribute("nomiCategorie", nomiCategorie);
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	        request.setAttribute("errore", "Errore nel caricamento del catalogo.");
-	    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+			request.setAttribute("errore", "Errore nel caricamento del catalogo.");
+		}
 
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/adminprodotti.jsp");
-	    dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/adminprodotti.jsp");
+		dispatcher.forward(request, response);
 	}
-	
+
 	private void mostraForm(HttpServletRequest request, HttpServletResponse response, ProdottoModel prodotto) throws ServletException, IOException {
 		CategoriaDao categoriaDao = new CategoriaDaoImpl();
 

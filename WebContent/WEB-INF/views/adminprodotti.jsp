@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Gestione Prodotti - Admin</title>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/styles/admin.css">
+<script src="<%= request.getContextPath() %>/script/adminpr-ajax.js" defer></script>
 </head>
 <body>
 
@@ -60,13 +61,13 @@
             String nomeCategoria = (nomiCategorie != null) ? nomiCategorie.get(prodotto.getIdCategoria()) : null;
             if (nomeCategoria == null) nomeCategoria = "N/D";
 %>
-            <tr class="<%= rigaClasse %>">
+            <tr class="<%= rigaClasse %>" data-id="<%= prodotto.getId() %>" data-categoria="<%= prodotto.getIdCategoria() %>">
                 <td><img src="<%= request.getContextPath() %>/<%= prodotto.getImmagine() %>" alt="<%= prodotto.getNome() %>" width="50"></td>
                 <td><%= prodotto.getNome() %></td>
                 <td><%= nomeCategoria %></td>
                 <td>€ <%= String.format("%.2f", prodotto.getPrezzo()) %></td>
                 <td><%= prodotto.getDisponibilità() %></td>
-                <td>
+                <td class="cella-stato">
                     <% if (prodotto.isAttivo()) { %>
                         <span class="stato attivo">Attivo</span>
                     <% } else { %>
@@ -77,19 +78,9 @@
                     <a href="<%= request.getContextPath() %>/AdminProdottiServlet?azione=modifica&id=<%= prodotto.getId() %>&categoria=<%= prodotto.getIdCategoria() %>" class="btn-modifica">Modifica</a>
 
                     <% if (prodotto.isAttivo()) { %>
-                        <form action="<%= request.getContextPath() %>/AdminProdottiServlet" method="POST" class="form-inline">
-                            <input type="hidden" name="azione" value="elimina">
-                            <input type="hidden" name="id" value="<%= prodotto.getId() %>">
-                            <input type="hidden" name="categoria" value="<%= prodotto.getIdCategoria() %>">
-                            <button type="submit" class="btn-elimina">Elimina</button>
-                        </form>
+                        <button type="button" class="btn-elimina btn-toggle-stato" data-azione="elimina">Elimina</button>
                     <% } else { %>
-                        <form action="<%= request.getContextPath() %>/AdminProdottiServlet" method="POST" class="form-inline">
-                            <input type="hidden" name="azione" value="riattiva">
-                            <input type="hidden" name="id" value="<%= prodotto.getId() %>">
-                            <input type="hidden" name="categoria" value="<%= prodotto.getIdCategoria() %>">
-                            <button type="submit" class="btn-riattiva">Riattiva</button>
-                        </form>
+                        <button type="button" class="btn-riattiva btn-toggle-stato" data-azione="riattiva">Riattiva</button>
                     <% } %>
                 </td>
             </tr>
