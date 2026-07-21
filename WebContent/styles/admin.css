@@ -377,3 +377,18 @@ tr.riga-disattivata {
 .form-stato button:hover {
     background-color: #c96a06;
 }
+
+.stato-msg {
+    margin-left: 5px;
+    font-size: 0.85rem;
+    color: #2d7d2d;
+    display: none;
+}
+
+.stato-msg.visibile {
+    display: inline;
+}
+
+.stato-msg.errore-msg {
+    color: #c0392b;
+}

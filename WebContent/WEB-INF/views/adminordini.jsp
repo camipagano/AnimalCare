@@ -13,6 +13,7 @@
 <meta charset="UTF-8">
 <title>Gestione Ordini - Admin</title>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/styles/admin.css">
+<script src="<%= request.getContextPath() %>/script/adminor-ajax.js" defer></script>
 </head>
 <body>
 
@@ -74,7 +75,7 @@
                 }
             }
 %>
-    <div class="ordine-box">
+    <div class="ordine-box" data-codice="<%= ordine.getCodice() %>" data-idutente="<%= ordine.getIdUtente() %>">
         <div class="ordine-header">
             <h2>Ordine #<%= ordine.getCodice() %> - <%= nomeCliente %></h2>
             <span class="ordine-stato"><%= ordine.getStato() %></span>
@@ -112,6 +113,7 @@
                 <option value="Annullato" <%= "Annullato".equals(ordine.getStato()) ? "selected" : "" %>>Annullato</option>
             </select>
             <button type="submit">Aggiorna stato</button>
+            <span class="stato-msg"></span>
         </form>
     </div>
 <%

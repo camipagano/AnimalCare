@@ -48,6 +48,8 @@ public class AdminOrdiniServlet extends HttpServlet {
 
 		String azioneCambiaStato = request.getParameter("cambiaStato");
 		if (azioneCambiaStato != null) {
+			boolean isAjax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+
 			try {
 				int codice = Integer.parseInt(request.getParameter("codice"));
 				int idUtenteOrdine = Integer.parseInt(request.getParameter("idUtenteOrdine"));
@@ -59,8 +61,20 @@ public class AdminOrdiniServlet extends HttpServlet {
 					ordine.setStato(nuovoStato);
 					ordineDao.doUpdate(ordine);
 				}
+
+				if (isAjax) {
+					response.setContentType("text/plain");
+					response.getWriter().print(nuovoStato);
+					return;
+				}
+
 			} catch (NumberFormatException | SQLException e) {
 				e.printStackTrace();
+				if (isAjax) {
+					response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+					response.getWriter().print("errore");
+					return;
+				}
 			}
 			response.sendRedirect(request.getContextPath() + "/AdminOrdiniServlet");
 			return;
@@ -85,7 +99,6 @@ public class AdminOrdiniServlet extends HttpServlet {
 			for (OrdineModel ordine : tuttiOrdini) {
 				boolean passaFiltro = true;
 
-				// Filtro data
 				if (dataInizio != null && !dataInizio.isEmpty()) {
 					Date inizio = Date.valueOf(dataInizio);
 					if (ordine.getData().before(inizio)) {
@@ -99,7 +112,6 @@ public class AdminOrdiniServlet extends HttpServlet {
 					}
 				}
 
-				// Recupera l'utente (con cache per evitare query ripetute)
 				UtenteModel utenteOrdine = utentiCache.get(ordine.getIdUtente());
 				if (utenteOrdine == null) {
 					utenteOrdine = utenteDao.doRetrieveByKey(ordine.getIdUtente());
@@ -108,7 +120,6 @@ public class AdminOrdiniServlet extends HttpServlet {
 					}
 				}
 
-				// Filtro cliente (per nome, cognome o mail)
 				if (cliente != null && !cliente.trim().isEmpty() && utenteOrdine != null) {
 					String filtro = cliente.trim().toLowerCase();
 					String nomeCompleto = (utenteOrdine.getNome() + " " + utenteOrdine.getCognome()).toLowerCase();
