@@ -12,24 +12,24 @@ body {
     font-family: verdana;
     background-image: url('../img/registrazione.png');
     background-size: cover;
-    background-position: center 40%;
+    background-position: center 45%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
 }
 
 header {
-    padding: 10px;
+    background-color: #000080;
+    padding: 20px;
     text-align: center;
 }
 
 header .logo {
     color: #ffffff;
     font-family: impact;
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-decoration: none;
     letter-spacing: 1px;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 header .logo:hover {
@@ -42,31 +42,33 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 50px 20px 20px 20px;
+    padding: 40px 20px 20px 20px;
     box-sizing: border-box;
 }
 
-main h1 {
-    font-family: impact;
-    font-weight: normal;
-    color: #ffffff;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-    margin: 0 0 12px 0;
-    text-align: center;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-}
-
-form {
+.box-login {
     background-color: rgba(255, 255, 255, 0.92);
     border-radius: 8px;
     padding: 18px 25px;
     width: 100%;
     max-width: 340px;
     box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.box-login h1 {
+    font-family: impact;
+    font-weight: normal;
+    color: #000080;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+form {
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 form label {
@@ -137,8 +139,6 @@ main p a:hover {
     border: 1px solid #c0392b;
     border-radius: 4px;
     padding: 8px 12px;
-    width: 100%;
-    max-width: 340px;
     box-sizing: border-box;
     font-family: verdana;
     font-size: 0.85rem;
@@ -163,14 +163,14 @@ main p a:hover {
     }
 
     header .logo {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
-    main h1 {
+    .box-login h1 {
         font-size: 1.3rem;
     }
 
-    form {
+    .box-login {
         padding: 15px 20px;
     }
 }

@@ -13,6 +13,7 @@
 <a href="<%= request.getContextPath() %>/HomeServlet" class="logo">AnimalCare</a>
 </header>
 <main>
+<div class="box-login">
 <h1>Crea il tuo account</h1>
 <%
     String errore = (String) request.getAttribute("errore");
@@ -40,6 +41,7 @@
 
     <button type="submit">Registrati</button>
 </form>
+</div>
 <p>Hai già un account? <a href="<%= request.getContextPath() %>/LoginServlet">Accedi</a></p>
 <p><a href="<%= request.getContextPath() %>/HomeServlet">Torna alla home</a></p>
 </main>
