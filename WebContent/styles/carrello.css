@@ -40,6 +40,7 @@ main {
 
 main h1 {
     font-family: impact;
+    font-weight: normal;
     color: #646464;
     font-size: 2rem;
     margin-bottom: 20px;

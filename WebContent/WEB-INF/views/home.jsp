@@ -17,6 +17,7 @@
 <header>
 
 <h1>AnimalCare</h1>
+<p class="sottotitolo">Il benessere dei tuoi animali, ogni giorno</p>
 
 <div class="search">
     <form action="<%= request.getContextPath() %>/CercaProdottiServlet" method="GET">

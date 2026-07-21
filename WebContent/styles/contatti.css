@@ -29,6 +29,7 @@ header .logo {
     margin: 0;
     color: #ffffff;
     font-family: impact;
+    font-weight: normal;
     font-size: 300%;
     text-align: left;
 }
@@ -38,7 +39,7 @@ header .logo {
 main {
     flex: 1;
     max-width: 1100px;
-    margin: 40px auto; 
+    margin: 20px auto 0 auto;
     padding: 0 30px;
     box-sizing: border-box;
     width: 100%;
@@ -55,16 +56,17 @@ main {
 }
 
 .contatti-foto {
-    flex: 0.8; /* Prende una quota di spazio equivalente */
+    flex: 0.8;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     transform: translateY(-30px);
+    margin-top: 80px;
 }
 
 .contatti-foto img {
-    max-width: 90%;
+    max-width: 100%;
     height: auto;
 }
 
@@ -74,6 +76,7 @@ main {
 
 main h2 {
     font-family: impact;
+    font-weight: normal;
     font-size: 1.8rem;
     color: #646464;
     margin-top: 40px;
@@ -148,4 +151,3 @@ footer ul li a:hover{
         margin: 10px 20px;
     }
 }
-

@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 html, body {
     height: 100%;
     margin: 0;
@@ -32,6 +31,7 @@ header h1 {
     margin: 0;
     color: #ffffff;
     font-family: impact;
+    font-weight: normal;
     font-size: 200%;
     flex: 1 1 0px;
     text-align: left;
@@ -73,21 +73,33 @@ header .header-actions {
 
 header .header-actions .loginButton,
 header .header-actions .cartButton {
-	background: none;
+	background-color: #ffffff;
 	border: none;
 	padding: 5px;
-	width: 32px;
-	height: 32px;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	text-decoration: none;
 	box-sizing: border-box;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 } 
 
+header .header-actions .loginButton:hover,
+header .header-actions .cartButton:hover {
+	background-color: #000080;
+}
+
+header .header-actions .loginButton:hover .icon,
+header .header-actions .cartButton:hover .icon {
+	filter: brightness(0) invert(1);
+}
+
 header .header-actions .icon {
-    font-size: 1 rem;    /* Uniforma la grandezza delle icone */
-    line-height: 1;       /* Elimina spazi vuoti sopra o sotto il testo dell'emoji */
+    font-size: 1.3rem;
+    line-height: 1;
     display: inline-block;
 }
 
@@ -115,6 +127,7 @@ header .header-actions .icon {
     list-style: none;
     z-index: 1000;
     margin: 5px 0 0 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .dropdown-menu li {
@@ -144,13 +157,23 @@ header .header-actions .icon {
 
 .risultati.ricerca {
     padding: 50px 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.risultati.ricerca .contenuto-ricerca {
     max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
 }
 
 .risultati.ricerca h2 {
-    color: #000000;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 6px;
     margin-bottom: 35px;
     font-size: 1.6rem;
     font-weight: bold;
@@ -165,7 +188,7 @@ header .header-actions .icon {
 
 .riquadro-prodotto {
     display: flex; 
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.92);
     border: 3px solid #333333; 
     overflow: hidden;
     height: 180px; 
@@ -227,7 +250,9 @@ header .header-actions .icon {
     grid-column: span 2; /* Occupa lo spazio di entrambe le colonne */
     text-align: center;
     font-size: 1.1rem;
-    color: #000000;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.55);
+    border-radius: 6px;
     padding: 60px 0;
 }
 
@@ -383,4 +408,3 @@ footer ul li a:hover{
         font-size: 0.85rem;
     }
 }
-	

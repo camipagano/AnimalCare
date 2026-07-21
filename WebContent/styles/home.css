@@ -33,16 +33,22 @@ justify-content: space-between;
 align-items: center;
 }
 
-
-
 header h1 {
-margin: 10 0 15px 0;
+margin: 0;
 color: #ffffff;
 font-family: impact;
-font-size: 300%
+font-weight: normal;
+font-size: 300%;
+text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 
-
+header .sottotitolo {
+    margin: -20px 0 15px 0;
+    color: #ffffff;
+    font-family: impact;
+    font-size: 1.3rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
 
 header .search {
 position: relative;  
@@ -52,16 +58,11 @@ max-width: 500px;
 margin: 0 auto 10px auto;
 }
 
-
-
 header .search form {
 display: flex; /* Mette input e lente perfettamente affiancati */
 width: 100%;
 flex-wrap: wrap;
-
 }
-
-
 
 header .search input {
 flex-grow: 1; /* L'input prende tutto lo spazio disponibile nel form */
@@ -78,33 +79,33 @@ header .search button {
     cursor: pointer;
 }
 
-
 header .header-actions {
 position: absolute;
 top: 20px;
 right: 20px;
 display: flex;
-gap: 5px;
+gap: 8px;
 align-items: center;
 }
-
 
 
 header .header-actions .loginButton,
 header .header-actions .cartButton {
 border: none;
 padding: 5px;
-width: 32px;
-height: 32px;
+width: 44px;
+height: 44px;
 display: flex;
 align-items: center;
 justify-content: center;
 text-decoration: none;
 box-sizing: border-box;
+background-color: rgba(255, 255, 255, 0.85);
+border-radius: 50%;
 } 
 
 header .header-actions .icon {
-    font-size: 1 rem;    /* Uniforma la grandezza delle icone */
+    font-size: 1.4rem;    /* Uniforma la grandezza delle icone */
     line-height: 1;       /* Elimina spazi vuoti sopra o sotto il testo dell'emoji */
     display: inline-block;
 }
@@ -152,7 +153,7 @@ header .header-actions .icon {
 /*-------------------------------------------------*/
 
 nav.navBar{
-	background-color: #C0C0C0;
+	background-color: #e87d09;
 	text-align:center;
 	padding: 0;
 	margin:0;
@@ -171,7 +172,7 @@ nav.navBar ul li {
 
 nav.navBar ul li a {
     display: block;        /* Trasforma il link in un'area cliccabile solida */
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
     padding:15px 20px;
     font-family: verdana;
@@ -179,7 +180,7 @@ nav.navBar ul li a {
 }
 
 nav.navBar ul li a:hover {
-    color: #e87d09;
+    color: #000080;
 }
 
 /* ---------------------------------- */

@@ -40,7 +40,7 @@
 	</section>
 </div>
 <div class="contatti-foto">
-	<img src="<%= request.getContextPath() %>/img/noi.jpg" alt="Contatti AnimalCare">
+	<img src="<%= request.getContextPath() %>/img/noi.jpeg" alt="Contatti AnimalCare">
 </div>
 
 </main>
