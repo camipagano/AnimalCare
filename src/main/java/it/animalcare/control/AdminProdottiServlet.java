@@ -1,10 +1,10 @@
 package it.animalcare.control;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.sql.SQLException;
+import java.util.Collection;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
