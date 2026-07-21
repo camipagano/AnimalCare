@@ -9,7 +9,9 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    background-color: #eae1f7;
+    background-image:url('../img/homeHeader.jpeg');
+    background-position: center;
+	background-size: cover;
     font-family: verdana;
 }
 
