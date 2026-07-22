@@ -41,7 +41,7 @@ public class CercaProdottiServlet extends HttpServlet {
         }
 
         try {
-            ProdottoDao prodottoDao = new ProdottoDaoImpl(); // Adatta alla tua struttura di istanziazione
+            ProdottoDao prodottoDao = new ProdottoDaoImpl();
             Collection<ProdottoModel> prodottiTrovati = prodottoDao.doRetrieveByKeyword(testo.trim());
            
             request.setAttribute("prodottiRicerca", prodottiTrovati);

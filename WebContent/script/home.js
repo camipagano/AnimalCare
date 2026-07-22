@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const searchError = document.createElement("span");
     searchError.className = "errore-js";
-    searchInput.parentNode.insertBefore(searchError, searchInput.nextSibling);
+	
+	searchForm.appendChild(searchError);
 
     searchInput.addEventListener("change", function() {
         validaRicerca();
