@@ -78,19 +78,22 @@
                     for (DettaglioOrdineModel d : dettagli) {
                         ProdottoModel prodotto = prodottiPerId.get(d.getIdProdotto());
                         String nomeProdotto = (prodotto != null) ? prodotto.getNome() : "Prodotto non più disponibile";
-                        float totaleRiga = d.getPrezzoUnitario() * d.getQuantità();
+                        
+                        double prezzoUnitario = d.getPrezzoUnitario();
+                        double totaleRiga = prezzoUnitario * d.getQuantità();
                         subtotaleGenerale += totaleRiga;
             %>
             <tr>
                 <td><%= escapeHtml(nomeProdotto) %></td>
-                <td class="allinea-destra">€ <%= String.format("%.2f", d.getPrezzoUnitario()) %></td>
+                <td class="allinea-destra">€ <%= String.format("%.2f", prezzoUnitario) %></td>
                 <td class="allinea-destra"><%= d.getQuantità() %></td>
                 <td class="allinea-destra">€ <%= String.format("%.2f", totaleRiga) %></td>
             </tr>
             <%
                     }
                 }
-                float costoSpedizione = (spedizione != null) ? spedizione : 0.00f;
+                double costoSpedizione = (spedizione != null) ? spedizione : 0.00f;
+                double totaleComplessivo = subtotaleGenerale + costoSpedizione;
             %>
         </table>
         
@@ -105,7 +108,7 @@
             </div>
             <div class="riga-totale-finale">
                 <span>TOTALE:</span>
-                <span>€ <%= String.format("%.2f", subtotaleGenerale + costoSpedizione) %></span>
+                <span>€ <%= String.format("%.2f", totaleComplessivo) %></span>
             </div>
         </div>
     </div>

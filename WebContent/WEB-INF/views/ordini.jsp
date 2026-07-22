@@ -43,6 +43,7 @@
     <p class="errore"><%= errore %></p>
 <%
     }
+    
     Collection<OrdineModel> ordini = (Collection<OrdineModel>) request.getAttribute("ordini");
     Map<Integer, List<DettaglioOrdineModel>> dettagliPerOrdine = (Map<Integer, List<DettaglioOrdineModel>>) request.getAttribute("dettagliPerOrdine");
     Map<Integer, MetodoPagamentoModel> pagamentoPerOrdine = (Map<Integer, MetodoPagamentoModel>) request.getAttribute("pagamentoPerOrdine");
@@ -56,12 +57,7 @@
         for (OrdineModel ordine : ordini) {
             List<DettaglioOrdineModel> dettagli = dettagliPerOrdine.get(ordine.getCodice());
             MetodoPagamentoModel pagamento = pagamentoPerOrdine.get(ordine.getCodice());
-            float totaleOrdine = 0;
-            if (dettagli != null) {
-                for (DettaglioOrdineModel d : dettagli) {
-                    totaleOrdine += d.getPrezzoUnitario() * d.getQuantità();
-                }
-            }
+            double subtotaleProdotti = 0.0;
 %>
     <div class="ordine-box">
         <div class="ordine-header">
@@ -77,6 +73,11 @@
                 for (DettaglioOrdineModel d : dettagli) {
                     ProdottoModel prodotto = prodottiPerId.get(d.getIdProdotto());
                     String nomeProdotto = (prodotto != null) ? prodotto.getNome() : "Prodotto non disponibile";
+                    
+                    double prezzoUnitario = d.getPrezzoUnitario();
+                    double subtotaleRiga = prezzoUnitario * d.getQuantità();
+                    
+                    subtotaleProdotti += subtotaleRiga;
 %>
             <li>
                 <span>
@@ -89,11 +90,18 @@
                     <% } %>
                     × <%= d.getQuantità() %>
                 </span>
-                <span>€ <%= String.format("%.2f", d.getPrezzoUnitario() * d.getQuantità()) %></span>
+                <span>€ <%= String.format("%.2f", subtotaleRiga) %></span>
             </li>
 <%
                 }
             }
+			
+			double costoSpedizione = 5.99;
+			if (subtotaleProdotti >= 50.0 || subtotaleProdotti == 0) {
+				costoSpedizione = 0.0;
+			}
+			
+			double totaleComplessivo = subtotaleProdotti + costoSpedizione;
 %>
         </ul>
         
@@ -103,7 +111,10 @@
                     Vedi Fattura
                 </a>
             </div>
-        <p class="ordine-totale">Totale: € <%= String.format("%.2f", totaleOrdine) %></p>
+            <div class="totali-box">
+                <p>Spedizione: <%= (costoSpedizione == 0) ? "Gratis" : String.format("€ %.2f", costoSpedizione) %></p>
+        <p class="ordine-totale">Totale: € <%= String.format("%.2f", totaleComplessivo) %></p>
+    </div>
     </div>
     </div>
 <%

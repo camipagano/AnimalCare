@@ -105,7 +105,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
 
     @Override
     public synchronized Collection<ProdottoModel> doRetrieveAll(String order) throws SQLException {
-        String query = "SELECT * FROM " + TABLE_NAME;
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE attivo = true";
 
         if ("Nome".equalsIgnoreCase(order) || "Prezzo".equalsIgnoreCase(order)
                 || "Disponibilita".equalsIgnoreCase(order) || "ID".equalsIgnoreCase(order)) {
@@ -128,7 +128,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
 
     @Override
     public synchronized Collection<ProdottoModel> doRetrieveByCategoria(int idCategoria) throws SQLException {
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE ID_Categoria = ?";
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE ID_Categoria = ? AND attivo = true";
 
         Collection<ProdottoModel> prodotti = new ArrayList<>();
 
@@ -149,7 +149,7 @@ public class ProdottoDaoImpl implements ProdottoDao {
     
     public synchronized Collection<ProdottoModel> doRetrieveByKeyword(String keyword) throws SQLException{
     	Collection<ProdottoModel> prodotti = new ArrayList<>();
-    	String query = "SELECT * FROM prodotto WHERE LOWER(nome) LIKE ? OR LOWER(descrizione) LIKE ?";
+    	String query = "SELECT * FROM prodotto WHERE (LOWER(nome) LIKE ? OR LOWER(descrizione) LIKE ?) AND attivo = true";
     	try (Connection con = ConnectionFactory.getConnection();
     			PreparedStatement stmt = con.prepareStatement(query)) {
     				String searchParam = "%" + keyword.toLowerCase() + "%";
@@ -163,6 +163,28 @@ public class ProdottoDaoImpl implements ProdottoDao {
     	}
     	}
     	return prodotti;
+    }
+    
+    public synchronized Collection<ProdottoModel> doRetrieveAllAdmin(String order) throws SQLException {
+        String query = "SELECT * FROM " + TABLE_NAME;
+
+        if ("Nome".equalsIgnoreCase(order) || "Prezzo".equalsIgnoreCase(order)
+                || "Disponibilita".equalsIgnoreCase(order) || "ID".equalsIgnoreCase(order)) {
+            query += " ORDER BY " + order;
+        }
+
+        Collection<ProdottoModel> prodotti = new ArrayList<>();
+
+        try (Connection connection = ConnectionFactory.getConnection();
+             PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                prodotti.add(mappaProdotto(rs));
+            }
+        }
+
+        return prodotti;
     }
     	
 

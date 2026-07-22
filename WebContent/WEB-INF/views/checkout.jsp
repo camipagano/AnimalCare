@@ -43,6 +43,13 @@
     Float spedizione = (Float) request.getAttribute("spedizione");
     Float totaleComplessivo = (Float) request.getAttribute("totaleComplessivo");
     UtenteModel utenteLoggato = (UtenteModel) request.getAttribute("utenteLoggato");
+    
+    Double scontoAttivo = (Double) application.getAttribute("scontoGenerale");
+    if (scontoAttivo == null) {
+        scontoAttivo = 0.0;
+    }
+    boolean haSconto = scontoAttivo > 0;
+    double subtotaleProdottiCalcolato = 0.0;
 %>
 
 <div class="checkout-container">
@@ -53,30 +60,35 @@
 <%
         if (righeCarrello != null) {
             for (CarrelloModel riga : righeCarrello) {
+            	float prezzoOriginale = riga.getProdotto().getPrezzo();
+                double prezzoUnitario = haSconto ? (prezzoOriginale * (1 - (scontoAttivo / 100.0))) : prezzoOriginale;
+                double subtotaleRiga = prezzoUnitario * riga.getQuantita();
+                
+                subtotaleProdottiCalcolato += subtotaleRiga;
 %>
             <li>
                 <span class="nome-prod"><%= escapeHtml(riga.getProdotto().getNome()) %> × <%= riga.getQuantita() %></span>
-                <span class="subtotale">€ <%= String.format("%.2f", riga.getSubtotale()) %></span>
+                <span class="subtotale">€ <%= String.format("%.2f", subtotaleRiga) %></span>
             </li>
 <%
             }
         }
+		float costoSpedizione = (spedizione != null) ? spedizione : 0.0f;
+		double totaleComplessivoCalcolato = subtotaleProdottiCalcolato + costoSpedizione;
 %>
         </ul>
         <div class="dettaglio-costi">
-            <p>Subtotale prodotti: <span>€ <%= (totale != null) ? String.format("%.2f", totale) : "0.00" %></span></p>
+            <p>Subtotale prodotti: <span>€ <%= (totale != null) ? String.format("%.2f", subtotaleProdottiCalcolato) : "0.00" %></span></p>
             <p>Spedizione: <span>
-                <% if (spedizione != null && spedizione == 0) { %>
+                <% if (costoSpedizione==0) { %>
                     <strong>Gratis</strong>
-                <% } else if (spedizione != null) { %>
-                    € <%= String.format("%.2f", spedizione) %>
-                <% } else { %>
-                    € 0.00
+                <% } else  { %>
+                    € <%= String.format("%.2f", costoSpedizione) %>
                 <% } %>
             </span></p>
             <hr>
             </div>
-        <p class="totale-ordine">Totale: € <%= (totaleComplessivo != null) ? String.format("%.2f", totaleComplessivo) : "0.00" %></p>
+        <p class="totale-ordine">Totale: € <%= String.format("%.2f", totaleComplessivoCalcolato)%></p>
     </section>
 
     <section class="form-checkout">
@@ -90,13 +102,11 @@
     <label for="metodoPagamento">Metodo di pagamento</label>
     <select id="metodoPagamento" name="metodoPagamento" required>
         <option value="">-- Seleziona --</option>
-        <!-- Modifichiamo i valori per il DB (Punto 3), ma teniamo i testi leggibili -->
         <option value="carta">Carta di credito</option>
         <option value="paypal">PayPal</option>
         <option value="contrassegno">Contrassegno</option>
     </select>
     
-    <!-- CONTENITORE FONDAMENTALE PER IL JAVASCRIPT -->
     <div id="sezione-carta">
         <label for="intestatarioCarta">Titolare della carta</label>
         <input type="text" id="intestatarioCarta" name="intestatarioCarta" placeholder="Mario Rossi">

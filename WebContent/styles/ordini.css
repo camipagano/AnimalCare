@@ -194,6 +194,17 @@ main > p a:hover {
     background-color: #000080;
 }
 
+.totali-box {
+    text-align: right;
+}
+
+.totali-box p {
+    font-family: verdana;
+    font-size: 0.85rem;
+    color: #646464;
+    margin: 0 0 4px 0;
+}
+
 @media (max-width: 576px) {
     .ordine-header {
         flex-direction: column;
@@ -210,6 +221,10 @@ main > p a:hover {
     .ordine-totale {
         text-align: right;
         margin-bottom: 8px !important;
+    }
+    
+    .totali-box {
+        text-align: right;
     }
     
     .btn-vedi-fattura {

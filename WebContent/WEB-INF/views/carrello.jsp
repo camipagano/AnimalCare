@@ -35,6 +35,13 @@
 
     List<CarrelloModel> righeCarrello = (List<CarrelloModel>) request.getAttribute("righeCarrello");
     Float totale = (Float) request.getAttribute("totale");
+    
+    Double scontoAttivo = (Double) application.getAttribute("scontoGenerale");
+    if (scontoAttivo == null) {
+        scontoAttivo = 0.0;
+    }
+    boolean haSconto = scontoAttivo > 0;
+    double totaleCalcolato = 0.0;
 
     if (righeCarrello == null || righeCarrello.isEmpty()) {
 %>
@@ -56,13 +63,18 @@
         <tbody>
 <%
         for (CarrelloModel riga : righeCarrello) {
+        	float prezzoOriginale = riga.getProdotto().getPrezzo();
+            double prezzoUnitario = haSconto ? (prezzoOriginale * (1 - (scontoAttivo / 100.0))) : prezzoOriginale;
+            
+            double subtotaleRiga = prezzoUnitario * riga.getQuantita();
+            totaleCalcolato += subtotaleRiga;
 %>
             <tr>
                 <td>
                     <img src="<%= request.getContextPath() %>/<%= riga.getProdotto().getImmagine() %>" alt="<%= riga.getProdotto().getNome() %>" width="60">
                     <%= riga.getProdotto().getNome() %>
                 </td>
-                <td>€ <%= String.format("%.2f", riga.getProdotto().getPrezzo()) %></td>
+                <td>€ <%= String.format("%.2f", prezzoUnitario) %></td>
                 <td>
                     <div class="quantita-controlli">
                         <form action="<%= request.getContextPath() %>/CarrelloServlet" method="POST" class="form-inline">
@@ -78,7 +90,7 @@
                         </form>
                     </div>
                 </td>
-                <td>€ <%= String.format("%.2f", riga.getSubtotale()) %></td>
+                <td>€ <%= String.format("%.2f", subtotaleRiga) %></td>
                 <td>
                     <form action="<%= request.getContextPath() %>/CarrelloServlet" method="POST">
                         <input type="hidden" name="azione" value="rimuovi">
@@ -93,7 +105,7 @@
         </tbody>
     </table>
 
-    <h2>Totale: € <%= String.format("%.2f", totale) %></h2>
+    <h2>Totale: € <%= String.format("%.2f", totaleCalcolato) %></h2>
 
     <a href="<%= request.getContextPath() %>/CheckoutServlet" class="btn-checkout">Vai al checkout</a>
 

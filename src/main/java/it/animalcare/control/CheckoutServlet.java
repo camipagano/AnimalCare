@@ -48,12 +48,19 @@ public class CheckoutServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/LoginServlet");
 			return;
 		}
+		
+		
 
 		@SuppressWarnings("unchecked")
 		Map<Integer, ItemCarrelloModel> carrello = (Map<Integer, ItemCarrelloModel>) session.getAttribute("carrello");
 		if (carrello == null || carrello.isEmpty()) {
 			response.sendRedirect(request.getContextPath() + "/CarrelloServlet");
 			return;
+		}
+		
+		Double scontoAttivo = (Double) getServletContext().getAttribute("scontoGenerale");
+		if (scontoAttivo == null) {
+			scontoAttivo = 0.0;
 		}
 
 		ProdottoDao prodottoDao = new ProdottoDaoImpl();
@@ -64,6 +71,10 @@ public class CheckoutServlet extends HttpServlet {
 			for (ItemCarrelloModel item : carrello.values()) {
 				ProdottoModel prodotto = prodottoDao.doRetrieveByKey(item.getIdProdotto(), item.getIdCategoria());
 				if (prodotto != null) {
+					float prezzoEffettivo = prodotto.getPrezzo();
+					if (scontoAttivo > 0) {
+						prezzoEffettivo = (float) (prezzoEffettivo * (1.0 - (scontoAttivo / 100.0)));
+					}
 					CarrelloModel riga = new CarrelloModel(prodotto, item.getQuantita());
 					righeCarrello.add(riga);
 					totale += riga.getSubtotale();
@@ -110,6 +121,11 @@ public class CheckoutServlet extends HttpServlet {
 			doGet(request, response);
 			return;
 		}
+		
+		Double scontoAttivo = (Double) getServletContext().getAttribute("scontoGenerale");
+		if (scontoAttivo == null) {
+			scontoAttivo = 0.0;
+		}
 
 		ProdottoDao prodottoDao = new ProdottoDaoImpl();
 		OrdineDao ordineDao = new OrdineDaoImpl();
@@ -134,10 +150,18 @@ public class CheckoutServlet extends HttpServlet {
 			for (ItemCarrelloModel item : carrello.values()) {
 				ProdottoModel prodotto = prodottoDao.doRetrieveByKey(item.getIdProdotto(), item.getIdCategoria());
 				if (prodotto != null) {
+					float prezzoOriginale = prodotto.getPrezzo();
+					float prezzoScontato = prezzoOriginale;
+					if (scontoAttivo > 0) {
+						prezzoScontato = (float) (prezzoOriginale * (1.0 - (scontoAttivo / 100.0)));
+					}
 					DettaglioOrdineModel dettaglio = new DettaglioOrdineModel();
 					dettaglio.setCodiceOrdine(codiceOrdine);
 					dettaglio.setIdProdotto(item.getIdProdotto());
 					dettaglio.setPrezzoUnitario(prodotto.getPrezzo());
+					
+					dettaglio.setPrezzoUnitario(prezzoScontato);
+					
 					dettaglio.setQuantità(item.getQuantita());
 					dettaglioOrdineDao.doSave(dettaglio);
 

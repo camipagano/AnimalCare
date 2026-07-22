@@ -147,7 +147,7 @@ public class AdminProdottiServlet extends HttpServlet {
 		CategoriaDao categoriaDao = new CategoriaDaoImpl();
 
 		try {
-			Collection<ProdottoModel> prodotti = prodottoDao.doRetrieveAll("Nome");
+			Collection<ProdottoModel> prodotti = prodottoDao.doRetrieveAllAdmin("Nome");
 			request.setAttribute("prodotti", prodotti);
 
 			Collection<CategoriaModel> categorie = categoriaDao.doRetrieveAll("Nome");

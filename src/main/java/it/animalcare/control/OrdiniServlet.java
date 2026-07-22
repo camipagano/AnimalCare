@@ -68,7 +68,7 @@ public class OrdiniServlet extends HttpServlet {
 				}
 			}
 
-			Collection<ProdottoModel> tuttiProdotti = prodottoDao.doRetrieveAll(null);
+			Collection<ProdottoModel> tuttiProdotti = prodottoDao.doRetrieveAllAdmin(null);
 			Map<Integer, ProdottoModel> prodottiPerId = new HashMap<>();
 			for (ProdottoModel prodotto : tuttiProdotti) {
 				prodottiPerId.put(prodotto.getId(), prodotto);
