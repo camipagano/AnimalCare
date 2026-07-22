@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/styles/admin.css">
 <script src="<%= request.getContextPath() %>/script/adminor-ajax.js" defer></script>
 </head>
-<body>
+<body class="ordini-page">
 
 <header>
 <a href="<%= request.getContextPath() %>/AdminServlet" class="logo">AnimalCare - Admin</a>

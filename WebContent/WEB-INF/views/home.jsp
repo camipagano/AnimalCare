@@ -74,11 +74,21 @@
 	<button class="freccia-sinistra" onclick="moveSlide(-1)"> &#10094; </button>
 	<div class="catalogo-container">
 		<div class= "catalogo-layout">
+	
 <%
+Double scontoAttivo = (Double) application.getAttribute("scontoGenerale");
+if (scontoAttivo == null) {
+    scontoAttivo = 0.0;
+}
+boolean haSconto = scontoAttivo > 0;
+
 Collection<ProdottoModel> prodotti= (Collection<ProdottoModel>) request.getAttribute ("prodotti");
 if(prodotti!=null && !prodotti.isEmpty()){
 	int count=0;
 	for(ProdottoModel prod: prodotti){
+		float prezzoOriginale = prod.getPrezzo();
+        double prezzoFinale = haSconto ? (prezzoOriginale * (1 - (scontoAttivo / 100.0))) : prezzoOriginale;	
+	
 	//apriamo una nuova pagina a griglia
 	if(count%8==0){ %>
 		<div class= "griglia">
@@ -87,7 +97,13 @@ if(prodotti!=null && !prodotti.isEmpty()){
 	<img alt="<%= prod.getNome() %>" src="<%= request.getContextPath() %>/<%=prod.getImmagine()%>">
 		<div class= "prod-info">
 			<h3> <a href="<%= request.getContextPath() %>/ProdottoServlet?id=<%= prod.getId() %>&categoria=<%= prod.getIdCategoria() %>"> <%=prod.getNome() %></a></h3>
-			<p class= "price">€<%= String.format("%.2f", prod.getPrezzo()) %></p>
+			
+			<p class= "price"><% if (haSconto) { %>
+                        <span class="prezzo-vecchio">
+                            € <%= String.format("%.2f", prezzoOriginale) %>
+                        </span>
+                    <% } %>
+                    <strong class="<%= haSconto ? "prezzo-scontato" : "" %>">€ <%= String.format("%.2f", prezzoFinale) %></strong></p>
 		</div>
 	</div>
 	<%

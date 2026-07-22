@@ -18,7 +18,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Risultati Ricerca</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/styles/ricerca.css?v=2">
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/styles/ricerca.css?v=1">
 </head>
 <body>
 
@@ -73,6 +73,11 @@
 	} else {
 	    titoloDaMostrare = "Prodotti";
 	}
+	Double scontoAttivo = (Double) application.getAttribute("scontoGenerale");
+	if (scontoAttivo == null) {
+	    scontoAttivo = 0.0;
+	}
+	boolean haSconto = scontoAttivo > 0;
 	%>
 
 	<h2><%= titoloDaMostrare %> </h2>
@@ -81,7 +86,10 @@
 
 	<%
 	if(prodottiTrovati!=null && !prodottiTrovati.isEmpty()){
-		for(ProdottoModel prod : prodottiTrovati){ %>
+		for(ProdottoModel prod : prodottiTrovati){ 
+			float prezzoOriginale = prod.getPrezzo();
+			double prezzoFinale = haSconto ? (prezzoOriginale * (1 - (scontoAttivo / 100.0))) : prezzoOriginale;
+		%>
 
 			<div class= "riquadro-prodotto">
 				<div class= "prod-img">
@@ -89,7 +97,14 @@
 				</div>
 				<div class="prod-info">
 				<h3><a href="<%= request.getContextPath() %>/ProdottoServlet?id=<%= prod.getId() %>&categoria=<%= prod.getIdCategoria() %>"><%= escapeHtml(prod.getNome()) %></a></h3>
-				<p class="price">€<%= String.format("%.2f", prod.getPrezzo()) %></p>
+				<p class="price"><% if (haSconto) { %>
+							<span class="prezzo-vecchio" >
+								€ <%= String.format("%.2f", prezzoOriginale) %>
+							</span>
+						<% } %>
+						<strong class="<%= haSconto ? "prezzo-scontato" : "" %>" >
+							€ <%= String.format("%.2f", prezzoFinale) %>
+						</strong></p>
 				</div>
 			</div>
 

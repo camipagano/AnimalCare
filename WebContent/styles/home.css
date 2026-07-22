@@ -274,9 +274,25 @@ footer ul li a:hover{
 
 .prod-info .price {
     font-family: verdana, sans-serif;
-    font-weight: bold;
-    color: #000000; 
+    font-size: 0.95rem;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.prod-info .price .prezzo-vecchio {
+    text-decoration: line-through;
+    color: #8c8c8c;
+    font-size: 0.85rem;
+    font-weight: normal;
+}
+
+.prod-info .price .prezzo-scontato {
+    color: #e87d09; 
+    font-size: 1.05rem;
+    font-weight: bold;
 }
 
 .freccia-sinistra, .freccia-destra {

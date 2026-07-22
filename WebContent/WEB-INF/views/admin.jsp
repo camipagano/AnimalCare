@@ -19,7 +19,7 @@
 <%
     UtenteModel utenteLoggato = (UtenteModel) session.getAttribute("utenteLoggato");
 %>
-<h1>Benvenuto, <%= utenteLoggato.getNome() %></h1>
+<h1 class="titolo-admin">Benvenuto, <%= utenteLoggato.getNome() %></h1>
 
 <div class="admin-menu">
     <a href="<%= request.getContextPath() %>/AdminProdottiServlet" class="admin-card">
@@ -30,6 +30,11 @@
     <a href="<%= request.getContextPath() %>/AdminOrdiniServlet" class="admin-card">
         <h2>Gestione ordini</h2>
         <p>Visualizza tutti gli ordini, filtrabili per data e cliente</p>
+    </a>
+    
+    <a href="<%= request.getContextPath() %>/AdminScontiServlet" class="admin-card">
+        <h2>Gestione sconti</h2>
+        <p>Applica o rimuovi sconti su tutti i prodotti del catalogo</p>
     </a>
 </div>
 

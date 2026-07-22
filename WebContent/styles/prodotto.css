@@ -101,10 +101,30 @@ main {
     font-weight: bold;
 }
 .prod-dettagli .price {
+   font-size: 1.6rem;
+   margin: 0 0 20px 0;
+   display: flex;
+   align-items: center;
+   gap: 12px;
+}
+
+.prod-dettagli .price strong {
+    color: #e87d09;
     font-size: 1.6rem;
     font-weight: bold;
-    color: #e87d09;
-    margin: 0 0 20px 0;
+}
+
+.prod-dettagli .price .prezzo-vecchio {
+    text-decoration: line-through;
+    color: #8c8c8c;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.prod-dettagli .price .prezzo-scontato {
+    color: #e87d09; 
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
 /* Form aggiungi al carrello */

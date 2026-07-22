@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Dettaglio Prodotto</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/styles/prodotto.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/styles/prodotto.css?v=1">
 <script src="<%= request.getContextPath() %>/script/prodotto.js" defer></script>
 </head>
 <body>
@@ -32,6 +32,14 @@
     ProdottoModel prodotto = (ProdottoModel) request.getAttribute("prodotto");
 
     if (prodotto != null) {
+    	Double scontoAttivo = (Double) application.getAttribute("scontoGenerale");
+        if (scontoAttivo == null) {
+            scontoAttivo = 0.0;
+        }
+        boolean haSconto = scontoAttivo > 0;
+
+        float prezzoOriginale = prodotto.getPrezzo();
+        double prezzoFinale = haSconto ? (prezzoOriginale * (1 - (scontoAttivo / 100.0))) : prezzoOriginale;
 %>
 
 <div class="dettaglio-prodotto">
@@ -48,7 +56,15 @@
                 <span class="non-disponibile">Non disponibile</span>
             <% } %>
         </p>
-        <p class="price">€ <%= String.format("%.2f", prodotto.getPrezzo()) %></p>
+        <p class="price"><% if (haSconto) { %>
+                <span class="prezzo-vecchio">
+                    € <%= String.format("%.2f", prezzoOriginale) %>
+                </span>
+            <% } %>
+            <strong class="<%= haSconto ? "prezzo-scontato" : "" %>">
+                € <%= String.format("%.2f", prezzoFinale) %>
+            </strong>
+            </p>
 
         <% if (prodotto.getDisponibilità() > 0) { %>
         <form action="<%= request.getContextPath() %>/CarrelloServlet" method="POST" novalidate>

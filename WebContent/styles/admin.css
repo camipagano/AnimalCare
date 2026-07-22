@@ -51,6 +51,10 @@ main {
     box-sizing: border-box;
 }
 
+main h1.titolo-admin{
+	color: #ffffff;
+}
+
 main h1 {
     font-family: impact;
     color: #646464;
@@ -92,6 +96,11 @@ main h1 {
     font-size: 0.9rem;
     margin: 0;
     line-height: 1.4;
+}
+
+body.prodotti-page{
+	background-image:none;
+	background-color: #eae1f7;
 }
 
 .btn-nuovo {
@@ -228,6 +237,11 @@ tr.riga-disattivata {
     padding: 10px 15px;
     font-family: verdana;
     margin-bottom: 20px;
+}
+
+body.ordini-page{
+	background-image:none;
+	background-color: #eae1f7;
 }
 
 .form-filtri {
@@ -479,4 +493,80 @@ tr.riga-disattivata {
 
 .form-prodotto button:hover {
     background-color: #c96a06;
+}
+
+body.page-sconti {
+    background-image: none;
+    background-color: #eae1f7;
+}
+
+main.sconto-box {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    display:block;
+}
+
+
+main.form-sconto {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+main.label-sconto {
+    font-family: verdana;
+    font-weight: bold;
+    color: #000080;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+main .sconto-box input.percentualeSconto[type="number"] {
+    width: 100px;
+    padding: 8px 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-family: verdana;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.percentualeSconto:focus {
+    outline: none;
+    border-color: #e87d09;
+}
+
+main .sconto-box button.btn-sconto {
+    color: #ffffff;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: verdana;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.btn-applica {
+    background-color: #e87d09;
+}
+
+.btn-applica:hover {
+    background-color: #c96a06;
+}
+
+.btn-rimuovi {
+    background-color: #c0392b;
+}
+
+.btn-rimuovi:hover {
+    background-color: #a5301f;
 }

@@ -237,12 +237,31 @@ header .header-actions .icon {
     color: #e87d09;
 }
 
-.price {
+.prod-info .price {
     margin: 0;
-    font-family:verdana;
+    font-family: verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.prod-info .price .prezzo-vecchio {
+    text-decoration: line-through;
+    color: #8c8c8c;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.prod-info .price strong {
+    color: #3d3d3d;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.prod-info .price strong.prezzo-scontato {
+    color: #e87d09;
     font-size: 1.3rem;
     font-weight: bold;
-    color: #000000;
 }
 
 .no-prodotti {
@@ -385,8 +404,15 @@ footer ul li a:hover{
         margin-bottom: 5px;
     }
 
-    .price {
-        font-size: 1.15rem;
+    .prod-info .price {
+        font-size: 1rem;
+        gap: 6px;
+    }
+    .prod-info .price .prezzo-vecchio {
+        font-size: 0.85rem;
+    }
+    .prod-info .price strong.prezzo-scontato {
+        font-size: 1.1rem;
     }
 
    

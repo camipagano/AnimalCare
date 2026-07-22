@@ -1,17 +1,17 @@
+<%@page import="java.util.Map"%>
 <%@page import="it.animalcare.model.ProdottoModel"%>
 <%@page import="java.util.Collection"%>
-<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Gestione Prodotti - Admin</title>
+<title>Gestione sconti - Admin</title>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/styles/admin.css">
-<script src="<%= request.getContextPath() %>/script/adminpr-ajax.js" defer></script>
+<script src="<%= request.getContextPath() %>/script/adminsconti-ajax.js?v=<%= System.currentTimeMillis()%>" defer></script>
 </head>
-<body class="prodotti-page">
+<body class="page-sconti">
 
 <header>
 <a href="<%= request.getContextPath() %>/AdminServlet" class="logo">AnimalCare - Admin</a>
@@ -19,18 +19,28 @@
 </header>
 
 <main>
-<h1>Gestione Catalogo</h1>
+<h1>Gestione Sconti</h1>
 
 <%
-    String errore = (String) request.getAttribute("errore");
-    if (errore != null) {
-%>
-    <p class="errore"><%= errore %></p>
-<%
-    }
+    Double scontoAttivo = (Double) application.getAttribute("scontoGenerale");
+    if (scontoAttivo == null) scontoAttivo = 0.0;
+    boolean haSconto = scontoAttivo > 0;
 %>
 
-<a href="<%= request.getContextPath() %>/AdminProdottiServlet?azione=nuovo" class="btn-nuovo">+ Nuovo prodotto</a>
+<div class="sconto-box">
+    <form class="form-sconto" action="<%= request.getContextPath() %>/AdminScontiServlet" method="POST">
+        <label class="label-sconto" for="percentualeSconto">
+            <%= haSconto ? "Sconto in atto (" + String.format("%.0f", scontoAttivo) + "%):" : "Impostare sconto (%):" %>
+        </label>
+        
+        <input type="number" class="percentualeSconto" name="percentualeSconto" min="0" max="100" step="1"  value="<%= haSconto ? String.format("%.0f", scontoAttivo) : "" %>" 
+               placeholder="es. 20">
+        
+        <button type="submit" class="btn-sconto <%= haSconto ? "btn-rimuovi" : "btn-applica" %>">
+            <%= haSconto ? "Rimuovi" : "Applica" %>
+        </button>
+    </form>
+</div>
 
 <%
     Collection<ProdottoModel> prodotti = (Collection<ProdottoModel>) request.getAttribute("prodotti");
@@ -42,7 +52,7 @@
 <%
     } else {
 %>
-    <table>
+    <table id="tabella-prodotti">
         <thead>
             <tr>
                 <th>Immagine</th>
@@ -51,7 +61,6 @@
                 <th>Prezzo</th>
                 <th>Disponibilità</th>
                 <th>Stato</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -60,27 +69,21 @@
             String rigaClasse = prodotto.isAttivo() ? "" : "riga-disattivata";
             String nomeCategoria = (nomiCategorie != null) ? nomiCategorie.get(prodotto.getIdCategoria()) : null;
             if (nomeCategoria == null) nomeCategoria = "N/D";
+            
+            float prezzoOriginale = prodotto.getPrezzo();
+            double prezzoCalcolato = haSconto ? (prezzoOriginale * (1 - (scontoAttivo / 100.0))) : prezzoOriginale;
 %>
-            <tr class="<%= rigaClasse %>" data-id="<%= prodotto.getId() %>" data-categoria="<%= prodotto.getIdCategoria() %>">
+            <tr class="<%= rigaClasse %>" data-prezzo-base="<%= prezzoOriginale %>">
                 <td><img src="<%= request.getContextPath() %>/<%= prodotto.getImmagine() %>" alt="<%= prodotto.getNome() %>" width="50"></td>
                 <td><%= prodotto.getNome() %></td>
                 <td><%= nomeCategoria %></td>
-                <td>€ <%= String.format("%.2f", prodotto.getPrezzo()) %></td>
+                <td class="cella-prezzo">€ <%= String.format("%.2f", prezzoCalcolato) %></td>
                 <td><%= prodotto.getDisponibilità() %></td>
-                <td class="cella-stato">
+                <td>
                     <% if (prodotto.isAttivo()) { %>
                         <span class="stato attivo">Attivo</span>
                     <% } else { %>
                         <span class="stato disattivo">Disattivato</span>
-                    <% } %>
-                </td>
-                <td class="azioni">
-                    <a href="<%= request.getContextPath() %>/AdminProdottiServlet?azione=modifica&id=<%= prodotto.getId() %>&categoria=<%= prodotto.getIdCategoria() %>" class="btn-modifica">Modifica</a>
-
-                    <% if (prodotto.isAttivo()) { %>
-                        <button type="button" class="btn-elimina btn-toggle-stato" data-azione="elimina">Elimina</button>
-                    <% } else { %>
-                        <button type="button" class="btn-riattiva btn-toggle-stato" data-azione="riattiva">Riattiva</button>
                     <% } %>
                 </td>
             </tr>
@@ -93,8 +96,7 @@
     }
 %>
 
-<p><a href="<%= request.getContextPath() %>/AdminServlet">Torna alla dashboard</a></p>
-
+<p style="margin-top: 25px;"><a href="<%= request.getContextPath() %>/AdminServlet">Torna alla dashboard</a></p>
 </main>
 
 </body>
