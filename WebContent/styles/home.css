@@ -59,11 +59,10 @@ header .search form {
 display: flex; /* Mette input e lente perfettamente affiancati */
 width: 100%;
 position: relative;
-flex-wrap: wrap;
 }
 
 header .search input {
-flex-grow: 1 1 auto; 
+flex-grow: 1; 
 width: 1px;
 padding: 10px;
 font-size: 1rem;
@@ -72,11 +71,11 @@ box-sizing: border-box;
 }
 
 header .search button {
-	flex: 0 0 auto;
-    padding: 10px 15px;
+	padding: 10px 15px;
     background-color: #C0C0C0; 
     border: none;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 header .header-actions {
@@ -353,12 +352,13 @@ footer ul li a:hover{
 
 .errore-js {
     display: none;
-    flex-basis: 100%;
+    flex-basis:100%;
     text-align: left;
     color: #ffd6d6;
     font-size: 0.8rem;
     margin-top: 5px;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    pointer-events: none;
 }
 
 .errore-js.visibile {

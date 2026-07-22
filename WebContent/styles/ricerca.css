@@ -15,8 +15,6 @@ main {
     flex: 1; /* Fa espandere il centro spingendo il footer blu sul fondo */
 }
 
-/*-------------------------------*/
-
 header {
     background-color: #e87d09; 
     padding: 15px 40px;
@@ -42,11 +40,13 @@ header .search {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 0;
 }
 
 header .search form {
     display: flex;
     width: 100%;
+    position: relative;
 }
 
 header .search input {
@@ -54,6 +54,7 @@ header .search input {
     padding: 10px;
 	font-size: 1rem;
 	border: 1px solid #cccccc;
+	min-width: 0;
 }
 
 header .search button {
@@ -152,8 +153,6 @@ header .header-actions .icon {
 .utente-dropdown:hover .dropdown-menu {
     display: block;
 }
-
-/*-----------------------------------*/
 
 .risultati.ricerca {
     padding: 50px 20px;
@@ -256,8 +255,6 @@ header .header-actions .icon {
     padding: 60px 0;
 }
 
-/*------------------------------------*/
-
 footer{
 	background-color: #000080;
 	padding: 20px 0;
@@ -295,7 +292,8 @@ footer ul li a:hover{
 	
     header .search {
         margin: 0 10px;
-        max-width: 350px; 
+        max-width: 100%; 
+        flex: 1 1 auto;
     }
 
     .risultati.ricerca {
@@ -321,49 +319,45 @@ footer ul li a:hover{
 
 @media (max-width: 576px) {
  	 header {
-        flex-wrap: wrap;
-        gap: 15px;
-        padding: 20px 15px;
-        text-align: center;
+        flex-wrap: nowrap;
+        gap: 8px;
+        padding: 10px;
   	}
 
     header h1 {
         font-size: 1.3rem; 
-        flex: 1 1 auto;
-        text-align: left;
-        order: 1;
+        flex: 0 1 auto;
     }
 
    header .search {
-        flex: 1 0 100%; 
-        margin: 8px 0 2px 0;
-        order: 3;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        max-width: 100%;
+        flex: 1 1 auto; 
+        margin: 0;
+        min-width:0;
+        max-width: 100%
     }
 	
 	header .header-actions {
-        flex: 1 1 auto;
-        justify-content: flex-end;
-        order: 2;
-        gap: 8px;
+        flex: 0 0 auto;
+        gap: 5px;
     }
 	
 	header .header-actions .loginButton,
     header .header-actions .cartButton {
         width: 28px;
         height: 28px;
+        flex-shrink: 0;
     }
     
     header .search input {
         padding: 8px;
         font-size: 0.9rem;
+        min-width: 120px;
+        width:100%;
     }
     
     header .search button {
         padding: 8px 12px;
+        flex-shrink:0;
     }
 	
     .griglia-ricerca {

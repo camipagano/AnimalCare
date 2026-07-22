@@ -22,14 +22,14 @@ document.addEventListener("DOMContentLoaded", function() {
     if (!searchForm) return;
 
     const searchInput = searchForm.querySelector("input[name='cercaProdotti']");
-    const searchRegex = /^.{2,100}$/;
+    const searchRegex = /^.{1,100}$/;
 
     const searchError = document.createElement("span");
     searchError.className = "errore-js";
 	
 	searchForm.appendChild(searchError);
 
-    searchInput.addEventListener("change", function() {
+    searchInput.addEventListener("input", function() {
         validaRicerca();
     });
 
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function validaRicerca() {
         if (!searchRegex.test(searchInput.value.trim())) {
-            searchError.textContent = "Inserisci almeno 2 caratteri per la ricerca.";
+            searchError.textContent = "Inserisci almeno 1 carattere per la ricerca.";
             searchError.classList.add("visibile");
             return false;
         } else {
