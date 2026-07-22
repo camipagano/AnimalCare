@@ -15,8 +15,6 @@ main {
     flex: 1; /* Fa espandere il centro spingendo il footer blu sul fondo */
 }
 
-/*-------------------------*/
-
 header{
 position: relative;
 background-image: url('../img/homeHeader.jpeg');
@@ -26,7 +24,6 @@ min-height: 280px;
 padding: 40px 20px;
 text-align: center;
 box-sizing: border-box;
-/* Usiamo Flexbox per distribuire gli elementi in verticale in modo ordinato */
 display: flex;
 flex-direction: column;
 justify-content: space-between;
@@ -61,18 +58,21 @@ margin: 0 auto 10px auto;
 header .search form {
 display: flex; /* Mette input e lente perfettamente affiancati */
 width: 100%;
+position: relative;
 flex-wrap: wrap;
 }
 
 header .search input {
-flex-grow: 1; /* L'input prende tutto lo spazio disponibile nel form */
+flex-grow: 1 1 auto; 
+width: 1px;
 padding: 10px;
 font-size: 1rem;
 border: 1px solid #cccccc;
-
+box-sizing: border-box;
 }
 
 header .search button {
+	flex: 0 0 auto;
     padding: 10px 15px;
     background-color: #C0C0C0; 
     border: none;
@@ -105,7 +105,7 @@ border-radius: 50%;
 } 
 
 header .header-actions .icon {
-    font-size: 1.4rem;    /* Uniforma la grandezza delle icone */
+    font-size: 1.4rem;    
     line-height: 1;       /* Elimina spazi vuoti sopra o sotto il testo dell'emoji */
     display: inline-block;
 }
@@ -150,8 +150,6 @@ header .header-actions .icon {
     display: block;
 }
 
-/*-------------------------------------------------*/
-
 nav.navBar{
 	background-color: #C0C0C0;
 	text-align:center;
@@ -167,7 +165,7 @@ nav.navBar ul {
 
 nav.navBar ul li {
     display: inline-block;
-    margin: 0 10px;        /* Spazio orizzontale tra un pulsante e l'altro */
+    margin: 0 10px;        
 }
 
 nav.navBar ul li a {
@@ -182,8 +180,6 @@ nav.navBar ul li a {
 nav.navBar ul li a:hover {
     color: #e87d09;
 }
-
-/* ---------------------------------- */
 
 footer{
 	background-color: #000080;
@@ -208,7 +204,6 @@ footer ul li a:hover{
 	color: #e87d09;
 }
 
-/* --------------------- */
 
 .catalogo {
     position: relative;
@@ -231,8 +226,8 @@ footer ul li a:hover{
 
 .griglia {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);  /* 4 colonne */
-    grid-template-rows: repeat(2, auto);     /* 2 righe */
+    grid-template-columns: repeat(4, 1fr);  
+    grid-template-rows: repeat(2, auto);     
     gap: 20px;
     min-width: 100%;                       
     box-sizing: border-box;
@@ -310,8 +305,6 @@ footer ul li a:hover{
     color: #000000;
 }
 
-/*-----------------------------*/
-
 .info-section {
     display: flex;
     justify-content: center;
@@ -325,7 +318,7 @@ footer ul li a:hover{
     display: block;
     width: 100%;
     max-width: 450px;
-    text-decoration: none; /
+    text-decoration: none; 
 }
 
 .info-spedizione,
@@ -372,7 +365,6 @@ footer ul li a:hover{
     display: block;
 }
 
-/* Sotto i 992px di larghezza */
 @media (max-width: 992px) {
     .griglia {
         grid-template-columns: repeat(2, 1fr);  /* Diventa una griglia 2x2  */
@@ -390,7 +382,6 @@ footer ul li a:hover{
     }
 }
 
-/* Sotto i 576px di larghezza */
 @media (max-width: 576px) {
     .griglia {
         grid-template-columns: 1fr;              /* 1 sola colonna  */
