@@ -136,7 +136,6 @@ main p a:hover {
 .errore {
     background-color: #fdeaea;
     color: #c0392b;
-    border: 1px solid #c0392b;
     border-radius: 4px;
     padding: 8px 12px;
     box-sizing: border-box;
@@ -145,7 +144,6 @@ main p a:hover {
     text-align: center;
     margin-bottom: 12px;
 }
-
 .errore-js {
     display: none;
     color: #c0392b;

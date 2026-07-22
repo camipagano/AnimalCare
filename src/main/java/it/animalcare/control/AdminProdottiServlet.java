@@ -60,80 +60,86 @@ public class AdminProdottiServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (!isAdmin(request, response)) {
-			return;
-		}
+	    if (!isAdmin(request, response)) {
+	        return;
+	    }
 
-		String azione = request.getParameter("azione");
-		boolean isAjax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+	    String azione = request.getParameter("azione");
+	    boolean isAjax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
 
-		ProdottoDao prodottoDao = new ProdottoDaoImpl();
+	    ProdottoDao prodottoDao = new ProdottoDaoImpl();
 
-		try {
-			if ("salva".equals(azione)) {
-				String idParam = request.getParameter("id");
+	    try {
+	        if ("salva".equals(azione)) {
+	            String idParam = request.getParameter("id");
 
-				ProdottoModel prodotto = new ProdottoModel();
-				prodotto.setNome(request.getParameter("nome"));
-				prodotto.setDescrizione(request.getParameter("descrizione"));
-				prodotto.setDisponibilità(Integer.parseInt(request.getParameter("disponibilita")));
-				prodotto.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
-				prodotto.setIdCategoria(Integer.parseInt(request.getParameter("categoria")));
-				prodotto.setImmagine(request.getParameter("immagine"));
-				prodotto.setMimeType(request.getParameter("mimeType"));
-				prodotto.setAttivo(request.getParameter("attivo") != null);
+	            ProdottoModel prodotto = new ProdottoModel();
+	            prodotto.setNome(request.getParameter("nome"));
+	            prodotto.setDescrizione(request.getParameter("descrizione"));
+	            prodotto.setDisponibilità(Integer.parseInt(request.getParameter("disponibilita")));
+	            prodotto.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
+	            prodotto.setIdCategoria(Integer.parseInt(request.getParameter("categoria")));
+	            prodotto.setImmagine(request.getParameter("immagine"));
+	            prodotto.setMimeType(request.getParameter("mimeType"));
 
-				if (idParam != null && !idParam.isEmpty()) {
-					prodotto.setId(Integer.parseInt(idParam));
-					prodottoDao.doUpdate(prodotto);
-				} else {
-					prodottoDao.doSave(prodotto);
-				}
+	            String attivoParam = request.getParameter("attivo");
+	            if (attivoParam != null && !attivoParam.isEmpty()) {
+	                prodotto.setAttivo(Boolean.parseBoolean(attivoParam));
+	            } else {
+	                prodotto.setAttivo(true);
+	            }
 
-			} else if ("elimina".equals(azione)) {
-				int id = Integer.parseInt(request.getParameter("id"));
-				int idCategoria = Integer.parseInt(request.getParameter("categoria"));
+	            if (idParam != null && !idParam.isEmpty()) {
+	                prodotto.setId(Integer.parseInt(idParam));
+	                prodottoDao.doUpdate(prodotto);
+	            } else {
+	                prodottoDao.doSave(prodotto);
+	            }
 
-				ProdottoModel prodotto = prodottoDao.doRetrieveByKey(id, idCategoria);
-				if (prodotto != null) {
-					prodotto.setAttivo(false);
-					prodottoDao.doUpdate(prodotto);
-				}
+	        } else if ("elimina".equals(azione)) {
+	            int id = Integer.parseInt(request.getParameter("id"));
+	            int idCategoria = Integer.parseInt(request.getParameter("categoria"));
 
-				if (isAjax) {
-					response.setContentType("text/plain");
-					response.getWriter().print("disattivato");
-					return;
-				}
+	            ProdottoModel prodotto = prodottoDao.doRetrieveByKey(id, idCategoria);
+	            if (prodotto != null) {
+	                prodotto.setAttivo(false);
+	                prodottoDao.doUpdate(prodotto);
+	            }
 
-			} else if ("riattiva".equals(azione)) {
-				int id = Integer.parseInt(request.getParameter("id"));
-				int idCategoria = Integer.parseInt(request.getParameter("categoria"));
+	            if (isAjax) {
+	                response.setContentType("text/plain");
+	                response.getWriter().print("disattivato");
+	                return;
+	            }
 
-				ProdottoModel prodotto = prodottoDao.doRetrieveByKey(id, idCategoria);
-				if (prodotto != null) {
-					prodotto.setAttivo(true);
-					prodottoDao.doUpdate(prodotto);
-				}
+	        } else if ("riattiva".equals(azione)) {
+	            int id = Integer.parseInt(request.getParameter("id"));
+	            int idCategoria = Integer.parseInt(request.getParameter("categoria"));
 
-				if (isAjax) {
-					response.setContentType("text/plain");
-					response.getWriter().print("riattivato");
-					return;
-				}
-			}
+	            ProdottoModel prodotto = prodottoDao.doRetrieveByKey(id, idCategoria);
+	            if (prodotto != null) {
+	                prodotto.setAttivo(true);
+	                prodottoDao.doUpdate(prodotto);
+	            }
 
-		} catch (SQLException | NumberFormatException e) {
-			e.printStackTrace();
-			if (isAjax) {
-				response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-				response.getWriter().print("errore");
-				return;
-			}
-			request.setAttribute("errore", "Errore nel salvataggio del prodotto.");
-		}
+	            if (isAjax) {
+	                response.setContentType("text/plain");
+	                response.getWriter().print("riattivato");
+	                return;
+	            }
+	        }
 
-		response.sendRedirect(request.getContextPath() + "/AdminProdottiServlet");
+	    } catch (SQLException | NumberFormatException e) {
+	        e.printStackTrace();
+	        if (isAjax) {
+	            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+	            response.getWriter().print("errore");
+	            return;
+	        }
+	        request.setAttribute("errore", "Errore nel salvataggio del prodotto.");
+	    }
+
+	    response.sendRedirect(request.getContextPath() + "/AdminProdottiServlet");
 	}
 
 	private void mostraLista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

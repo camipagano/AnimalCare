@@ -20,12 +20,12 @@ document.addEventListener("DOMContentLoaded", function() {
         password: {
             input: document.getElementById("password"),
             regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
-            msg: "La password deve contenere almeno 6 caratteri, di cui almeno una lettera e un numero."
+            msg: "La password deve contenere almeno 6 caratteri, di cui almeno una lettera maiuscola e un numero."
         },
         indirizzo: {
             input: document.getElementById("indirizzo"),
             regex: /^.{5,100}$/,
-            msg: "Inserisci un indirizzo valido (minimo 5 caratteri)."
+            msg: "Inserisci un indirizzo valido."
         }
     };
 

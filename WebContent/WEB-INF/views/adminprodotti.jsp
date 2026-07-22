@@ -15,7 +15,7 @@
 
 <header>
 <a href="<%= request.getContextPath() %>/AdminServlet" class="logo">AnimalCare - Admin</a>
-<a href="<%= request.getContextPath() %>/LogoutServlet" class="logoutButton">logout</a>
+<a href="<%= request.getContextPath() %>/LogoutServlet" class="logoutButton">Logout</a>
 </header>
 
 <main>

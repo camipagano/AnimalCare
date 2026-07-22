@@ -15,7 +15,7 @@
 
 <header>
 <a href="<%= request.getContextPath() %>/AdminServlet" class="logo">AnimalCare - Admin</a>
-<a href="<%= request.getContextPath() %>/LogoutServlet" class="logoutButton">logout</a>
+<a href="<%= request.getContextPath() %>/LogoutServlet" class="logoutButton">Logout</a>
 </header>
 
 <main>
@@ -26,7 +26,9 @@
     boolean modifica = (prodotto != null);
 %>
 
-<h1><%= modifica ? "Modifica prodotto" : "Nuovo prodotto" %></h1>
+<div class="titolo-pagina">
+    <h1><%= modifica ? "Modifica prodotto" : "Nuovo prodotto" %></h1>
+</div>
 
 <%
     String errore = (String) request.getAttribute("errore");
@@ -41,6 +43,7 @@
     <input type="hidden" name="azione" value="salva">
     <% if (modifica) { %>
         <input type="hidden" name="id" value="<%= prodotto.getId() %>">
+        <input type="hidden" name="attivo" value="<%= prodotto.isAttivo() %>">
     <% } %>
 
     <label for="nome">Nome</label>
@@ -75,11 +78,6 @@
 
     <label for="mimeType">Tipo immagine (MIME type)</label>
     <input type="text" id="mimeType" name="mimeType" placeholder="es. image/png" value="<%= modifica ? prodotto.getMimeType() : "image/png" %>" required>
-
-    <label class="checkbox-label">
-        <input type="checkbox" id="attivo" name="attivo" <%= (!modifica || prodotto.isAttivo()) ? "checked" : "" %>>
-        Prodotto attivo (visibile nel catalogo)
-    </label>
 
     <button type="submit"><%= modifica ? "Salva modifiche" : "Crea prodotto" %></button>
 </form>

@@ -11,7 +11,7 @@
 <body>
 
 <header>
-<a href="<%= request.getContextPath() %>/AdminServlet" class="logo">AnimalCare Admin</a>
+<a href="<%= request.getContextPath() %>/AdminServlet" class="logo">AnimalCare - Admin</a>
 <a href="<%= request.getContextPath() %>/LogoutServlet" class="logoutButton">Logout</a>
 </header>
 
@@ -24,7 +24,7 @@
 <div class="admin-menu">
     <a href="<%= request.getContextPath() %>/AdminProdottiServlet" class="admin-card">
         <h2>Gestione catalogo</h2>
-        <p>Inserisci, modifica, aggiorna prezzi, disponibilità e sconti dei prodotti</p>
+        <p>Inserisci, modifica, aggiorna prezzi e disponibilità dei prodotti</p>
     </a>
 
     <a href="<%= request.getContextPath() %>/AdminOrdiniServlet" class="admin-card">
