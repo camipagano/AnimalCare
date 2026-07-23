@@ -60,7 +60,14 @@
 
 <main>
 
-<div class= "risultati ricerca">
+<%
+    String immagineSfondo = (String) request.getAttribute("immagineSfondo");
+    String stileSfondo = (immagineSfondo != null)
+        ? "background-image: url('" + request.getContextPath() + "/img/" + immagineSfondo + "');"
+        : "";
+%>
+
+<div class="risultati ricerca" style="<%= stileSfondo %>">
 	<%
 	String testo= (String) request.getAttribute("testoCercato");
 	String categoria= (String) request.getAttribute("nomeCategoria");

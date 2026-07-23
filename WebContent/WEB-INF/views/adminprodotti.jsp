@@ -19,7 +19,9 @@
 </header>
 
 <main>
-<h1>Gestione Catalogo</h1>
+<div class="titolo-pagina">
+    <h1>Gestione Catalogo</h1>
+</div>
 
 <%
     String errore = (String) request.getAttribute("errore");
@@ -62,19 +64,19 @@
             if (nomeCategoria == null) nomeCategoria = "N/D";
 %>
             <tr class="<%= rigaClasse %>" data-id="<%= prodotto.getId() %>" data-categoria="<%= prodotto.getIdCategoria() %>">
-                <td><img src="<%= request.getContextPath() %>/<%= prodotto.getImmagine() %>" alt="<%= prodotto.getNome() %>" width="50"></td>
-                <td><%= prodotto.getNome() %></td>
-                <td><%= nomeCategoria %></td>
-                <td>€ <%= String.format("%.2f", prodotto.getPrezzo()) %></td>
-                <td><%= prodotto.getDisponibilità() %></td>
-                <td class="cella-stato">
+                <td data-label="Immagine"><img src="<%= request.getContextPath() %>/<%= prodotto.getImmagine() %>" alt="<%= prodotto.getNome() %>" width="50"></td>
+                <td data-label="Nome"><%= prodotto.getNome() %></td>
+                <td data-label="Categoria"><%= nomeCategoria %></td>
+                <td data-label="Prezzo">€ <%= String.format("%.2f", prodotto.getPrezzo()) %></td>
+                <td data-label="Disponibilità"><%= prodotto.getDisponibilità() %></td>
+                <td class="cella-stato" data-label="Stato">
                     <% if (prodotto.isAttivo()) { %>
                         <span class="stato attivo">Attivo</span>
                     <% } else { %>
                         <span class="stato disattivo">Disattivato</span>
                     <% } %>
                 </td>
-                <td class="azioni">
+                <td class="azioni" data-label="Azioni">
                     <a href="<%= request.getContextPath() %>/AdminProdottiServlet?azione=modifica&id=<%= prodotto.getId() %>&categoria=<%= prodotto.getIdCategoria() %>" class="btn-modifica">Modifica</a>
 
                     <% if (prodotto.isAttivo()) { %>

@@ -26,10 +26,6 @@
     boolean modifica = (prodotto != null);
 %>
 
-<div class="titolo-pagina">
-    <h1><%= modifica ? "Modifica prodotto" : "Nuovo prodotto" %></h1>
-</div>
-
 <%
     String errore = (String) request.getAttribute("errore");
     if (errore != null) {
@@ -39,50 +35,56 @@
     }
 %>
 
-<form action="<%= request.getContextPath() %>/AdminProdottiServlet" method="POST" class="form-prodotto">
-    <input type="hidden" name="azione" value="salva">
-    <% if (modifica) { %>
-        <input type="hidden" name="id" value="<%= prodotto.getId() %>">
-        <input type="hidden" name="attivo" value="<%= prodotto.isAttivo() %>">
-    <% } %>
+<div class="prodotto-container">
 
-    <label for="nome">Nome</label>
-    <input type="text" id="nome" name="nome" value="<%= modifica ? prodotto.getNome() : "" %>" required>
+    <h1 class="titolo-form"><%= modifica ? "Modifica prodotto" : "Nuovo prodotto" %></h1>
 
-    <label for="descrizione">Descrizione</label>
-    <textarea id="descrizione" name="descrizione" rows="3" required><%= modifica ? prodotto.getDescrizione() : "" %></textarea>
+    <form action="<%= request.getContextPath() %>/AdminProdottiServlet" method="POST" class="form-prodotto">
+        <input type="hidden" name="azione" value="salva">
+        <% if (modifica) { %>
+            <input type="hidden" name="id" value="<%= prodotto.getId() %>">
+            <input type="hidden" name="attivo" value="<%= prodotto.isAttivo() %>">
+        <% } %>
 
-    <label for="categoria">Categoria</label>
-    <select id="categoria" name="categoria" required>
-        <option value="">-- Seleziona --</option>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" value="<%= modifica ? prodotto.getNome() : "" %>" required>
+
+        <label for="descrizione">Descrizione</label>
+        <textarea id="descrizione" name="descrizione" rows="2" required><%= modifica ? prodotto.getDescrizione() : "" %></textarea>
+
+        <label for="categoria">Categoria</label>
+        <select id="categoria" name="categoria" required>
+            <option value="">-- Seleziona --</option>
 <%
-        if (categorie != null) {
-            for (CategoriaModel cat : categorie) {
-                boolean selezionata = modifica && cat.getId() == prodotto.getIdCategoria();
+            if (categorie != null) {
+                for (CategoriaModel cat : categorie) {
+                    boolean selezionata = modifica && cat.getId() == prodotto.getIdCategoria();
 %>
-        <option value="<%= cat.getId() %>" <%= selezionata ? "selected" : "" %>><%= cat.getNome() %></option>
+            <option value="<%= cat.getId() %>" <%= selezionata ? "selected" : "" %>><%= cat.getNome() %></option>
 <%
+                }
             }
-        }
 %>
-    </select>
+        </select>
 
-    <label for="prezzo">Prezzo (€)</label>
-    <input type="number" id="prezzo" name="prezzo" step="0.01" min="0" value="<%= modifica ? prodotto.getPrezzo() : "" %>" required>
+        <label for="prezzo">Prezzo (€)</label>
+        <input type="number" id="prezzo" name="prezzo" step="0.01" min="0" value="<%= modifica ? prodotto.getPrezzo() : "" %>" required>
 
-    <label for="disponibilita">Disponibilità</label>
-    <input type="number" id="disponibilita" name="disponibilita" min="0" value="<%= modifica ? prodotto.getDisponibilità() : "" %>" required>
+        <label for="disponibilita">Disponibilità</label>
+        <input type="number" id="disponibilita" name="disponibilita" min="0" value="<%= modifica ? prodotto.getDisponibilità() : "" %>" required>
 
-    <label for="immagine">Percorso immagine</label>
-    <input type="text" id="immagine" name="immagine" placeholder="es. img/gatti/nome.png" value="<%= modifica ? prodotto.getImmagine() : "" %>" required>
+        <label for="immagine">Percorso immagine</label>
+        <input type="text" id="immagine" name="immagine" placeholder="es. img/gatti/nome.png" value="<%= modifica ? prodotto.getImmagine() : "" %>" required>
 
-    <label for="mimeType">Tipo immagine (MIME type)</label>
-    <input type="text" id="mimeType" name="mimeType" placeholder="es. image/png" value="<%= modifica ? prodotto.getMimeType() : "image/png" %>" required>
+        <label for="mimeType">Tipo immagine (MIME type)</label>
+        <input type="text" id="mimeType" name="mimeType" placeholder="es. image/png" value="<%= modifica ? prodotto.getMimeType() : "image/png" %>" required>
 
-    <button type="submit"><%= modifica ? "Salva modifiche" : "Crea prodotto" %></button>
-</form>
+        <button type="submit"><%= modifica ? "Salva modifiche" : "Crea prodotto" %></button>
+    </form>
 
-<p><a href="<%= request.getContextPath() %>/AdminProdottiServlet">Torna alla lista</a></p>
+    <a href="<%= request.getContextPath() %>/AdminProdottiServlet" class="link-dashboard-centro">Torna alla lista</a>
+
+</div>
 
 </main>
 

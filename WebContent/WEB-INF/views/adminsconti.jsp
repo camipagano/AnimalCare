@@ -19,7 +19,9 @@
 </header>
 
 <main>
-<h1>Gestione Sconti</h1>
+<div class="titolo-pagina">
+    <h1>Gestione Sconti</h1>
+</div>
 
 <%
     Double scontoAttivo = (Double) application.getAttribute("scontoGenerale");
@@ -32,10 +34,10 @@
         <label class="label-sconto" for="percentualeSconto">
             <%= haSconto ? "Sconto in atto (" + String.format("%.0f", scontoAttivo) + "%):" : "Impostare sconto (%):" %>
         </label>
-        
-        <input type="number" class="percentualeSconto" name="percentualeSconto" min="0" max="100" step="1"  value="<%= haSconto ? String.format("%.0f", scontoAttivo) : "" %>" 
+
+        <input type="number" class="percentualeSconto" name="percentualeSconto" min="0" max="100" step="1"  value="<%= haSconto ? String.format("%.0f", scontoAttivo) : "" %>"
                placeholder="es. 20">
-        
+
         <button type="submit" class="btn-sconto <%= haSconto ? "btn-rimuovi" : "btn-applica" %>">
             <%= haSconto ? "Rimuovi" : "Applica" %>
         </button>
@@ -69,17 +71,17 @@
             String rigaClasse = prodotto.isAttivo() ? "" : "riga-disattivata";
             String nomeCategoria = (nomiCategorie != null) ? nomiCategorie.get(prodotto.getIdCategoria()) : null;
             if (nomeCategoria == null) nomeCategoria = "N/D";
-            
+
             float prezzoOriginale = prodotto.getPrezzo();
             double prezzoCalcolato = haSconto ? (prezzoOriginale * (1 - (scontoAttivo / 100.0))) : prezzoOriginale;
 %>
             <tr class="<%= rigaClasse %>" data-prezzo-base="<%= prezzoOriginale %>">
-                <td><img src="<%= request.getContextPath() %>/<%= prodotto.getImmagine() %>" alt="<%= prodotto.getNome() %>" width="50"></td>
-                <td><%= prodotto.getNome() %></td>
-                <td><%= nomeCategoria %></td>
-                <td class="cella-prezzo">€ <%= String.format("%.2f", prezzoCalcolato) %></td>
-                <td><%= prodotto.getDisponibilità() %></td>
-                <td>
+                <td data-label="Immagine"><img src="<%= request.getContextPath() %>/<%= prodotto.getImmagine() %>" alt="<%= prodotto.getNome() %>" width="50"></td>
+                <td data-label="Nome"><%= prodotto.getNome() %></td>
+                <td data-label="Categoria"><%= nomeCategoria %></td>
+                <td class="cella-prezzo" data-label="Prezzo">€ <%= String.format("%.2f", prezzoCalcolato) %></td>
+                <td data-label="Disponibilità"><%= prodotto.getDisponibilità() %></td>
+                <td data-label="Stato">
                     <% if (prodotto.isAttivo()) { %>
                         <span class="stato attivo">Attivo</span>
                     <% } else { %>

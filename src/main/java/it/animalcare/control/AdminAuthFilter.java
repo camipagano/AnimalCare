@@ -14,10 +14,13 @@ import java.io.IOException;
 import it.animalcare.model.UtenteModel;
 
 @WebFilter(urlPatterns = { 
-    "/AdminServlet", 
-    "/AdminOrdiniServlet", 
-    "/AdminProdottiServlet" 
-})
+	    "/AdminServlet", 
+	    "/AdminOrdiniServlet", 
+	    "/AdminProdottiServlet",
+	    "/AdminClientiServlet",
+	    "/AdminScontiServlet"
+	})
+
 public class AdminAuthFilter implements Filter {
 
     @Override

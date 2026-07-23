@@ -41,11 +41,10 @@ main {
 main h1 {
     font-family: impact;
     font-weight: normal;
-    color: #646464;
+    color: #e87d09;
     font-size: 2rem;
     margin-bottom: 20px;
 }
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -100,7 +99,8 @@ td button:hover {
 
 main h2 {
     font-family: impact;
-    color: #646464;
+    font-weight: normal;
+    color: #000080;
     font-size: 1.5rem;
     margin-top: 25px;
     text-align: right;

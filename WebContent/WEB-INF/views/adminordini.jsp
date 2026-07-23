@@ -23,7 +23,9 @@
 </header>
 
 <main>
-<h1>Gestione Ordini</h1>
+<div class="titolo-pagina">
+    <h1>Gestione Ordini</h1>
+</div>
 
 <%
     String errore = (String) request.getAttribute("errore");

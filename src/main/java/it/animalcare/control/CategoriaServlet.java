@@ -1,5 +1,4 @@
 package it.animalcare.control;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,14 +7,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collection;
-
 import it.animalcare.dao.CategoriaDao;
 import it.animalcare.dao.CategoriaDaoImpl;
 import it.animalcare.dao.ProdottoDao;
 import it.animalcare.dao.ProdottoDaoImpl;
 import it.animalcare.model.CategoriaModel;
 import it.animalcare.model.ProdottoModel;
-
 /**
  * Servlet implementation class CategoriaServlet
  */
@@ -30,7 +27,6 @@ public class CategoriaServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -56,13 +52,36 @@ public class CategoriaServlet extends HttpServlet {
             
             request.setAttribute("prodottiRicerca", prodottiCategoria); 
             request.setAttribute("nomeCategoria", nomeCategoria);
+            request.setAttribute("immagineSfondo", immagineSfondoPerCategoria(nomeCategoria));
             request.getRequestDispatcher("/WEB-INF/views/ricerca.jsp").forward(request, response);           
 	}catch(NumberFormatException | SQLException e) {
 		e.printStackTrace();
         response.sendRedirect(request.getContextPath() + "/HomeServlet");
 	}
 	}
-
+	
+	private String immagineSfondoPerCategoria(String nomeCategoria) {
+		if (nomeCategoria == null) {
+			return null;
+		}
+		switch (nomeCategoria) {
+			case "Cani":
+				return "cane.jpeg";
+			case "Gatti":
+				return "gatto.jpeg";
+			case "Cavalli":
+				return "cavallo.jpeg";
+			case "Conigli":
+				return "coniglio.jpeg";
+			case "Uccelli":
+				return "uccello.jpeg";
+			case "Pesci e Tartarughe":
+				return "pesce.jpeg";
+			default:
+				return null;
+		}
+	}
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -70,5 +89,4 @@ public class CategoriaServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

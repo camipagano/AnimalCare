@@ -155,10 +155,11 @@ header .header-actions .icon {
 }
 
 .risultati.ricerca {
-    padding: 50px 20px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: 280px;
+    background-position: top left;
+    background-repeat: repeat;
+    background-color: #f4f4f4;
+    padding: 40px 30px;
 }
 
 .risultati.ricerca .contenuto-ricerca {
